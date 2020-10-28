@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!--<TextView
+            android:id="@+id/text_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" /> -->
+        <!-- Rectangle 8 -->
+        <RelativeLayout
+            android:id="@+id/rectangle_8"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/rectangle_8"
+            >
+            <!-- Group 3 -->
+            <RelativeLayout
+                android:id="@+id/group_3"
+                android:layout_width="290dp"
+                android:layout_height="45.63dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/header_background" >
+                <!-- MOTTO -->
+                <TextView
+                    android:id="@+id/motto"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/motto"
+                    android:textAppearance="@style/motto"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+            </RelativeLayout>
+
+            <!-- motto text frame -->
+            <RelativeLayout
+                android:id="@+id/motto_text_"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_alignBottom="@id/group_3"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/group_27" >
+
+                <!-- DILIGENCE DEFINES DESTINY -->
+                <TextView
+                    android:id="@+id/diligence_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/diligence_d"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/diligence_d" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/vision_group"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_8"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_8"
+            >
+            <!-- Group 3 -->
+            <RelativeLayout
+                android:id="@+id/group_vision_text"
+                android:layout_width="290dp"
+                android:layout_height="45.63dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/header_background" >
+                <!-- MOTTO -->
+                <TextView
+                    android:id="@+id/vision"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/vision"
+                    android:textAppearance="@style/motto"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+            </RelativeLayout>
+
+            <!-- motto text frame -->
+            <RelativeLayout
+                android:id="@+id/vision_text_group"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_alignBottom="@id/group_vision_text"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/group_27" >
+
+                <!-- DILIGENCE DEFINES DESTINY -->
+                <TextView
+                    android:id="@+id/vision_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/to_develop_"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/to_develop_" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mission_group"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vision_group"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_8"
+            >
+            <!-- Group 3 -->
+            <RelativeLayout
+                android:id="@+id/group_mission_text"
+                android:layout_width="290dp"
+                android:layout_height="45.63dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/header_background" >
+                <!-- MOTTO -->
+                <TextView
+                    android:id="@+id/mission"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/mission"
+                    android:textAppearance="@style/motto"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+            </RelativeLayout>
+
+            <!-- motto text frame -->
+            <RelativeLayout
+                android:id="@+id/mission_text_group"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_alignBottom="@id/group_mission_text"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/group_27" >
+
+                <!-- DILIGENCE DEFINES DESTINY -->
+                <TextView
+                    android:id="@+id/mission_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/to_create_a"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/to_develop_" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

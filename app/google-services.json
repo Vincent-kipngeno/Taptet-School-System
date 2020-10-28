@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1008963220944",
+    "firebase_url": "https://school-system-84c86.firebaseio.com",
+    "project_id": "school-system-84c86",
+    "storage_bucket": "school-system-84c86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008963220944:android:baf36b290effd0fe63f5d5",
+        "android_client_info": {
+          "package_name": "com.moringaschool.schoolsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008963220944-1p3rl42ojnk62rd735080fc5607p3rs1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUM_owDsZEdn0_9yNBrrFe48yzXGBKHAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008963220944-1p3rl42ojnk62rd735080fc5607p3rs1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- Logo -->
+    <LinearLayout
+        android:id="@+id/logo"
+        android:layout_width="198dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="5dp"
+        android:background="#00000000"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal">
+
+        <!-- TAPTET SCHOOL -->
+        <TextView
+            android:id="@+id/taptet_school"
+            android:layout_width="139dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/taptet_scho"
+            android:textAppearance="@style/taptet_scho" />
+
+        <ImageView
+            android:id="@+id/school_24px"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/school_24px_1" />
+
+    </LinearLayout>
+
+</RelativeLayout>

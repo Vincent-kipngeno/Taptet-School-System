@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">School System</string>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Students</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- strings.xml -->
+    <string name="taptet_scho">TAPTET SCHOOL</string>
+    <string name="logo">LOGO</string>
+    <string name="motto">MOTTO</string>
+    <string name="diligence_d">DILIGENCE DEFINES DESTINY</string>
+    <string name="vision">VISION</string>
+    <string name="to_develop_">To develop an own motivated holistic learner through consistent quality education in order to face the global challenges diligently</string>
+    <string name="mission">VISION</string>
+    <string name="to_create_a">To create an enticing and stimulating ethos (environment), through individual care and utility of all resources, in order to attain high levels of all round excellence</string>
+
+    <string name="firstname_l">FirstName LastName</string>
+    <string name="class_8">Class 8</string>
+    <string name="present">Present</string>
+    <string name="log_in">LOGIN</string>
+    <string name="add_new">New</string>
+
+
+</resources>
