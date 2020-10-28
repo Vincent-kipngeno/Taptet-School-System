@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_addStudent"
-        android:icon="@drawable/person_add_24px_1__2_"
+        android:icon="@drawable/vector"
         android:title="@string/add_new"
         app:showAsAction="always" />
 </menu>
