@@ -1,5 +1,6 @@
 package com.moringaschool.schoolsystem.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,8 +11,16 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
 
 import java.util.HashMap;
@@ -49,6 +58,8 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
 
     private FirebaseAuth mAuth1;
     private FirebaseAuth mAuth2;
+    private DatabaseReference StudentsRef, UsersRef, ClassRef;
+    private String adminUid ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +68,33 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
 
         ButterKnife.bind(this);
 
+        mAuth1 = FirebaseAuth.getInstance();
+        adminUid = mAuth1.getCurrentUser().getUid();
+
+        StudentsRef = FirebaseDatabase.getInstance().getReference().child("Students");
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        ClassRef = FirebaseDatabase.getInstance().getReference().child("Classes");
+
+        FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
+                .setDatabaseUrl("[Database_url_here]")
+                .setApiKey("Web_API_KEY_HERE")
+                .setApplicationId("PROJECT_ID_HERE").build();
+
+        try { FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "AnyAppName");
+            mAuth2 = FirebaseAuth.getInstance(myApp);
+        } catch (IllegalStateException e){
+            mAuth2 = FirebaseAuth.getInstance(FirebaseApp.getInstance("AnyAppName"));
+        }
+
         mSubmit.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
-
+        if (view == mSubmit) {
+            registerStudent();
+        }
     }
 
     public String getSex () {
@@ -203,8 +234,73 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
             student.put("parentName", parentName);
             student.put("parentPhone1", parentPhone1);
             student.put("parentPhone2", parentPhone1);
+            student.put("adminUser", adminUid);
+
+            mAuth2.createUserWithEmailAndPassword(email, studentAdm)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
 
 
+                            if (!task.isSuccessful()) {
+                                String ex = task.getException().toString();
+                                Toast.makeText(StudentRegistrationActivity.this, "Registration Failed"+ex,
+                                        Toast.LENGTH_LONG).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(StudentRegistrationActivity.this, "Registration successful",
+                                        Toast.LENGTH_SHORT).show();
+                                String studentUid = mAuth2.getCurrentUser().getUid();
+
+                                UsersRef.child(studentUid).updateChildren(student).addOnCompleteListener(new OnCompleteListener() {
+                                    @Override
+                                    public void onComplete(@NonNull Task task)
+                                    {
+                                        if (task.isSuccessful())
+                                        {
+                                            Toast.makeText(StudentRegistrationActivity.this, "Student data Saved Successfully...", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else
+                                        {
+                                            Toast.makeText(StudentRegistrationActivity.this, "Error saving student data.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+                                StudentsRef.child(studentUid).setValue(true).addOnCompleteListener(new OnCompleteListener() {
+                                    @Override
+                                    public void onComplete(@NonNull Task task)
+                                    {
+                                        if (task.isSuccessful())
+                                        {
+                                            Toast.makeText(StudentRegistrationActivity.this, "Student added to students list Successfully...", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else
+                                        {
+                                            Toast.makeText(StudentRegistrationActivity.this, "Error saving student to students list.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+                                ClassRef.child(studentUid).setValue(true).addOnCompleteListener(new OnCompleteListener() {
+                                    @Override
+                                    public void onComplete(@NonNull Task task)
+                                    {
+                                        if (task.isSuccessful())
+                                        {
+                                            Toast.makeText(StudentRegistrationActivity.this, "Student added to class list Successfully...", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else
+                                        {
+                                            Toast.makeText(StudentRegistrationActivity.this, "Error saving student to class list.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                                mAuth2.signOut();
+                            }
+                        }
+                    });
         }
     }
 }
