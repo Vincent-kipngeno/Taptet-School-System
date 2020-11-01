@@ -40,6 +40,18 @@
     <string name="t_type">Student Type</string>
     <string name="t_day">Day</string>
     <string name="t_border">Boarder</string>
+    <string name="class8">class8</string>
+    <string name="class7">class7</string>
+    <string name="class6">class6</string>
+    <string name="class5">class5</string>
+    <string name="class4">class4</string>
+    <string name="class3">class3</string>
+    <string name="class2">class2</string>
+    <string name="class1">class1</string>
+    <string name="pre_primary2">Pre-Primary2</string>
+    <string name="pre_primary1">Pre-Primary1</string>
+    <string name="t_class">Class</string>
+    <string name="submit">SUBMIT</string>
 
 
 </resources>

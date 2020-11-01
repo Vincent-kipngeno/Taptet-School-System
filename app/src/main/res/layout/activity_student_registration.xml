@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
+    android:padding="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.StudentRegistrationActivity">
 
@@ -263,6 +264,127 @@
                 android:text="@string/t_border" />
 
         </RadioGroup>
+
+        <TextView
+            android:id="@+id/classText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginRight="@dimen/text_margin"
+            android:layout_marginBottom="@dimen/option_margin"
+            android:layout_weight="1"
+            android:ems="10"
+            android:paddingLeft="4sp"
+            android:paddingRight="4sp"
+            android:text="@string/t_class"
+            android:textAppearance="@style/TextAppearance.Design.Counter"
+            android:textColor="@color/mainColor" />
+
+        <RadioGroup
+            android:id="@+id/radio_studentClass"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:layout_marginRight="@dimen/text_margin"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/text_margin">
+
+            <RadioButton
+                android:id="@+id/radio_class8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:layout_weight="1"
+                android:tag="type_day"
+                android:text="@string/class8" />
+
+            <RadioButton
+                android:id="@+id/radio_class7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="type_border"
+                android:text="@string/class7" />
+
+            <RadioButton
+                android:id="@+id/radio_class6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="type_border"
+                android:text="@string/class6" />
+
+            <RadioButton
+                android:id="@+id/radio_class5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="type_border"
+                android:text="@string/class5" />
+
+            <RadioButton
+                android:id="@+id/radio_class4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="type_border"
+                android:text="@string/class4" />
+
+            <RadioButton
+                android:id="@+id/radio_class3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="type_border"
+                android:text="@string/class3" />
+
+            <RadioButton
+                android:id="@+id/radio_class2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="type_border"
+                android:text="@string/class2" />
+
+            <RadioButton
+                android:id="@+id/radio_class1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="type_border"
+                android:text="@string/class1" />
+
+            <RadioButton
+                android:id="@+id/radio_classPre2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="type_border"
+                android:text="@string/pre_primary2" />
+
+            <RadioButton
+                android:id="@+id/radio_classPre1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:tag="type_border"
+                android:text="@string/pre_primary1" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submit_studentRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/submit_button"
+            android:padding="10dp"
+            android:text="@string/submit"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="21dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
