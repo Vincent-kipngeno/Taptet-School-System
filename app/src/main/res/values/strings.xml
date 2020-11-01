@@ -26,6 +26,20 @@
     <string name="present">Present</string>
     <string name="log_in">LOGIN</string>
     <string name="add_new">New</string>
+    <string name="h_name">Enter Name</string>
+    <string name="h_phone">Enter email</string>
+    <string name="t_sex">sex</string>
+    <string name="t_male">Male</string>
+    <string name="t_female">Female</string>
+    <string name="h_address">Admission Number</string>
+    <string name="h_date1">Enter class</string>
+    <string name="h_date2">Parent phone 1</string>
+    <string name="h_phone2">Parent phone 2</string>
+    <string name="h_parentName">Parent Name</string>
+    <string name="h_location">Enter Location</string>
+    <string name="t_type">Student Type</string>
+    <string name="t_day">Day</string>
+    <string name="t_border">Boarder</string>
 
 
 </resources>
