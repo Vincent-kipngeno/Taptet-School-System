@@ -1,7 +1,10 @@
 package com.moringaschool.schoolsystem.ui;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.util.Patterns;
@@ -29,7 +32,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StudentRegistrationActivity extends AppCompatActivity implements View.OnClickListener {
+public class StudentRegistrationActivity extends AppCompatActivity implements View.OnClickListener, FragmentManager.OnBackStackChangedListener {
     @BindView(R.id.sex) TextView mSex;
     @BindView(R.id.studentType) TextView mStudentType;
     @BindView(R.id.studentClass) TextView mStudentClass;
@@ -68,6 +71,16 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
 
         ButterKnife.bind(this);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setTitle("Student Registration");
+
+        shouldDisplayHomeUp();
+
         mAuth1 = FirebaseAuth.getInstance();
         adminUid = mAuth1.getCurrentUser().getUid();
 
@@ -88,6 +101,24 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
 
         mSubmit.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        shouldDisplayHomeUp();
+    }
+
+    public void shouldDisplayHomeUp(){
+        //Enable Up button only  if there are entries in the back stack
+        boolean canGoBack = getSupportFragmentManager().getBackStackEntryCount()>0;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(canGoBack);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        //This method is called when the up button is pressed. Just the pop back stack.
+        getSupportFragmentManager().popBackStack();
+        return true;
     }
 
     @Override
