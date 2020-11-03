@@ -1,9 +1,11 @@
 package com.moringaschool.schoolsystem.ui.students;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -16,6 +18,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity;
+import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity_ViewBinding;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,5 +50,17 @@ public class StudentsFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.students_fragment_menu, menu);
         super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_addStudent) {
+            Intent intent = new Intent(getActivity(), StudentRegistrationActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return false;
     }
 }
