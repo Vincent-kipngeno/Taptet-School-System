@@ -30,9 +30,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StudentRegistrationActivity extends AppCompatActivity implements View.OnClickListener {
-    @BindView(R.id.radio_sex) TextView mSex;
-    @BindView(R.id.radio_studentType) TextView mStudentType;
-    @BindView(R.id.radio_studentClass) TextView mStudentClass;
+    @BindView(R.id.sex) TextView mSex;
+    @BindView(R.id.studentType) TextView mStudentType;
+    @BindView(R.id.studentClass) TextView mStudentClass;
     @BindView(R.id.edit_name) EditText mStudentName;
     @BindView(R.id.edit_admissionNo) EditText mStudentAdmission;
     @BindView(R.id.edit_email) EditText mStudentEmail;

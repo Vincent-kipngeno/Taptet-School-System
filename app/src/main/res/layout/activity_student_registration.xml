@@ -55,7 +55,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
@@ -117,27 +117,6 @@
                 android:inputType="text"
                 android:tag="admNo"
                 android:textAlignment="viewStart" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <EditText
-                android:id="@+id/edit_class"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:backgroundTint="@color/mainColor"
-                android:cursorVisible="false"
-                android:ems="10"
-                android:hint="@string/h_date1"
-                android:inputType="text"
-                android:tag="class" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -223,7 +202,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/typeText"
+            android:id="@+id/studentType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
@@ -266,7 +245,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/classText"
+            android:id="@+id/studentClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
