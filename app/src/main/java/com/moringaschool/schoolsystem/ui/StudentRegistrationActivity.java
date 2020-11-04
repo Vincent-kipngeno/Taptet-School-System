@@ -261,7 +261,7 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
             student.put("location", location);
             student.put("sex", sex);
             student.put("category", type);
-            student.put("class", studentClass);
+            student.put("grade", studentClass);
             student.put("parentName", parentName);
             student.put("phone1", parentPhone1);
             student.put("phone2", parentPhone1);
