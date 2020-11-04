@@ -89,9 +89,9 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
         ClassRef = FirebaseDatabase.getInstance().getReference().child("Classes");
 
         FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
-                .setDatabaseUrl("[Database_url_here]")
-                .setApiKey("Web_API_KEY_HERE")
-                .setApplicationId("PROJECT_ID_HERE").build();
+                .setDatabaseUrl("https://school-system-84c86.firebaseio.com/")
+                .setApiKey("AIzaSyAUM_owDsZEdn0_9yNBrrFe48yzXGBKHAI")
+                .setApplicationId("school-system-84c86").build();
 
         try { FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "AnyAppName");
             mAuth2 = FirebaseAuth.getInstance(myApp);
@@ -266,6 +266,7 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
             student.put("parentPhone1", parentPhone1);
             student.put("parentPhone2", parentPhone1);
             student.put("adminUser", adminUid);
+            student.put("type", "student");
 
             mAuth2.createUserWithEmailAndPassword(email, studentAdm)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
