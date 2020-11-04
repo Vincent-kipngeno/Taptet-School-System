@@ -255,16 +255,16 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
         }
         else {
             Map<String, Object> student = new HashMap<String, Object>();
-            student.put("studentName", name);
-            student.put("studentEmail", email);
-            student.put("studentAdmissionNo", studentAdm);
-            student.put("studentLocation", location);
-            student.put("studentSex", sex);
-            student.put("studentType", type);
-            student.put("studentClass", studentClass);
+            student.put("name", name);
+            student.put("email", email);
+            student.put("admissionNo", studentAdm);
+            student.put("location", location);
+            student.put("sex", sex);
+            student.put("category", type);
+            student.put("class", studentClass);
             student.put("parentName", parentName);
-            student.put("parentPhone1", parentPhone1);
-            student.put("parentPhone2", parentPhone1);
+            student.put("phone1", parentPhone1);
+            student.put("phone2", parentPhone1);
             student.put("adminUser", adminUid);
             student.put("type", "student");
 
