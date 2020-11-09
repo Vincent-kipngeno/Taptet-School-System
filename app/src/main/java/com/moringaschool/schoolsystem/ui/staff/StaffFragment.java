@@ -1,4 +1,4 @@
-package com.moringaschool.schoolsystem.ui.slideshow;
+package com.moringaschool.schoolsystem.ui.staff;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.moringaschool.schoolsystem.R;
 
-public class SlideshowFragment extends Fragment {
+public class StaffFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private StaffViewModel staffViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        staffViewModel =
+                ViewModelProviders.of(this).get(StaffViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_staff, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        staffViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

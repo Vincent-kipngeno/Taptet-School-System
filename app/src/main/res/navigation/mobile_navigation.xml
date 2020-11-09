@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.moringaschool.schoolsystem.ui.slideshow.SlideshowFragment"
+        android:name="com.moringaschool.schoolsystem.ui.staff.StaffFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_staff" />
 </navigation>
