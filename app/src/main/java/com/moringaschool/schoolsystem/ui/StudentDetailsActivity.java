@@ -4,35 +4,100 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class StudentDetailsActivity extends AppCompatActivity {
+public class StudentDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.studentName) TextView studentName;
-    @BindView(R.id.studentEmail) TextView studentEmail;
-    @BindView(R.id.studentAdm) TextView studentAdm;
-    @BindView(R.id.studentSex) TextView studentSex;
-    @BindView(R.id.studentGrade) TextView studentGrade;
-    @BindView(R.id.studentCategory) TextView studentCategory;
-    @BindView(R.id.studentLocation) TextView studentLocation;
-    @BindView(R.id.parentName) TextView parentName;
-    @BindView(R.id.parentPhone1) TextView parentPhone1;
-    @BindView(R.id.parentPhone2) TextView parentPhone2;
-    @BindView(R.id.feesButton) Button feesButton;
-    @BindView(R.id.examsButton) Button examsButton;
-    @BindView(R.id.attendaceButton) Button attendaceButton;
+    @BindView(R.id.studentName) TextView mStudentName;
+    @BindView(R.id.studentEmail) TextView mStudentEmail;
+    @BindView(R.id.studentAdm) TextView mStudentAdm;
+    @BindView(R.id.studentSex) TextView mStudentSex;
+    @BindView(R.id.studentGrade) TextView mStudentGrade;
+    @BindView(R.id.studentCategory) TextView mStudentCategory;
+    @BindView(R.id.studentLocation) TextView mStudentLocation;
+    @BindView(R.id.parentName) TextView mParentName;
+    @BindView(R.id.parentPhone1) TextView mParentPhone1;
+    @BindView(R.id.parentPhone2) TextView mParentPhone2;
+    @BindView(R.id.feesButton) Button mFeesButton;
+    @BindView(R.id.examsButton) Button mExamsButton;
+    @BindView(R.id.attendaceButton) Button mAttendaceButton;
+
+    private DatabaseReference UsersRef;
+    private FirebaseAuth mAuth;
+    private String currentUserID="";
+    String studentId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_details);
 
+        ButterKnife.bind(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUserID = mAuth.getCurrentUser().getUid();
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
         Intent intent = new Intent();
-        String studentId = intent.getStringExtra("visit_user_id");
+        studentId = intent.getStringExtra("visit_user_id");
+        fetchStudentInfo();
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    public void fetchStudentInfo() {
+        UsersRef.child(studentId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    String studentName = dataSnapshot.child("name").getValue().toString();
+                    String studentEmail = dataSnapshot.child("email").getValue().toString();
+                    String studentClass = dataSnapshot.child("grade").getValue().toString();
+                    String studentAdm = dataSnapshot.child("admissionNo").getValue().toString();
+                    String studentSex = dataSnapshot.child("sex").getValue().toString();
+                    String studentCategory = dataSnapshot.child("category").getValue().toString();
+                    String studentLocation = dataSnapshot.child("location").getValue().toString();
+                    String parentName = dataSnapshot.child("parentName").getValue().toString();
+                    String parentPhone1 = dataSnapshot.child("phone1").getValue().toString();
+                    String parentPhone2 = dataSnapshot.child("phone2").getValue().toString();
+
+                    mStudentName.setText(studentName);
+                    mStudentEmail.setText(studentEmail);
+                    mStudentGrade.setText(studentClass);
+                    mStudentAdm.setText(studentAdm);
+                    mStudentSex.setText(studentSex);
+                    mStudentCategory.setText(studentCategory);
+                    mStudentLocation.setText(studentLocation);
+                    mParentName.setText(parentName);
+                    mParentPhone1.setText(parentPhone1);
+                    if (!parentPhone2.trim().isEmpty()) {
+                        mParentPhone2.setText(parentPhone2);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
