@@ -28,7 +28,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.models.Member;
 import com.moringaschool.schoolsystem.models.Student;
+import com.moringaschool.schoolsystem.ui.StudentDetailsActivity;
 import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity;
 import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity_ViewBinding;
 import com.squareup.picasso.Picasso;
@@ -91,16 +93,16 @@ public class StudentsFragment extends Fragment {
     }
 
     public void fillStudentsRecyclerView () {
-        FirebaseRecyclerOptions<Student> options =
-                new FirebaseRecyclerOptions.Builder<Student>()
-                        .setQuery(StudentsRef, Student.class)
+        FirebaseRecyclerOptions<Boolean> options =
+                new FirebaseRecyclerOptions.Builder<Boolean>()
+                        .setQuery(StudentsRef, Boolean.class)
                         .build();
 
 
-        FirebaseRecyclerAdapter<Student, StudentsViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Student, StudentsViewHolder>(options) {
+        FirebaseRecyclerAdapter<Boolean, StudentsViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Boolean, StudentsViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull final StudentsViewHolder holder, int position, @NonNull Student model)
+                    protected void onBindViewHolder(@NonNull final StudentsViewHolder holder, int position, @NonNull Boolean model)
                     {
                         final String studentsIDs = getRef(position).getKey();
 
