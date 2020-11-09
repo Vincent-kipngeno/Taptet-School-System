@@ -1,9 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.StaffRegistrationActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:paddingTop="@dimen/text_margin"
+                android:src="@drawable/undraw_selecting_team_8uux" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:hintTextAppearance="@style/MyHintStyle">
+
+                <EditText
+                    android:id="@+id/edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:backgroundTint="@color/mainColor"
+                    android:ems="10"
+                    android:hint="@string/h_name"
+                    android:inputType="textPersonName"
+                    android:tag="name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:hintTextAppearance="@style/MyHintStyle">
+
+                <EditText
+                    android:id="@+id/edit_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:autofillHints=""
+                    android:backgroundTint="@color/mainColor"
+                    android:ems="10"
+                    android:hint="@string/h_phone"
+                    android:inputType="textEmailAddress"
+                    android:tag="email"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/option_margin"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="@string/t_sex"
+                android:textAppearance="@style/TextAppearance.Design.Counter"
+                android:textColor="@color/mainColor" />
+
+            <RadioGroup
+                android:id="@+id/radio_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:animateLayoutChanges="true"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/text_margin">
+
+                <RadioButton
+                    android:id="@+id/radio_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/mainColor"
+                    android:tag="sex_male"
+                    android:text="@string/t_male" />
+
+                <RadioButton
+                    android:id="@+id/radio_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tag="sex_female"
+                    android:text="@string/t_female" />
+
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:hintTextAppearance="@style/MyHintStyle">
+
+                <EditText
+                    android:id="@+id/edit_staffNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:backgroundTint="@color/mainColor"
+                    android:ems="10"
+                    android:hint="Staff Number..."
+                    android:inputType="text"
+                    android:tag="admNo"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:hintTextAppearance="@style/MyHintStyle">
+
+                <EditText
+                    android:id="@+id/edit_idNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:backgroundTint="@color/mainColor"
+                    android:ems="10"
+                    android:hint="ID NO ..."
+                    android:inputType="textPersonName"
+                    android:tag="idNumber"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:hintTextAppearance="@style/MyHintStyle">
+
+                <EditText
+                    android:id="@+id/edit_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:backgroundTint="@color/mainColor"
+                    android:ems="10"
+                    android:hint="@string/h_location"
+                    android:inputType="text"
+                    android:tag="admNo"
+                    android:textAlignment="viewStart" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:hintTextAppearance="@style/MyHintStyle">
+
+                <EditText
+                    android:id="@+id/edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:backgroundTint="@color/mainColor"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:hint="Enter Phone Number ..."
+                    android:inputType="phone"
+                    android:tag="phone1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:hintTextAppearance="@style/MyHintStyle">
+
+                <EditText
+                    android:id="@+id/edit_tscNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:backgroundTint="@color/mainColor"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:hint="TSC No ..."
+                    android:inputType="text"
+                    android:tag="phone2" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/studentType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/option_margin"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="Staff Type"
+                android:textAppearance="@style/TextAppearance.Design.Counter"
+                android:textColor="@color/mainColor" />
+
+            <RadioGroup
+                android:id="@+id/radio_studentType"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/text_margin">
+
+                <RadioButton
+                    android:id="@+id/radio_Subordinate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:tag="type_Subordinate"
+                    android:text="Subordinate" />
+
+                <RadioButton
+                    android:id="@+id/radio_nonSubordinate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tag="type_nonSubordinate"
+                    android:text="Non-Subordinate" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/studentClass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/option_margin"
+                android:layout_weight="1"
+                android:ems="10"
+                android:paddingLeft="4sp"
+                android:paddingRight="4sp"
+                android:text="@string/t_class"
+                android:textAppearance="@style/TextAppearance.Design.Counter"
+                android:textColor="@color/mainColor" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:hintTextAppearance="@style/MyHintStyle">
+
+                <EditText
+                    android:id="@+id/edit_role"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:backgroundTint="@color/mainColor"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:hint="Staff Role ..."
+                    android:inputType="text"
+                    android:tag="role" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/submit_studentRegistration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/submit_button"
+                android:padding="10dp"
+                android:text="@string/submit"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

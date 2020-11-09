@@ -135,7 +135,7 @@
                 app:hintTextAppearance="@style/MyHintStyle">
 
                 <EditText
-                    android:id="@+id/edit_admissionNo"
+                    android:id="@+id/edit_staffNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
@@ -156,7 +156,7 @@
                 app:hintTextAppearance="@style/MyHintStyle">
 
                 <EditText
-                    android:id="@+id/edit_parentName"
+                    android:id="@+id/edit_idNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
@@ -198,7 +198,7 @@
                 app:hintTextAppearance="@style/MyHintStyle">
 
                 <EditText
-                    android:id="@+id/edit_phone1"
+                    android:id="@+id/edit_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
@@ -220,7 +220,7 @@
                 app:hintTextAppearance="@style/MyHintStyle">
 
                 <EditText
-                    android:id="@+id/edit_phone2"
+                    android:id="@+id/edit_tscNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
@@ -260,7 +260,7 @@
                 android:paddingBottom="@dimen/text_margin">
 
                 <RadioButton
-                    android:id="@+id/radio_day"
+                    android:id="@+id/radio_Subordinate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/text_margin"
@@ -269,7 +269,7 @@
                     android:text="@string/t_day" />
 
                 <RadioButton
-                    android:id="@+id/radio_border"
+                    android:id="@+id/radio_nonSubordinate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

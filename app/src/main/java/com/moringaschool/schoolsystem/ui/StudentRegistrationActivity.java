@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +39,7 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
     @BindView(R.id.edit_admissionNo) EditText mStudentAdmission;
     @BindView(R.id.edit_email) EditText mStudentEmail;
     @BindView(R.id.edit_location) EditText mStudentLocation;
-    @BindView(R.id.edit_parentName) EditText mParentName;
+    @BindView(R.id.edit_idNo) EditText mParentName;
     @BindView(R.id.edit_phone1) EditText mParentPhone1;
     @BindView(R.id.edit_phone2) EditText mParentPhone2;
     @BindView(R.id.radio_female) RadioButton mRadioFemale;
