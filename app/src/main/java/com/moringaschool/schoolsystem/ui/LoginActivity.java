@@ -102,19 +102,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 SendUserToDashboardActivity(currentUserId);
                                 Toast.makeText(LoginActivity.this, "Logged in Successful...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
-
-                                /*UsersRef.child(currentUserId).child("device_token")
-                                        .setValue(deviceToken)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task)
-                                            {
-                                                if (task.isSuccessful())
-                                                {
-
-                                                }
-                                            }
-                                        });*/
                             }
                             else
                             {

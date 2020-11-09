@@ -190,4 +190,8 @@
 
     </style>
 
+    <style name="MyHintStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/mainColor</item>
+    </style>
+
 </resources>
