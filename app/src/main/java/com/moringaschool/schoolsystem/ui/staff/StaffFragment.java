@@ -30,6 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.Member;
 import com.moringaschool.schoolsystem.models.Student;
+import com.moringaschool.schoolsystem.ui.StaffDetailsActivity;
+import com.moringaschool.schoolsystem.ui.StaffRegistrationActivity;
 import com.moringaschool.schoolsystem.ui.StudentDetailsActivity;
 import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity;
 import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity_ViewBinding;
