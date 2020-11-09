@@ -135,7 +135,7 @@
                 app:hintTextAppearance="@style/MyHintStyle">
 
                 <EditText
-                    android:id="@+id/edit_staffNo"
+                    android:id="@+id/edit_admNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
@@ -156,7 +156,7 @@
                 app:hintTextAppearance="@style/MyHintStyle">
 
                 <EditText
-                    android:id="@+id/edit_idNo"
+                    android:id="@+id/edit_phone1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
