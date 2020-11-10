@@ -4,6 +4,197 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.StaffDetailsActivity">
+    android:background="@color/backgroundColor"
+    tools:context=".ui.StudentDetailsActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:textColor="#ffffff"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="280dp"
+                    android:layout_gravity="center|center_vertical"
+                    android:paddingTop="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ellipse_1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:background="@android:drawable/dialog_holo_light_frame"
+                android:layout_margin="20dp"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Info"
+                    android:textAlignment="center"
+                    android:textColor="@color/mainColor"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/staffName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Name"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/staffEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Email"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/staffNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff No"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/staffSex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Sex"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/staffRole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Role"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/staffCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Category"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/staffLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Location"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/idNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID NO"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/tscNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Parent Phone 2"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:textAlignment="center">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/feesButton"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/submit_button"
+                        android:gravity="center"
+                        android:text="FEES"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/examsButton"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/submit_button"
+                        android:gravity="center"
+                        android:text="EXAMS"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/attendaceButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:text="ATTENDANCE"
+                    android:padding="30dp"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/mainColor"
+                    android:letterSpacing="0.15"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
