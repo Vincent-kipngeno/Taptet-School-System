@@ -236,7 +236,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/studentType"
+                android:id="@+id/staffType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/text_margin"
@@ -251,7 +251,7 @@
                 android:textColor="@color/mainColor" />
 
             <RadioGroup
-                android:id="@+id/radio_studentType"
+                android:id="@+id/radio_staffType"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/text_margin"
@@ -277,21 +277,6 @@
                     android:text="Non-Subordinate" />
 
             </RadioGroup>
-
-            <TextView
-                android:id="@+id/studentClass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/text_margin"
-                android:layout_marginRight="@dimen/text_margin"
-                android:layout_marginBottom="@dimen/option_margin"
-                android:layout_weight="1"
-                android:ems="10"
-                android:paddingLeft="4sp"
-                android:paddingRight="4sp"
-                android:text="@string/t_class"
-                android:textAppearance="@style/TextAppearance.Design.Counter"
-                android:textColor="@color/mainColor" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
