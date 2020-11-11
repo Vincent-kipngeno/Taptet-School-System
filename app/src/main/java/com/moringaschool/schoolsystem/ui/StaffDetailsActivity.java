@@ -31,8 +31,7 @@ public class StaffDetailsActivity extends AppCompatActivity implements View.OnCl
     @BindView(R.id.idNum) TextView mIdNo;
     @BindView(R.id.phone) TextView mPhone;
     @BindView(R.id.tscNo) TextView mTscNo;
-    @BindView(R.id.feesButton)
-    Button mFeesButton;
+    @BindView(R.id.feesButton) Button mFeesButton;
     @BindView(R.id.examsButton) Button mExamsButton;
     @BindView(R.id.attendaceButton) Button mAttendaceButton;
 
