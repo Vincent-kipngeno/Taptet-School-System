@@ -55,6 +55,7 @@
     <string name="menu_fees">Fees</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_calendar">Academic Calendar</string>
 
 
 </resources>
