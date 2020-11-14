@@ -5,6 +5,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".ui.calendar.CalendarFragment">
+
+    <LinearLayout
+        android:id="@+id/noYears_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:background="#55000000"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="There are no academic years yet. Kindly add one below."
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="15dp"/>
+
+        <Button
+            android:id="@+id/add_year_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/submit_button"
+            android:text="ADD YEAR"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:enabled="false"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/academic_years_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/noYears_button"
+        android:layout_alignTop="@id/noYears_button"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="20sp" />
 
 </RelativeLayout>
