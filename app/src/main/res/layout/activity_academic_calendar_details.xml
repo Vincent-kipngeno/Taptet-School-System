@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".ui.AcademicCalendarDetails">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <include
+                android:id="@+id/main_page_toolbar"
+                layout="@layout/custom_app_bar" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/term1"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="TERM 1"
+                android:layout_margin="10dp"
+                android:textAppearance="@style/motto"
+                android:textAlignment="center"
+                android:background="@drawable/header_background"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@android:color/background_light"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/term1_startDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:textColor="@color/mainColor"
+                        android:text="Start Date"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/term1_endDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="End Date"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/editTerm1_startDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="5TH SEP 2020"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/editTerm1_endDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="24TH DEC 2020"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/feesStructure_term1"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Fees Structure"
+                android:layout_margin="5dp"
+                android:textAppearance="@style/motto"
+                android:textAlignment="center"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/feeStructure_gridTerm1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/term2"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="TERM 1"
+                android:layout_margin="10dp"
+                android:textAppearance="@style/motto"
+                android:textAlignment="center"
+                android:background="@drawable/header_background"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@android:color/background_light"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/term2_startDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:textColor="@color/mainColor"
+                        android:text="Start Date"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/term2_endDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="End Date"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/editTerm2_startDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="5TH SEP 2020"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/editTerm2_endDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="24TH DEC 2020"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/feesStructure_term2"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Fees Structure"
+                android:layout_margin="5dp"
+                android:textAppearance="@style/motto"
+                android:textAlignment="center"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/feeStructure_gridTerm2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/term3"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="TERM 1"
+                android:layout_margin="10dp"
+                android:textAppearance="@style/motto"
+                android:textAlignment="center"
+                android:background="@drawable/header_background"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@android:color/background_light"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/term3_startDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:textColor="@color/mainColor"
+                        android:text="Start Date"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/term3_endDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="End Date"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/editTerm3_startDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="5TH SEP 2020"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/editTerm3_endDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="24TH DEC 2020"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/feesStructure_term3"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Fees Structure"
+                android:layout_margin="5dp"
+                android:textAppearance="@style/motto"
+                android:textAlignment="center"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/feeStructure_gridTerm3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="2" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
