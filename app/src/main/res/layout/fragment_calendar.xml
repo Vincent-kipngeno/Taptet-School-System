@@ -9,7 +9,7 @@
     tools:context=".ui.calendar.CalendarFragment">
 
     <LinearLayout
-        android:id="@+id/noYears_button"
+        android:id="@+id/noYears_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
