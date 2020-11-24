@@ -2,6 +2,7 @@ package com.moringaschool.schoolsystem.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,6 +53,10 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity {
         academicYearId = intent.getStringExtra("academicYearId");
 
         ButterKnife.bind(this);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(intent.getStringExtra("academicYearName") + " AY");
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();

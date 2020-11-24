@@ -124,6 +124,7 @@ public class CalendarFragment extends Fragment {
                             {
                                 Intent yearIntent = new Intent(getContext(), AcademicCalendarDetailsActivity.class);
                                 yearIntent.putExtra("academicYearId", academicYearId);
+                                yearIntent.putExtra("academicYearName", model.getAcademicYear());
                                 startActivity(yearIntent);
                             }
                         });
