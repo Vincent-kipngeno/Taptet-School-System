@@ -25,12 +25,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.AcademicYear;
-import com.moringaschool.schoolsystem.ui.AcademicCalendarDetails;
-import com.moringaschool.schoolsystem.ui.StudentDetailsActivity;
-import com.moringaschool.schoolsystem.ui.students.StudentsFragment;
+import com.moringaschool.schoolsystem.ui.AcademicCalendarDetailsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -125,7 +122,7 @@ public class CalendarFragment extends Fragment {
                             @Override
                             public void onClick(View view)
                             {
-                                Intent yearIntent = new Intent(getContext(), AcademicCalendarDetails.class);
+                                Intent yearIntent = new Intent(getContext(), AcademicCalendarDetailsActivity.class);
                                 yearIntent.putExtra("academicYearId", academicYearId);
                                 startActivity(yearIntent);
                             }

@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.moringaschool.schoolsystem.R;
 
-public class AcademicCalendarDetails extends AppCompatActivity {
+public class AcademicCalendarDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
