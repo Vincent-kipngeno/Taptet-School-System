@@ -54,7 +54,7 @@ public class CalendarFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
-        AcademicYearsRef = FirebaseDatabase.getInstance().getReference().child("AcademicYears");
+        AcademicYearsRef = FirebaseDatabase.getInstance().getReference().child("Years").child("AcademicYears");
 
         yearsList.setLayoutManager(new LinearLayoutManager(getContext()));
 

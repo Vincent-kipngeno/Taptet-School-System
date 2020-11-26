@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -30,16 +31,22 @@ import com.moringaschool.schoolsystem.ui.calendar.CalendarFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AcademicCalendarDetailsActivity extends AppCompatActivity {
+public class AcademicCalendarDetailsActivity extends AppCompatActivity implements View.OnClickListener{
     @BindView(R.id.editTerm1_startDate) TextView mStartDate1;
     @BindView(R.id.editTerm1_endDate) TextView mEndDate1;
     @BindView(R.id.editTerm2_startDate) TextView mStartDate2;
     @BindView(R.id.editTerm2_endDate) TextView mEndDate2;
     @BindView(R.id.editTerm3_startDate) TextView mStartDate3;
     @BindView(R.id.editTerm3_endDate) TextView mEndDate3;
+    @BindView(R.id.button_start1) Button mStartTerm1;
+    @BindView(R.id.button_end1) Button mEndTerm1;
+    @BindView(R.id.button_start2) Button mStartTerm2;
+    @BindView(R.id.button_end2) Button mEndTerm2;
+    @BindView(R.id.button_start3) Button mStartTerm3;
+    @BindView(R.id.button_end3) Button mEndTerm3;
     @BindView(R.id.school_fee_structure) RecyclerView mFeeStructureGrid;
 
-    private DatabaseReference YearDetailsRef, YearFeeStructureRef;
+    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendar;
     private FirebaseAuth mAuth;
     private String currentUserID="";
     private String academicYearId = "";
@@ -60,16 +67,24 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
-        YearDetailsRef = FirebaseDatabase.getInstance().getReference().child("YearDetails").child(academicYearId);
-        YearFeeStructureRef = YearDetailsRef.child("FeeStructure");
+
+        YearDetailsRef = FirebaseDatabase.getInstance().getReference().child("Years");
+        YearFeeStructureRef = YearDetailsRef.child("YearDetails").child(academicYearId).child("FeeStructure");
 
         mFeeStructureGrid.setLayoutManager(new LinearLayoutManager(this));
 
         fillTermDates();
+
+        mStartTerm1.setOnClickListener(this);
+        mEndTerm1.setOnClickListener(this);
+        mStartTerm2.setOnClickListener(this);
+        mEndTerm2.setOnClickListener(this);
+        mStartTerm3.setOnClickListener(this);
+        mEndTerm3.setOnClickListener(this);
     }
 
     public void fillTermDates() {
-        YearDetailsRef.child("TermDates").addValueEventListener(new ValueEventListener() {
+        YearDetailsRef.child("YearDetails").child(academicYearId).child("TermDates").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
@@ -125,6 +140,35 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
+    @Override
+    public void onClick(View view) {
+
+        if (view == mStartTerm1) {
+
+        }
+
+        if (view == mEndTerm1) {
+
+        }
+
+        if (view == mStartTerm2) {
+
+        }
+
+        if (view == mEndTerm2) {
+
+        }
+
+        if (view == mStartTerm3) {
+
+        }
+
+        if (view == mEndTerm3) {
+
+        }
+
+    }
+
     public static class  FeeStructureViewHolder extends RecyclerView.ViewHolder
     {
         TextView className, term1Fee, term2Fee, term3Fee;
@@ -139,6 +183,72 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity {
             term2Fee = itemView.findViewById(R.id.edit_term2Table);
             term3Fee = itemView.findViewById(R.id.edit_term3Table);
         }
+    }
+
+    public void visibilityOfStartAndEndButtons() {
+
+        YearDetailsRef.child("CurrentDates").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    String yearId = dataSnapshot.child("yearId").getValue().toString();
+                    String term = dataSnapshot.child("term").getValue().toString();
+
+                    if ( yearId.equals(academicYearId)) {
+
+                        //End Buttons visibility
+                        if (term.equals("Term 1")) {
+                            mEndTerm1.setVisibility(View.VISIBLE);
+                        }
+                        if (term.equals("Term 2"))
+                        {
+                           mEndTerm2.setVisibility(View.VISIBLE);
+                        }
+                        if (term.equals("Term 3"))
+                        {
+                            mEndTerm3.setVisibility(View.VISIBLE);
+                        }
+
+                        //Start Buttons visibility
+                        YearDetailsRef.child("PreviousDates").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot)
+                            {
+                                if (dataSnapshot.exists())
+                                {
+                                    String termStart = dataSnapshot.child("term").getValue().toString();
+
+                                    if (termStart.equals("Term 3")) {
+                                        mStartTerm1.setVisibility(View.VISIBLE);
+                                    }
+                                    if (termStart.equals("Term 1"))
+                                    {
+                                        mStartTerm2.setVisibility(View.VISIBLE);
+                                    }
+                                    if (termStart.equals("Term 2"))
+                                    {
+                                        mStartTerm3.setVisibility(View.VISIBLE);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
