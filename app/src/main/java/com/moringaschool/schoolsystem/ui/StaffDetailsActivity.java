@@ -33,7 +33,7 @@ public class StaffDetailsActivity extends AppCompatActivity implements View.OnCl
     @BindView(R.id.tscNo) TextView mTscNo;
     @BindView(R.id.feesButton) Button mFeesButton;
     @BindView(R.id.examsButton) Button mExamsButton;
-    @BindView(R.id.attendaceButton) Button mAttendaceButton;
+    @BindView(R.id.attendaceButton) Button mAttendanceButton;
 
     private DatabaseReference UsersRef;
     private FirebaseAuth mAuth;

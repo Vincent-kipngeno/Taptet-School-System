@@ -31,6 +31,10 @@ import com.moringaschool.schoolsystem.ui.calendar.CalendarFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.moringaschool.schoolsystem.Constants.TERM_1;
+import static com.moringaschool.schoolsystem.Constants.TERM_2;
+import static com.moringaschool.schoolsystem.Constants.TERM_3;
+
 public class AcademicCalendarDetailsActivity extends AppCompatActivity implements View.OnClickListener{
     @BindView(R.id.editTerm1_startDate) TextView mStartDate1;
     @BindView(R.id.editTerm1_endDate) TextView mEndDate1;
@@ -90,12 +94,12 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             {
                 if (dataSnapshot.exists())
                 {
-                    mStartDate1.setText(dataSnapshot.child("Term1").child("startDate").getValue().toString());
-                    mStartDate2.setText(dataSnapshot.child("Term2").child("startDate").getValue().toString());
-                    mStartDate3.setText(dataSnapshot.child("Term3").child("startDate").getValue().toString());
-                    mEndDate1.setText(dataSnapshot.child("Term1").child("endDate").getValue().toString());
-                    mEndDate2.setText(dataSnapshot.child("Term2").child("endDate").getValue().toString());
-                    mEndDate3.setText(dataSnapshot.child("Term3").child("endDate").getValue().toString());
+                    mStartDate1.setText(dataSnapshot.child(TERM_1).child("startDate").getValue().toString());
+                    mStartDate2.setText(dataSnapshot.child(TERM_2).child("startDate").getValue().toString());
+                    mStartDate3.setText(dataSnapshot.child(TERM_3).child("startDate").getValue().toString());
+                    mEndDate1.setText(dataSnapshot.child(TERM_1).child("endDate").getValue().toString());
+                    mEndDate2.setText(dataSnapshot.child(TERM_2).child("endDate").getValue().toString());
+                    mEndDate3.setText(dataSnapshot.child(TERM_3).child("endDate").getValue().toString());
                 }
             }
 
@@ -199,14 +203,14 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                     if ( yearId.equals(academicYearId)) {
 
                         //End Buttons visibility
-                        if (term.equals("Term 1")) {
+                        if (term.equals(TERM_1)) {
                             mEndTerm1.setVisibility(View.VISIBLE);
                         }
-                        if (term.equals("Term 2"))
+                        if (term.equals(TERM_2))
                         {
                            mEndTerm2.setVisibility(View.VISIBLE);
                         }
-                        if (term.equals("Term 3"))
+                        if (term.equals(TERM_3))
                         {
                             mEndTerm3.setVisibility(View.VISIBLE);
                         }
@@ -220,17 +224,21 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                 {
                                     String termStart = dataSnapshot.child("term").getValue().toString();
 
-                                    if (termStart.equals("Term 3")) {
+                                    if (termStart.equals(TERM_3)) {
                                         mStartTerm1.setVisibility(View.VISIBLE);
                                     }
-                                    if (termStart.equals("Term 1"))
+                                    if (termStart.equals(TERM_1))
                                     {
                                         mStartTerm2.setVisibility(View.VISIBLE);
                                     }
-                                    if (termStart.equals("Term 2"))
+                                    if (termStart.equals(TERM_2))
                                     {
                                         mStartTerm3.setVisibility(View.VISIBLE);
                                     }
+                                }
+                                else
+                                {
+                                    mStartTerm1.setVisibility(View.VISIBLE);
                                 }
                             }
 

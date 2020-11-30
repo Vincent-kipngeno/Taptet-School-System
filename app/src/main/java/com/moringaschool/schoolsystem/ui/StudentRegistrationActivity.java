@@ -24,12 +24,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.models.Student;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.moringaschool.schoolsystem.Constants.*;
 
 public class StudentRegistrationActivity extends AppCompatActivity implements View.OnClickListener, FragmentManager.OnBackStackChangedListener {
     @BindView(R.id.sex) TextView mSex;
@@ -158,34 +161,34 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
     public String getStudentClass () {
         String studentClass;
         if (mRadioClass1.isChecked()) {
-            studentClass = "Class 1";
+            studentClass = Class_1;
         }
         else if (mRadioClass2.isChecked()) {
-            studentClass =  "Class 2";
+            studentClass =  Class_2;
         }
         else if (mRadioClass3.isChecked()) {
-            studentClass =  "Class 3";
+            studentClass =  Class_3;
         }
         else if (mRadioClass4.isChecked()) {
-            studentClass =  "Class 4";
+            studentClass =  Class_4;
         }
         else if (mRadioClass5.isChecked()) {
-            studentClass =  "Class 5";
+            studentClass =  Class_5;
         }
         else if (mRadioClass6.isChecked()) {
-            studentClass =  "Class 6";
+            studentClass =  Class_6;
         }
         else if (mRadioClass7.isChecked()) {
-            studentClass =  "Class 7";
+            studentClass =  Class_7;
         }
         else if (mRadioClass8.isChecked()) {
-            studentClass =  "Class 8";
+            studentClass =  Class_8;
         }
         else if (mRadioClassPre1.isChecked()) {
-            studentClass =  "Pre-Primary1";
+            studentClass =  PRE_PR1_1;
         }
         else if (mRadioClassPre2.isChecked()) {
-            studentClass =  "Pre-Primary2";
+            studentClass =  PRE_PR1_2;
         }
         else {
             studentClass = "No";
@@ -244,8 +247,9 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
         String parentPhone1 =  mParentPhone1.getText().toString();
         String parentPhone2 =  mParentPhone2.getText().toString();
         String sex =  getSex();
-        String type = getStudentType();
+        String category = getStudentType();
         String studentClass = getStudentClass();
+        String type = "Student";
 
         boolean isValidForm =  validInputs(name, email, location, parentName, parentPhone1, sex, type, studentClass, studentAdm);
 
@@ -253,19 +257,21 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
             validInputs(name, email, location, parentName, parentPhone1, sex, type, studentClass, studentAdm);
         }
         else {
-            Map<String, Object> student = new HashMap<String, Object>();
+            /*Map<String, Object> student = new HashMap<String, Object>();
             student.put("name", name);
             student.put("email", email);
             student.put("admissionNo", studentAdm);
             student.put("location", location);
             student.put("sex", sex);
-            student.put("category", type);
+            student.put("category", category);
             student.put("grade", studentClass);
             student.put("parentName", parentName);
             student.put("phone1", parentPhone1);
             student.put("phone2", parentPhone2);
             student.put("adminUser", adminUid);
-            student.put("type", "student");
+            student.put("type", type);*/
+
+            Student student = new Student(name, email, studentAdm, location, sex, category, studentClass, parentName, parentPhone1, parentPhone2, adminUid, type);
 
             mAuth2.createUserWithEmailAndPassword(email, studentAdm)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -284,7 +290,7 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
                                         Toast.LENGTH_SHORT).show();
                                 String studentUid = mAuth2.getCurrentUser().getUid();
 
-                                UsersRef.child(studentUid).updateChildren(student).addOnCompleteListener(new OnCompleteListener() {
+                                UsersRef.child(studentUid).setValue(student).addOnCompleteListener(new OnCompleteListener() {
                                     @Override
                                     public void onComplete(@NonNull Task task)
                                     {

@@ -1,10 +1,15 @@
 package com.moringaschool.schoolsystem.models;
 
+import com.google.firebase.database.Exclude;
+
 import org.parceler.Parcel;
 
 @Parcel
 public class Student {
-    public String name, key, email, admissionNo, location, sex, category, grade, parentName, phone1, phone2, adminUser, type;
+    public String name, email, admissionNo, location, sex, category, grade, parentName, phone1, phone2, adminUser, type;
+
+    @Exclude
+    public String key;
 
     public Student()
     {
