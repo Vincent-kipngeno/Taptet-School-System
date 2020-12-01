@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.models.Staff;
 import com.moringaschool.schoolsystem.ui.StaffDetailsActivity;
 import com.moringaschool.schoolsystem.ui.StaffRegistrationActivity;
 
@@ -104,13 +105,11 @@ public class StaffFragment extends Fragment {
                             {
                                 if (dataSnapshot.exists())
                                 {
-                                    final String name = dataSnapshot.child("name").getValue().toString();
-                                    final String sTscNo = dataSnapshot.child("tscNo").getValue().toString();
-                                    final String type = dataSnapshot.child("type").getValue().toString();
+                                    Staff staff = dataSnapshot.getValue(Staff.class);
 
-                                    holder.staffName.setText(name);
-                                    holder.tscNo.setText(sTscNo);
-                                    holder.staffType.setText(type);
+                                    holder.staffName.setText(staff.getName());
+                                    holder.tscNo.setText(staff.getTscNUmber());
+                                    holder.staffType.setText(staff.getCategory());
                                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view)

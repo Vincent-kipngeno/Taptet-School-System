@@ -15,6 +15,7 @@ package com.moringaschool.schoolsystem.ui;
         import com.google.firebase.database.FirebaseDatabase;
         import com.google.firebase.database.ValueEventListener;
         import com.moringaschool.schoolsystem.R;
+        import com.moringaschool.schoolsystem.models.Staff;
 
         import butterknife.BindView;
         import butterknife.ButterKnife;
@@ -68,7 +69,7 @@ public class StaffDetailsActivity extends AppCompatActivity implements View.OnCl
             {
                 if (dataSnapshot.exists())
                 {
-                    String staffName = dataSnapshot.child("name").getValue().toString();
+                    /*String staffName = dataSnapshot.child("name").getValue().toString();
                     String staffEmail = dataSnapshot.child("email").getValue().toString();
                     String staffRole = dataSnapshot.child("role").getValue().toString();
                     String staffNo = dataSnapshot.child("staffNo").getValue().toString();
@@ -77,19 +78,21 @@ public class StaffDetailsActivity extends AppCompatActivity implements View.OnCl
                     String staffLocation = dataSnapshot.child("location").getValue().toString();
                     String idNumber = dataSnapshot.child("idNumber").getValue().toString();
                     String phone = dataSnapshot.child("phone").getValue().toString();
-                    String tscNum = dataSnapshot.child("tscNumber").getValue().toString();
+                    String tscNum = dataSnapshot.child("tscNumber").getValue().toString();*/
 
-                    mStaffName.setText(staffName);
-                    mStaffEmail.setText(staffEmail);
-                    mStaffRole.setText(staffRole);
-                    mStaffNo.setText(staffNo);
-                    mStaffSex.setText(staffSex);
-                    mStaffCategory.setText(staffCategory);
-                    mStaffLocation.setText(staffLocation);
-                    mIdNo.setText(idNumber);
-                    mPhone.setText(phone);
-                    if (!tscNum.trim().isEmpty()) {
-                        mTscNo.setText(tscNum);
+                    Staff staff = dataSnapshot.getValue(Staff.class);
+
+                    mStaffName.setText(staff.getName());
+                    mStaffEmail.setText(staff.getEmail());
+                    mStaffRole.setText(staff.getRole());
+                    mStaffNo.setText(staff.getStaffNumber());
+                    mStaffSex.setText(staff.getSex());
+                    mStaffCategory.setText(staff.getCategory());
+                    mStaffLocation.setText(staff.getLocation());
+                    mIdNo.setText(staff.getIdNumber());
+                    mPhone.setText(staff.getPhone());
+                    if (!staff.getTscNUmber().trim().isEmpty()) {
+                        mTscNo.setText(staff.getTscNUmber());
                     }
                 }
             }

@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.models.Student;
 import com.moringaschool.schoolsystem.ui.StudentDetailsActivity;
 import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity;
 
@@ -104,11 +105,10 @@ public class StudentsFragment extends Fragment {
                             {
                                 if (dataSnapshot.exists())
                                 {
-                                    final String name = dataSnapshot.child("name").getValue().toString();
-                                    final String sClass = dataSnapshot.child("grade").getValue().toString();
+                                    Student student = dataSnapshot.getValue(Student.class);
 
-                                    holder.studentName.setText(name);
-                                    holder.className.setText(sClass);
+                                    holder.studentName.setText(student.getName());
+                                    holder.className.setText(student.getGrade());
                                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view)

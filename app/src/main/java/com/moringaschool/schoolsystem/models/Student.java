@@ -4,6 +4,8 @@ import com.google.firebase.database.Exclude;
 
 import org.parceler.Parcel;
 
+import java.util.Objects;
+
 @Parcel
 public class Student {
     public String name, email, admissionNo, location, sex, category, grade, parentName, phone1, phone2, adminUser, type;
@@ -133,5 +135,30 @@ public class Student {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(name, student.name) &&
+                Objects.equals(email, student.email) &&
+                Objects.equals(admissionNo, student.admissionNo) &&
+                Objects.equals(location, student.location) &&
+                Objects.equals(sex, student.sex) &&
+                Objects.equals(category, student.category) &&
+                Objects.equals(grade, student.grade) &&
+                Objects.equals(parentName, student.parentName) &&
+                Objects.equals(phone1, student.phone1) &&
+                Objects.equals(phone2, student.phone2) &&
+                Objects.equals(adminUser, student.adminUser) &&
+                Objects.equals(type, student.type) &&
+                Objects.equals(key, student.key);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, email, admissionNo, location, sex, category, grade, parentName, phone1, phone2, adminUser, type, key);
     }
 }
