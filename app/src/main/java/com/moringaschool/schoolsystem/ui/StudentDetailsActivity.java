@@ -63,6 +63,8 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
     }
 
     public void fetchStudentInfo() {
+        Intent intent = new Intent();
+        studentId = intent.getStringExtra("visit_user_id");
         UsersRef.child(studentId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
