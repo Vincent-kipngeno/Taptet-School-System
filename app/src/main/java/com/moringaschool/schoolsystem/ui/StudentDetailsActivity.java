@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,7 +40,7 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
     private DatabaseReference UsersRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
-    String studentId = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,8 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
         currentUserID = mAuth.getCurrentUser().getUid();
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        Intent intent = new Intent();
-        studentId = intent.getStringExtra("visit_user_id");
+        //Intent intent = new Intent();
+        //studentId = intent.getStringExtra("visit_user_id");
         fetchStudentInfo();
     }
 
@@ -63,8 +64,8 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
     }
 
     public void fetchStudentInfo() {
-        Intent intent = new Intent();
-        studentId = intent.getStringExtra("visit_user_id");
+        Intent intent = getIntent();
+        String studentId = intent.getStringExtra("visit_user_id");
         UsersRef.child(studentId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
