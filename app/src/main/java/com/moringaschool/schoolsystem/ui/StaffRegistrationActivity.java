@@ -24,6 +24,7 @@ package com.moringaschool.schoolsystem.ui;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
         import com.moringaschool.schoolsystem.R;
+        import com.moringaschool.schoolsystem.models.Staff;
 
         import java.util.HashMap;
         import java.util.Map;
@@ -199,9 +200,10 @@ public class StaffRegistrationActivity extends AppCompatActivity implements View
         String location =  mStaffLocation.getText().toString();
         String phone =  mPhone.getText().toString();
         String sex =  getSex();
-        String type = getStaffType();
+        String category = getStaffType();
         String tscNo = mTscNum.getText().toString();
         String role = mRole.getText().toString();
+        String type = "Staff";
 
         boolean isValidForm =  validInputs(name, email, location, idNo, phone, sex, type, staffNo, tscNo, role);
 
@@ -209,19 +211,21 @@ public class StaffRegistrationActivity extends AppCompatActivity implements View
             validInputs(name, email, location, idNo, phone, sex, type, tscNo, staffNo, role);
         }
         else {
-            Map<String, Object> staff = new HashMap<String, Object>();
+            /*Map<String, Object> staff = new HashMap<String, Object>();
             staff.put("name", name);
             staff.put("email", email);
             staff.put("staffNumber", staffNo);
             staff.put("location", location);
             staff.put("sex", sex);
-            staff.put("category", type);
+            staff.put("category", category);
             staff.put("role", role);
             staff.put("idNumber", idNo);
             staff.put("phone", phone);
             staff.put("tscNumber", tscNo);
             staff.put("adminUser", adminUid);
-            staff.put("type", "Staff");
+            staff.put("type", "Staff");*/
+
+            Staff staff = new Staff(name, email, staffNo, location, sex, category, role, idNo, phone, tscNo, adminUid, type);
 
             mAuth2.createUserWithEmailAndPassword(email, staffNo)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -240,7 +244,7 @@ public class StaffRegistrationActivity extends AppCompatActivity implements View
                                         Toast.LENGTH_SHORT).show();
                                 String staffUid = mAuth2.getCurrentUser().getUid();
 
-                                UsersRef.child(staffUid).updateChildren(staff).addOnCompleteListener(new OnCompleteListener() {
+                                UsersRef.child(staffUid).setValue(staff).addOnCompleteListener(new OnCompleteListener() {
                                     @Override
                                     public void onComplete(@NonNull Task task)
                                     {

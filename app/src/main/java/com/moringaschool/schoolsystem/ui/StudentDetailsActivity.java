@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.models.Student;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,12 +35,12 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
     @BindView(R.id.parentPhone2) TextView mParentPhone2;
     @BindView(R.id.feesButton) Button mFeesButton;
     @BindView(R.id.examsButton) Button mExamsButton;
-    @BindView(R.id.attendaceButton) Button mAttendaceButton;
+    @BindView(R.id.attendaceButton) Button mAttendanceButton;
 
     private DatabaseReference UsersRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
-    String studentId = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,8 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
         currentUserID = mAuth.getCurrentUser().getUid();
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        Intent intent = new Intent();
-        studentId = intent.getStringExtra("visit_user_id");
+        //Intent intent = new Intent();
+        //studentId = intent.getStringExtra("visit_user_id");
         fetchStudentInfo();
     }
 
@@ -62,6 +64,8 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
     }
 
     public void fetchStudentInfo() {
+        Intent intent = getIntent();
+        String studentId = intent.getStringExtra("visit_user_id");
         UsersRef.child(studentId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
@@ -79,17 +83,20 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
                     String parentPhone1 = dataSnapshot.child("phone1").getValue().toString();
                     String parentPhone2 = dataSnapshot.child("phone2").getValue().toString();
 
-                    mStudentName.setText(studentName);
-                    mStudentEmail.setText(studentEmail);
-                    mStudentGrade.setText(studentClass);
-                    mStudentAdm.setText(studentAdm);
-                    mStudentSex.setText(studentSex);
-                    mStudentCategory.setText(studentCategory);
-                    mStudentLocation.setText(studentLocation);
-                    mParentName.setText(parentName);
-                    mParentPhone1.setText(parentPhone1);
-                    if (!parentPhone2.trim().isEmpty()) {
-                        mParentPhone2.setText(parentPhone2);
+                    Student student = dataSnapshot.getValue(Student.class);
+
+                    assert student != null;
+                    mStudentName.setText(student.getName());
+                    mStudentEmail.setText(student.getEmail());
+                    mStudentGrade.setText(student.getGrade());
+                    mStudentAdm.setText(student.getAdmissionNo());
+                    mStudentSex.setText(student.getSex());
+                    mStudentCategory.setText(student.getCategory());
+                    mStudentLocation.setText(student.getLocation());
+                    mParentName.setText(student.getParentName());
+                    mParentPhone1.setText(student.getPhone1());
+                    if (!student.getPhone2().trim().isEmpty()) {
+                        mParentPhone2.setText(student.getPhone2());
                     }
                 }
             }

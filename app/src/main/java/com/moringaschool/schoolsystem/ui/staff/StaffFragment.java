@@ -13,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,20 +27,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
-import com.moringaschool.schoolsystem.models.Member;
-import com.moringaschool.schoolsystem.models.Student;
+import com.moringaschool.schoolsystem.models.Staff;
 import com.moringaschool.schoolsystem.ui.StaffDetailsActivity;
 import com.moringaschool.schoolsystem.ui.StaffRegistrationActivity;
-import com.moringaschool.schoolsystem.ui.StudentDetailsActivity;
-import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity;
-import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity_ViewBinding;
-import com.squareup.picasso.Picasso;
-
-import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StaffFragment extends Fragment {
 
@@ -114,13 +105,11 @@ public class StaffFragment extends Fragment {
                             {
                                 if (dataSnapshot.exists())
                                 {
-                                    final String name = dataSnapshot.child("name").getValue().toString();
-                                    final String sTscNo = dataSnapshot.child("tscNo").getValue().toString();
-                                    final String type = dataSnapshot.child("type").getValue().toString();
+                                    Staff staff = dataSnapshot.getValue(Staff.class);
 
-                                    holder.staffName.setText(name);
-                                    holder.tscNo.setText(sTscNo);
-                                    holder.staffType.setText(type);
+                                    holder.staffName.setText(staff.getName());
+                                    holder.tscNo.setText(staff.getTscNUmber());
+                                    holder.staffType.setText(staff.getCategory());
                                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view)

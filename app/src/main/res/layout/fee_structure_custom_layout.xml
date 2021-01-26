@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="#55FFFFFF"
+    android:orientation="horizontal"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/edit_classTable"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="CLASS 8"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/edit_term1Table"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="13,500"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/edit_term2Table"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:text="13,000"/>
+
+        <TextView
+            android:id="@+id/edit_term3Table"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:text="14,500"/>
+
+        <TextView
+            android:id="@+id/edit_totalTable"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:text="42,000"/>
+
+    </LinearLayout>
+
+</HorizontalScrollView>

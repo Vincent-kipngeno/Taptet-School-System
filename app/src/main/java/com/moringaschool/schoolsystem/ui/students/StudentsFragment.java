@@ -13,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,18 +27,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
-import com.moringaschool.schoolsystem.models.Member;
 import com.moringaschool.schoolsystem.models.Student;
 import com.moringaschool.schoolsystem.ui.StudentDetailsActivity;
 import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity;
-import com.moringaschool.schoolsystem.ui.StudentRegistrationActivity_ViewBinding;
-import com.squareup.picasso.Picasso;
-
-import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentsFragment extends Fragment {
 
@@ -112,11 +105,10 @@ public class StudentsFragment extends Fragment {
                             {
                                 if (dataSnapshot.exists())
                                 {
-                                    final String name = dataSnapshot.child("name").getValue().toString();
-                                    final String sClass = dataSnapshot.child("grade").getValue().toString();
+                                    Student student = dataSnapshot.getValue(Student.class);
 
-                                    holder.studentName.setText(name);
-                                    holder.className.setText(sClass);
+                                    holder.studentName.setText(student.getName());
+                                    holder.className.setText(student.getGrade());
                                     holder.itemView.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view)

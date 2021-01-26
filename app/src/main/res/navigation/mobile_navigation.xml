@@ -22,4 +22,16 @@
         android:name="com.moringaschool.schoolsystem.ui.staff.StaffFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_staff" />
+
+    <fragment
+        android:id="@+id/nav_fees"
+        android:name="com.moringaschool.schoolsystem.ui.fees.FeesFragment"
+        android:label="@string/menu_fees"
+        tools:layout="@layout/fragment_fees" />
+
+    <fragment
+        android:id="@+id/nav_calendar"
+        android:name="com.moringaschool.schoolsystem.ui.calendar.CalendarFragment"
+        android:label="@string/menu_calendar"
+        tools:layout="@layout/fragment_calendar" />
 </navigation>
