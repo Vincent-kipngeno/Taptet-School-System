@@ -13,9 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,9 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
-import com.moringaschool.schoolsystem.models.AcademicYear;
 import com.moringaschool.schoolsystem.models.FeeStructure;
-import com.moringaschool.schoolsystem.ui.calendar.CalendarFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,10 +50,10 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     @BindView(R.id.button_end3) Button mEndTerm3;
     @BindView(R.id.school_fee_structure) RecyclerView mFeeStructureGrid;
 
-    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendar;
+    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, NewAcademicYearRef, PreviousAcademicYearRef, DatabaseRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
-    private String academicYearId = "";
+    private String CurrentAcademicYearId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         setContentView(R.layout.activity_academic_calendar_details);
 
         Intent intent = new Intent();
-        academicYearId = intent.getStringExtra("academicYearId");
+        CurrentAcademicYearId = intent.getStringExtra("academicYearId");
 
         ButterKnife.bind(this);
 
@@ -71,9 +71,13 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
+        DatabaseRef = FirebaseDatabase.getInstance().getReference();
 
-        YearDetailsRef = FirebaseDatabase.getInstance().getReference().child("Years");
-        YearFeeStructureRef = YearDetailsRef.child("YearDetails").child(academicYearId).child("FeeStructure");
+        YearDetailsRef = DatabaseRef.child("Years");
+        currentAcademicCalendarRef = DatabaseRef.child("CurrentAcademicYear");
+        NewAcademicYearRef = DatabaseRef.child("NewAcademicYear");
+        PreviousAcademicYearRef = DatabaseRef.child("PreviousAcademicYear");
+        YearFeeStructureRef = YearDetailsRef.child("YearDetails").child(CurrentAcademicYearId).child("FeeStructure");
 
         mFeeStructureGrid.setLayoutManager(new LinearLayoutManager(this));
 
@@ -88,7 +92,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     }
 
     public void fillTermDates() {
-        YearDetailsRef.child("YearDetails").child(academicYearId).child("TermDates").addValueEventListener(new ValueEventListener() {
+        YearDetailsRef.child("YearDetails").child(CurrentAcademicYearId).child("TermDates").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
@@ -148,7 +152,25 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     public void onClick(View view) {
 
         if (view == mStartTerm1) {
+            PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    if (dataSnapshot.exists())
+                    {
+                        String previousAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+                        String previousAcademicTerm = dataSnapshot.child("Term").getValue().toString();
+                        String currentAcademicTerm = TERM_1;
 
+                        transferCurrentStudentsToNextTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
 
         if (view == mEndTerm1) {
@@ -200,7 +222,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                     String yearId = dataSnapshot.child("yearId").getValue().toString();
                     String term = dataSnapshot.child("term").getValue().toString();
 
-                    if ( yearId.equals(academicYearId)) {
+                    if ( yearId.equals(CurrentAcademicYearId)) {
 
                         //End Buttons visibility
                         if (term.equals(TERM_1)) {
@@ -269,5 +291,61 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             fillTermDates();
             fillFeesStructureRecyclerView();
         }
+    }
+
+    public  void transferCurrentStudentsToNextTerm (String previousAcademicYearId, String previousAcademicTerm, String currentAcademicTerm) {
+
+        DatabaseRef.child("CurrentStudents").child(previousAcademicYearId).child(previousAcademicTerm).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
+                        if (task.isSuccessful())
+                        {
+                            Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next term Successfully...", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public  void transferCurrentStudentsToNextClass (String previousAcademicYearId, String previousAcademicTerm, String currentAcademicTerm) {
+
+        DatabaseRef.child("CurrentStudents").child(previousAcademicYearId).child(previousAcademicTerm).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
+                        if (task.isSuccessful())
+                        {
+                            Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next term Successfully...", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
