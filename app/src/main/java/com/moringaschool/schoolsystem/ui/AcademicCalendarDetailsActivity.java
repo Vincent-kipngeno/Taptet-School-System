@@ -28,6 +28,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.FeeStructure;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -374,7 +376,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                                         if (dataSnapshot.exists())
                                                         {
                                                             for (DataSnapshot alumni : dataSnapshot.getChildren()){
-
+                                                                DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child(Objects.requireNonNull(alumni.getKey())).removeValue();
                                                             }
                                                         }
                                                     }
