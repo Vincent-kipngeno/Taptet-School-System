@@ -31,6 +31,17 @@ import com.moringaschool.schoolsystem.models.FeeStructure;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.moringaschool.schoolsystem.Constants.ALUMNI;
+import static com.moringaschool.schoolsystem.Constants.Class_1;
+import static com.moringaschool.schoolsystem.Constants.Class_2;
+import static com.moringaschool.schoolsystem.Constants.Class_3;
+import static com.moringaschool.schoolsystem.Constants.Class_4;
+import static com.moringaschool.schoolsystem.Constants.Class_5;
+import static com.moringaschool.schoolsystem.Constants.Class_6;
+import static com.moringaschool.schoolsystem.Constants.Class_7;
+import static com.moringaschool.schoolsystem.Constants.Class_8;
+import static com.moringaschool.schoolsystem.Constants.PRE_PR1_1;
+import static com.moringaschool.schoolsystem.Constants.PRE_PR1_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_1;
 import static com.moringaschool.schoolsystem.Constants.TERM_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_3;
@@ -50,7 +61,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     @BindView(R.id.button_end3) Button mEndTerm3;
     @BindView(R.id.school_fee_structure) RecyclerView mFeeStructureGrid;
 
-    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, NewAcademicYearRef, PreviousAcademicYearRef, DatabaseRef;
+    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, NewAcademicYearRef, PreviousAcademicYearRef, DatabaseRef, ClassCurrentStudentsRef, AlumniRef, ClassRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
     private String CurrentAcademicYearId = "";
@@ -78,6 +89,9 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         NewAcademicYearRef = DatabaseRef.child("NewAcademicYear");
         PreviousAcademicYearRef = DatabaseRef.child("PreviousAcademicYear");
         YearFeeStructureRef = YearDetailsRef.child("YearDetails").child(CurrentAcademicYearId).child("FeeStructure");
+        ClassCurrentStudentsRef = DatabaseRef.child("ClassCurrentStudents");
+        ClassRef = DatabaseRef.child("Classes");
+        AlumniRef = DatabaseRef.child("Alumni");
 
         mFeeStructureGrid.setLayoutManager(new LinearLayoutManager(this));
 
@@ -323,22 +337,103 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
     public  void transferCurrentStudentsToNextClass (String previousAcademicYearId, String previousAcademicTerm, String currentAcademicTerm) {
 
-        DatabaseRef.child("CurrentStudents").child(previousAcademicYearId).child(previousAcademicTerm).addValueEventListener(new ValueEventListener() {
+        ClassRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 if (dataSnapshot.exists())
                 {
-                    DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
-                        if (task.isSuccessful())
-                        {
-                            Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next term Successfully...", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    for (DataSnapshot currentClass : dataSnapshot.getChildren()){
+
+                        ClassCurrentStudentsRef.child(currentClass.getKey()).child(previousAcademicYearId).child(previousAcademicTerm).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot)
+                            {
+                                if (dataSnapshot.exists())
+                                {
+                                    if (getNextClass(currentClass.getKey()).equals(ALUMNI)) {
+
+                                        ClassCurrentStudentsRef.child(currentClass.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
+                                            if (task.isSuccessful())
+                                            {
+                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                                        AlumniRef.child("YearAlumni").child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
+                                            if (task.isSuccessful())
+                                            {
+                                                AlumniRef.child("YearAlumni").child(CurrentAcademicYearId).child(currentAcademicTerm).addValueEventListener(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(DataSnapshot dataSnapshot)
+                                                    {
+                                                        if (dataSnapshot.exists())
+                                                        {
+                                                            for (DataSnapshot alumni : dataSnapshot.getChildren()){
+
+                                                            }
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(DatabaseError databaseError) {
+
+                                                    }
+                                                });
+                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                                        AlumniRef.child("AllAlumni").setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
+                                            if (task.isSuccessful())
+                                            {
+                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                                    }
+                                    else if (getNextClass(currentClass.getKey()).equals("NULL")){
+
+                                        Toast.makeText(AcademicCalendarDetailsActivity.this, "Sorry next class is   NULL ...", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                    else {
+
+                                        ClassCurrentStudentsRef.child(currentClass.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
+                                            if (task.isSuccessful())
+                                            {
+                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+                    }
                 }
             }
 
@@ -347,5 +442,34 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
             }
         });
+
+    }
+
+    public String getNextClass (String currentClass) {
+
+        switch (currentClass) {
+            case PRE_PR1_1:
+                return PRE_PR1_2;
+            case PRE_PR1_2:
+                return Class_1;
+            case Class_1:
+                return Class_2;
+            case Class_2:
+                return Class_3;
+            case Class_3:
+                return Class_4;
+            case Class_4:
+                return Class_5;
+            case Class_5:
+                return Class_6;
+            case Class_6:
+                return Class_7;
+            case Class_7:
+                return Class_8;
+            case Class_8:
+                return ALUMNI;
+            default:
+                return "NULL";
+        }
     }
 }
