@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,11 +29,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.FeeStructure;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 import static com.moringaschool.schoolsystem.Constants.ALUMNI;
 import static com.moringaschool.schoolsystem.Constants.Class_1;
 import static com.moringaschool.schoolsystem.Constants.Class_2;
@@ -63,7 +67,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     @BindView(R.id.button_end3) Button mEndTerm3;
     @BindView(R.id.school_fee_structure) RecyclerView mFeeStructureGrid;
 
-    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, NewAcademicYearRef, PreviousAcademicYearRef, DatabaseRef, ClassCurrentStudentsRef, AlumniRef, ClassRef;
+    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, NewAcademicYearRef, StudentFeePaymentRef, PreviousAcademicYearRef, DatabaseRef, ClassCurrentStudentsRef, AlumniRef, ClassRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
     private String CurrentAcademicYearId = "";
@@ -94,6 +98,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         ClassCurrentStudentsRef = DatabaseRef.child("ClassCurrentStudents");
         ClassRef = DatabaseRef.child("Classes");
         AlumniRef = DatabaseRef.child("Alumni");
+        StudentFeePaymentRef = DatabaseRef.child("StudentFeePayments");
 
         mFeeStructureGrid.setLayoutManager(new LinearLayoutManager(this));
 
@@ -317,14 +322,17 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             {
                 if (dataSnapshot.exists())
                 {
-                    DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
-                        if (task.isSuccessful())
-                        {
-                            Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next term Successfully...", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                    DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if (task.isSuccessful())
+                            {
+                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next term Successfully...", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
                 }
@@ -355,55 +363,109 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                 {
                                     if (getNextClass(currentClass.getKey()).equals(ALUMNI)) {
 
-                                        ClassCurrentStudentsRef.child(currentClass.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
-                                            if (task.isSuccessful())
-                                            {
-                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                        ClassCurrentStudentsRef.child(currentClass.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener(new OnCompleteListener() {
+                                            @Override
+                                            public void onComplete(@NonNull Task task) {
+                                                if (task.isSuccessful())
+                                                {
+                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                                }
+                                                else
+                                                {
+                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                                }
                                             }
                                         });
 
-                                        AlumniRef.child("YearAlumni").child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
-                                            if (task.isSuccessful())
-                                            {
-                                                AlumniRef.child("YearAlumni").child(CurrentAcademicYearId).child(currentAcademicTerm).addValueEventListener(new ValueEventListener() {
-                                                    @Override
-                                                    public void onDataChange(DataSnapshot dataSnapshot)
-                                                    {
-                                                        if (dataSnapshot.exists())
+                                        AlumniRef.child("YearAlumni").child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener(new OnCompleteListener() {
+                                            @Override
+                                            public void onComplete(@NonNull Task task) {
+                                                if (task.isSuccessful())
+                                                {
+                                                    AlumniRef.child("YearAlumni").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Students").addValueEventListener(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot dataSnapshot)
                                                         {
-                                                            for (DataSnapshot alumni : dataSnapshot.getChildren()){
-                                                                DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child(Objects.requireNonNull(alumni.getKey())).removeValue();
+                                                            if (dataSnapshot.exists())
+                                                            {
+                                                                for (DataSnapshot alumni : dataSnapshot.getChildren()){
+
+                                                                    DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Students").child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                        @Override
+                                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                                            if (task.isSuccessful()) {
+
+                                                                                DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Boarders").child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                    @Override
+                                                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                                                        if (task.isSuccessful()) {
+
+                                                                                            DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Day").child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                                @Override
+                                                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                                                    if (task.isSuccessful()) {
+                                                                                                        DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Students").addValueEventListener(new ValueEventListener() {
+                                                                                                            @Override
+                                                                                                            public void onDataChange(DataSnapshot dataSnapshot)
+                                                                                                            {
+                                                                                                                if (dataSnapshot.exists())
+                                                                                                                {
+                                                                                                                    for (DataSnapshot studentToAddEntry: dataSnapshot.getChildren()){
+                                                                                                                        createStudentFeeEntry(studentToAddEntry.getKey(), previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+
+                                                                                                            @Override
+                                                                                                            public void onCancelled(DatabaseError databaseError) {
+
+                                                                                                            }
+                                                                                                        });
+                                                                                                    }
+                                                                                                }
+                                                                                            });
+
+                                                                                        }
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                }
                                                             }
                                                         }
-                                                    }
 
-                                                    @Override
-                                                    public void onCancelled(DatabaseError databaseError) {
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
 
-                                                    }
-                                                });
-                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                                }
+                                                else
+                                                {
+                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                                }
                                             }
                                         });
 
-                                        AlumniRef.child("AllAlumni").setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
-                                            if (task.isSuccessful())
-                                            {
-                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
+                                        for (DataSnapshot alumniStudent : dataSnapshot.child("Students").getChildren()) {
+
+                                            AlumniRef.child("AllAlumni").child("AllYearsAlumni").child(alumniStudent.getKey()).setValue(true).addOnCompleteListener(new OnCompleteListener() {
+                                                @Override
+                                                public void onComplete(@NonNull Task task) {
+                                                    if (task.isSuccessful())
+                                                    {
+                                                        Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                    else
+                                                    {
+                                                        Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+
+                                        }
 
                                     }
                                     else if (getNextClass(currentClass.getKey()).equals("NULL")){
@@ -413,14 +475,16 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                     }
                                     else {
 
-                                        ClassCurrentStudentsRef.child(currentClass.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener((OnCompleteListener<Void>) task -> {
-                                            if (task.isSuccessful())
-                                            {
-                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
-                                            }
-                                            else
-                                            {
-                                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                        ClassCurrentStudentsRef.child(currentClass.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener(new OnCompleteListener() {
+                                            @Override
+                                            public void onComplete(@NonNull Task task) {
+                                                if (task.isSuccessful())
+                                                {
+                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                                } else
+                                                {
+                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                                }
                                             }
                                         });
 
@@ -473,5 +537,45 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             default:
                 return "NULL";
         }
+    }
+
+    public void createStudentFeeEntry (String currentStudentId, String previousAcademicYearId, String previousAcademicTerm, String currentAcademicTerm) {
+
+        StudentFeePaymentRef.child(currentStudentId).child(previousAcademicYearId).child(previousAcademicTerm).child("Balance").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    Map<String, Object> model = new HashMap<>();
+                    model.put(currentAcademicTerm+"/Payments/None", 0);
+                    model.put(currentAcademicTerm+"/Balance/Arrears", Integer.parseInt(dataSnapshot.child("TotalBalance").getValue().toString()));
+                    model.put(currentAcademicTerm+"/Balance/TotalBalance", 0);
+
+
+
+                    StudentFeePaymentRef.child(currentStudentId).child(CurrentAcademicYearId).updateChildren(model).addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task)
+                        {
+                            if (task.isSuccessful())
+                            {
+                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Student added to class list Successfully...", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error saving student to class list.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }

@@ -353,11 +353,11 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
                                 }
                             });
 
-                            Map<String, Boolean> currentStudentsMap = new HashMap<>();
+                            Map<String, Object> currentStudentsMap = new HashMap<>();
                             currentStudentsMap.put(currentAcademicTerm+"/Students/"+studentUid, true);
                             currentStudentsMap.put(currentAcademicTerm+"/"+student.getCategory()+"/"+studentUid, true);
 
-                            CurrentStudentsRef.child(currentAcademicYearId).setValue(currentStudentsMap).addOnCompleteListener(new OnCompleteListener() {
+                            CurrentStudentsRef.child(currentAcademicYearId).updateChildren(currentStudentsMap).addOnCompleteListener(new OnCompleteListener() {
                                 @Override
                                 public void onComplete(@NonNull Task task)
                                 {
@@ -372,11 +372,11 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
                                 }
                             });
 
-                            Map<String, Boolean> ClassCurrentStudentsMap = new HashMap<>();
+                            Map<String, Object> ClassCurrentStudentsMap = new HashMap<>();
                             ClassCurrentStudentsMap.put(currentAcademicTerm+"/Students/"+studentUid, true);
                             ClassCurrentStudentsMap.put(currentAcademicTerm+"/"+student.getCategory()+"/"+studentUid, true);
 
-                            ClassCurrentStudentsRef.child(student.getGrade()).child(currentAcademicYearId).setValue(ClassCurrentStudentsMap).addOnCompleteListener(new OnCompleteListener() {
+                            ClassCurrentStudentsRef.child(student.getGrade()).child(currentAcademicYearId).updateChildren(ClassCurrentStudentsMap).addOnCompleteListener(new OnCompleteListener() {
                                 @Override
                                 public void onComplete(@NonNull Task task)
                                 {
@@ -391,12 +391,12 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
                                 }
                             });
 
-                            Map<String, Integer> model = new HashMap<>();
+                            Map<String, Object> model = new HashMap<>();
                             model.put(currentAcademicTerm+"/Payments/None", 0);
                             model.put(currentAcademicTerm+"/Balance/Arrears", 0);
                             model.put(currentAcademicTerm+"/Balance/TotalBalance", 0);
 
-                            StudentFeePaymentRef.child(studentUid).child(currentAcademicYearId).setValue(model).addOnCompleteListener(new OnCompleteListener() {
+                            StudentFeePaymentRef.child(studentUid).child(currentAcademicYearId).updateChildren(model).addOnCompleteListener(new OnCompleteListener() {
                                 @Override
                                 public void onComplete(@NonNull Task task)
                                 {
