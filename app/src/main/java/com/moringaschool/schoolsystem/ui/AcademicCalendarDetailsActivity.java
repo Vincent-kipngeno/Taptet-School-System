@@ -67,7 +67,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     @BindView(R.id.button_end3) Button mEndTerm3;
     @BindView(R.id.school_fee_structure) RecyclerView mFeeStructureGrid;
 
-    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, NewAcademicYearRef, StudentFeePaymentRef, PreviousAcademicYearRef, DatabaseRef, ClassCurrentStudentsRef, AlumniRef, ClassRef;
+    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, NewAcademicYearRef, StudentFeePaymentRef, PreviousAcademicYearRef, DatabaseRef, ClassCurrentStudentsRef, AlumniRef, ClassRef, Payments, AllPaymentsRef, SchoolPaymentsRef, ClassPaymentsRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
     private String CurrentAcademicYearId = "";
@@ -98,11 +98,16 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         ClassCurrentStudentsRef = DatabaseRef.child("ClassCurrentStudents");
         ClassRef = DatabaseRef.child("Classes");
         AlumniRef = DatabaseRef.child("Alumni");
-        StudentFeePaymentRef = DatabaseRef.child("StudentFeePayments");
+        Payments = DatabaseRef.child("Payments");
+        StudentFeePaymentRef = Payments.child("StudentFeePayments");
+        AllPaymentsRef = Payments.child("AllPayments");
+        SchoolPaymentsRef = Payments.child("SchoolPayments");
+        ClassPaymentsRef = Payments.child("ClassFeePayments");
 
         mFeeStructureGrid.setLayoutManager(new LinearLayoutManager(this));
 
         fillTermDates();
+        visibilityOfStartAndEndButtons();
 
         mStartTerm1.setOnClickListener(this);
         mEndTerm1.setOnClickListener(this);
@@ -184,6 +189,8 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                         String currentAcademicTerm = TERM_1;
 
                         transferCurrentStudentsToNextTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        transferCurrentStudentsToNextClass(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                     }
                 }
 
@@ -363,7 +370,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                 {
                                     if (getNextClass(currentClass.getKey()).equals(ALUMNI)) {
 
-                                        ClassCurrentStudentsRef.child(currentClass.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener(new OnCompleteListener() {
+                                        ClassCurrentStudentsRef.child(getNextClass(currentClass.getKey())).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener(new OnCompleteListener() {
                                             @Override
                                             public void onComplete(@NonNull Task task) {
                                                 if (task.isSuccessful())
@@ -475,7 +482,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                     }
                                     else {
 
-                                        ClassCurrentStudentsRef.child(currentClass.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener(new OnCompleteListener() {
+                                        ClassCurrentStudentsRef.child(getNextClass(currentClass.getKey())).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener(new OnCompleteListener() {
                                             @Override
                                             public void onComplete(@NonNull Task task) {
                                                 if (task.isSuccessful())
@@ -560,15 +567,61 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                         {
                             if (task.isSuccessful())
                             {
-                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Student added to class list Successfully...", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Student Fee Entry created Successfully...", Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
-                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error saving student to class list.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AcademicCalendarDetailsActivity.this, "Error creating Student Fee Entry .", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    public void createSchoolFeeEntry (String previousAcademicYearId, String previousAcademicTerm, String currentAcademicTerm) {
+
+        SchoolPaymentsRef.child(previousAcademicYearId).child(previousAcademicTerm).child("Balance").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                Map<String, Object> model = new HashMap<>();
+
+                if (dataSnapshot.exists())
+                {
+                    model.put(currentAcademicTerm+"/Payments/None", 0);
+                    model.put(currentAcademicTerm+"/Balance/Arrears", Integer.parseInt(dataSnapshot.child("TotalBalance").getValue().toString()));
+                    model.put(currentAcademicTerm+"/Balance/TotalBalance", 0);
+
+                }
+                else
+                {
+                    model.put(currentAcademicTerm+"/Payments/None", 0);
+                    model.put(currentAcademicTerm+"/Balance/Arrears", 0);
+                    model.put(currentAcademicTerm+"/Balance/TotalBalance", 0);
+                }
+
+                SchoolPaymentsRef.child(CurrentAcademicYearId).updateChildren(model).addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task)
+                    {
+                        if (task.isSuccessful())
+                        {
+                            Toast.makeText(AcademicCalendarDetailsActivity.this, "School Fee Entry created Successfully...", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(AcademicCalendarDetailsActivity.this, "Error creating School Fee Entry.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
 
             @Override
