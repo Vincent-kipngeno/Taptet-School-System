@@ -191,6 +191,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                         transferCurrentStudentsToNextTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                         transferCurrentStudentsToNextClass(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                         createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        updateCurrentYear(currentAcademicTerm);
                     }
                 }
 
