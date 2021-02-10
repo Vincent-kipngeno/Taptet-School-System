@@ -654,7 +654,26 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
     }
 
-    public void updateCurrentYear () {
+    public void updateCurrentYear (String currentAcademicTerm) {
+        Map<String, Object> currentDates = new HashMap<>();
 
+        currentDates.put("CurrentAcademicYear/AcademicYearId", CurrentAcademicYearId);
+        currentDates.put("CurrentAcademicYear/term", currentAcademicTerm);
+
+        YearDetailsRef.updateChildren(currentDates).addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task)
+            {
+                if (task.isSuccessful())
+                {
+                    NewAcademicYearRef.removeValue();
+                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Current academic dates updated successfully...", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Error updating current academic dates.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
