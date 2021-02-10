@@ -91,9 +91,9 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         DatabaseRef = FirebaseDatabase.getInstance().getReference();
 
         YearDetailsRef = DatabaseRef.child("Years");
-        currentAcademicCalendarRef = DatabaseRef.child("CurrentAcademicYear");
-        NewAcademicYearRef = DatabaseRef.child("NewAcademicYear");
-        PreviousAcademicYearRef = DatabaseRef.child("PreviousAcademicYear");
+        currentAcademicCalendarRef = YearDetailsRef.child("CurrentAcademicYear");
+        NewAcademicYearRef = YearDetailsRef.child("NewAcademicYear");
+        PreviousAcademicYearRef = YearDetailsRef.child("PreviousAcademicYear");
         YearFeeStructureRef = YearDetailsRef.child("YearDetails").child(CurrentAcademicYearId).child("FeeStructure");
         ClassCurrentStudentsRef = DatabaseRef.child("ClassCurrentStudents");
         ClassRef = DatabaseRef.child("Classes");
@@ -241,13 +241,13 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
     public void visibilityOfStartAndEndButtons() {
 
-        YearDetailsRef.child("CurrentDates").addValueEventListener(new ValueEventListener() {
+        currentAcademicCalendarRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 if (dataSnapshot.exists())
                 {
-                    String yearId = dataSnapshot.child("yearId").getValue().toString();
+                    String yearId = dataSnapshot.child("AcademicYearId").getValue().toString();
                     String term = dataSnapshot.child("term").getValue().toString();
 
                     if ( yearId.equals(CurrentAcademicYearId)) {
@@ -266,7 +266,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                         }
 
                         //Start Buttons visibility
-                        YearDetailsRef.child("PreviousDates").addValueEventListener(new ValueEventListener() {
+                        PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot)
                             {
@@ -299,6 +299,28 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                         });
                     }
 
+                }
+                else
+                {
+                    NewAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot)
+                        {
+                            if (dataSnapshot.exists())
+                            {
+                                String yearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+
+                                if ( yearId.equals(CurrentAcademicYearId)) {
+                                    mStartTerm1.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
 
@@ -629,6 +651,10 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
             }
         });
+
+    }
+
+    public void updateCurrentYear () {
 
     }
 }
