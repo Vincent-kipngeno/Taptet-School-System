@@ -599,6 +599,24 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
             }
         });
+
+        DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Students").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    for (DataSnapshot studentToAddEntry: dataSnapshot.getChildren()){
+                        createStudentFeeEntry(studentToAddEntry.getKey(), previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public String getNextClass (String currentClass) {
