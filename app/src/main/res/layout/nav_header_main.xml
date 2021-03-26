@@ -24,23 +24,21 @@
         android:id="@+id/custom_profile_image"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
         android:src="@drawable/ellipse_1"
         android:cropToPadding="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/nav_header_title"
+        android:text="@string/taptet_school"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle" />
+        android:text="@string/schooltaptet_gmail_com" />
 </LinearLayout>
