@@ -236,7 +236,28 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         }
 
         if (view == mStartTerm3) {
+            PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    if (dataSnapshot.exists())
+                    {
+                        String previousAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+                        String previousAcademicTerm = dataSnapshot.child("Term").getValue().toString();
+                        String currentAcademicTerm = TERM_3;
 
+                        updateCurrentYear(currentAcademicTerm);
+                        transferCurrentStudentsToNextTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        transferCurrentStudentsToNextClassTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
 
         if (view == mEndTerm3) {
