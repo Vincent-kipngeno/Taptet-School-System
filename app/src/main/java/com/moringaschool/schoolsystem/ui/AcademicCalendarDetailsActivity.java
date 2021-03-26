@@ -188,10 +188,10 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                         String previousAcademicTerm = dataSnapshot.child("Term").getValue().toString();
                         String currentAcademicTerm = TERM_1;
 
+                        updateCurrentYear(currentAcademicTerm);
                         transferCurrentStudentsToNextTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                         transferCurrentStudentsToNextClass(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                         createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
-                        updateCurrentYear(currentAcademicTerm);
                     }
                 }
 
@@ -207,7 +207,28 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         }
 
         if (view == mStartTerm2) {
+            PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    if (dataSnapshot.exists())
+                    {
+                        String previousAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+                        String previousAcademicTerm = dataSnapshot.child("Term").getValue().toString();
+                        String currentAcademicTerm = TERM_2;
 
+                        updateCurrentYear(currentAcademicTerm);
+                        transferCurrentStudentsToNextTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        transferCurrentStudentsToNextClass(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
 
         if (view == mEndTerm2) {
@@ -398,11 +419,11 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                             public void onComplete(@NonNull Task task) {
                                                 if (task.isSuccessful())
                                                 {
-                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the alumni class term Successfully...", Toast.LENGTH_SHORT).show();
                                                 }
                                                 else
                                                 {
-                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students.", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students to alumni class term.", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });
@@ -539,6 +560,45 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             }
         });
 
+    }
+
+    public void transferCurrentStudentsToNextClassTerm (String previousAcademicYearId, String previousAcademicTerm, String currentAcademicTerm) {
+        ClassRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot currentClass : dataSnapshot.getChildren()) {
+                         ClassCurrentStudentsRef.child(currentClass.getKey()).child(previousAcademicYearId).child(previousAcademicTerm).addValueEventListener(new ValueEventListener() {
+                             @Override
+                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                 ClassCurrentStudentsRef.child(currentClass.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).setValue(dataSnapshot).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                     @Override
+                                     public void onComplete(@NonNull Task<Void> task) {
+                                         if (task.isSuccessful())
+                                         {
+                                             Toast.makeText(AcademicCalendarDetailsActivity.this, "Students transferred to the next class term Successfully...", Toast.LENGTH_SHORT).show();
+                                         }
+                                         else {
+                                             Toast.makeText(AcademicCalendarDetailsActivity.this, "Error transferring students to the next class term...", Toast.LENGTH_SHORT).show();
+                                         }
+                                     }
+                                 });
+                             }
+
+                             @Override
+                             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                             }
+                         });
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public String getNextClass (String currentClass) {
