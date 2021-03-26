@@ -219,7 +219,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
                         updateCurrentYear(currentAcademicTerm);
                         transferCurrentStudentsToNextTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
-                        transferCurrentStudentsToNextClass(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        transferCurrentStudentsToNextClassTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                         createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                     }
                 }
