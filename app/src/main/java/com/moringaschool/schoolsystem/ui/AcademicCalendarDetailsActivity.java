@@ -67,7 +67,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     @BindView(R.id.button_end3) Button mEndTerm3;
     @BindView(R.id.school_fee_structure) RecyclerView mFeeStructureGrid;
 
-    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, NewAcademicYearRef, StudentFeePaymentRef, PreviousAcademicYearRef, DatabaseRef, ClassCurrentStudentsRef, AlumniRef, ClassRef, Payments, AllPaymentsRef, SchoolPaymentsRef, ClassPaymentsRef;
+    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, UsersRef, NewAcademicYearRef, StudentFeePaymentRef, PreviousAcademicYearRef, DatabaseRef, ClassCurrentStudentsRef, AlumniRef, ClassRef, Payments, AllPaymentsRef, SchoolPaymentsRef, ClassPaymentsRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
     private String CurrentAcademicYearId = "";
@@ -91,6 +91,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         DatabaseRef = FirebaseDatabase.getInstance().getReference();
 
         YearDetailsRef = DatabaseRef.child("Years");
+        UsersRef = DatabaseRef.child("Users");
         currentAcademicCalendarRef = YearDetailsRef.child("CurrentAcademicYear");
         NewAcademicYearRef = YearDetailsRef.child("NewAcademicYear");
         PreviousAcademicYearRef = YearDetailsRef.child("PreviousAcademicYear");
@@ -784,8 +785,24 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             {
                 if (dataSnapshot.exists())
                 {
-                    for (DataSnapshot studentToAddEntry: dataSnapshot.getChildren()){
+                    for (DataSnapshot studentToCalculateBalance: dataSnapshot.getChildren()){
+                        StudentFeePaymentRef.child(studentToCalculateBalance.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).child("Payments").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                int totalPayments = 0;
+                                for (DataSnapshot amount : dataSnapshot.getChildren())
+                                {
+                                    int paymentAmount = Integer.parseInt(amount.toString());
+                                    totalPayments+=paymentAmount;
+                                }
 
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
                 }
             }
