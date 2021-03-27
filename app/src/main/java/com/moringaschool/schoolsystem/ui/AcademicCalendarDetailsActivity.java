@@ -876,5 +876,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         });
     }
 
+    public void moveTermToPreviousYearSectionInDB(String currentAcademicTerm){
 
+    }
 }
