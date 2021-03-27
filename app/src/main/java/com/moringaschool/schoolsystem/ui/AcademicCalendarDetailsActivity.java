@@ -840,4 +840,37 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             }
         });
     }
+
+    public void calculateSchoolTotalFeeBalanceByStudents(String currentAcademicTerm) {
+        DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Students").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists())
+                {
+                    DataSnapshot studentsSnapshot = dataSnapshot;
+                    StudentFeePaymentRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            int schoolTotalFeeBalance = 0;
+                            for (DataSnapshot studentToGetFeeBalance : studentsSnapshot.getChildren()){
+                                int studentTotalBalance = Integer.parseInt(dataSnapshot.child(studentToGetFeeBalance.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).child("Balance").child("TotalBalance").getValue().toString());
+                                schoolTotalFeeBalance+=studentTotalBalance;
+                            }
+                            int finalSchoolTotalFeeBalance = schoolTotalFeeBalance;
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
