@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.FeeStructure;
+import com.moringaschool.schoolsystem.models.Student;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -795,7 +796,17 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                     int paymentAmount = Integer.parseInt(amount.toString());
                                     totalPayments+=paymentAmount;
                                 }
+                                UsersRef.child(studentToCalculateBalance.getKey()).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        Student student = dataSnapshot.getValue(Student.class);
+                                    }
 
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
                             }
 
                             @Override
