@@ -787,15 +787,17 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                 if (dataSnapshot.exists())
                 {
                     for (DataSnapshot studentToCalculateBalance: dataSnapshot.getChildren()){
-                        StudentFeePaymentRef.child(studentToCalculateBalance.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).child("Payments").addValueEventListener(new ValueEventListener() {
+                        StudentFeePaymentRef.child(studentToCalculateBalance.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 int totalPayments = 0;
-                                for (DataSnapshot amount : dataSnapshot.getChildren())
+                                for (DataSnapshot amount : dataSnapshot.child("Payments").getChildren())
                                 {
                                     int paymentAmount = Integer.parseInt(amount.toString());
                                     totalPayments+=paymentAmount;
                                 }
+                                int finalTotalPayments = totalPayments;
+                                int arrears = Integer.parseInt(dataSnapshot.child("Balance").child("Arrears").getValue().toString());
                                 UsersRef.child(studentToCalculateBalance.getKey()).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -804,13 +806,14 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 int termFeeAmount = Integer.parseInt(dataSnapshot.getValue().toString());
+                                                int totalBalance = (termFeeAmount - finalTotalPayments)+arrears;
                                             }
 
                                             @Override
                                             public void onCancelled(@NonNull DatabaseError databaseError) {
 
                                             }
-                                        })
+                                        });
                                     }
 
                                     @Override
