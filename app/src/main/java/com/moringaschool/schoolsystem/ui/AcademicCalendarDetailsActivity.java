@@ -800,6 +800,17 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         Student student = dataSnapshot.getValue(Student.class);
+                                        YearFeeStructureRef.child(student.getCategory()).child(student.getGrade()).child(currentAcademicTerm).addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                int termFeeAmount = Integer.parseInt(dataSnapshot.getValue().toString());
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                            }
+                                        })
                                     }
 
                                     @Override
