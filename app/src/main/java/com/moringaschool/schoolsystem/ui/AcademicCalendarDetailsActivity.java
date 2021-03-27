@@ -205,7 +205,8 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         }
 
         if (view == mEndTerm1) {
-
+            calculateStudentsTotalFeeBalance(TERM_1);
+            calculateSchoolTotalFeeBalanceByStudents(TERM_2);
         }
 
         if (view == mStartTerm2) {
@@ -874,4 +875,6 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             }
         });
     }
+
+
 }
