@@ -857,6 +857,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                 schoolTotalFeeBalance+=studentTotalBalance;
                             }
                             int finalSchoolTotalFeeBalance = schoolTotalFeeBalance;
+                            SchoolPaymentsRef.child(CurrentAcademicYearId).child(currentAcademicTerm).child("Balance").child("TotalBalance").setValue(finalSchoolTotalFeeBalance);
                         }
 
                         @Override
