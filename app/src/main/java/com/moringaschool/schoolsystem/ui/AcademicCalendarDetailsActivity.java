@@ -68,7 +68,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     @BindView(R.id.button_end3) Button mEndTerm3;
     @BindView(R.id.school_fee_structure) RecyclerView mFeeStructureGrid;
 
-    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicCalendarRef, UsersRef, NewAcademicYearRef, StudentFeePaymentRef, PreviousAcademicYearRef, DatabaseRef, ClassCurrentStudentsRef, AlumniRef, ClassRef, Payments, AllPaymentsRef, SchoolPaymentsRef, ClassPaymentsRef;
+    private DatabaseReference YearDetailsRef, YearFeeStructureRef, currentAcademicYearRef, UsersRef, NewAcademicYearRef, StudentFeePaymentRef, PreviousAcademicYearRef, DatabaseRef, ClassCurrentStudentsRef, AlumniRef, ClassRef, Payments, AllPaymentsRef, SchoolPaymentsRef, ClassPaymentsRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
     private String CurrentAcademicYearId = "";
@@ -93,7 +93,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
         YearDetailsRef = DatabaseRef.child("Years");
         UsersRef = DatabaseRef.child("Users");
-        currentAcademicCalendarRef = YearDetailsRef.child("CurrentAcademicYear");
+        currentAcademicYearRef = YearDetailsRef.child("CurrentAcademicYear");
         NewAcademicYearRef = YearDetailsRef.child("NewAcademicYear");
         PreviousAcademicYearRef = YearDetailsRef.child("PreviousAcademicYear");
         YearFeeStructureRef = YearDetailsRef.child("YearDetails").child(CurrentAcademicYearId).child("FeeStructure");
@@ -287,7 +287,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
     public void visibilityOfStartAndEndButtons() {
 
-        currentAcademicCalendarRef.addValueEventListener(new ValueEventListener() {
+        currentAcademicYearRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
@@ -877,6 +877,25 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     }
 
     public void moveTermToPreviousYearSectionInDB(String currentAcademicTerm){
+        Map<String, Object> previousDates = new HashMap<>();
 
+        previousDates.put("PreviousAcademicYear/AcademicYearId", CurrentAcademicYearId);
+        previousDates.put("PreviousAcademicYear/term", currentAcademicTerm);
+
+        YearDetailsRef.updateChildren(previousDates).addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task)
+            {
+                if (task.isSuccessful())
+                {
+                    currentAcademicYearRef.removeValue();
+                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Previous academic dates updated successfully...", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(AcademicCalendarDetailsActivity.this, "Error updating previous academic dates.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
