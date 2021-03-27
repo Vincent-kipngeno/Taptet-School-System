@@ -1,9 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.AddNewAcademicYearActivity">
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/backgroundColor"
+tools:context=".ui.AddNewAcademicYearActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            android:id="@+id/main_page_toolbar"
+            layout="@layout/custom_app_bar" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/boardersLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="BOARDERS"
+                android:textColor="#1C99CF"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#1C99CF">
+                <TextView
+                    android:id="@+id/boardersClassLabel"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CLASS"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/boardersTerm1Label"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="TERM 1"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/boardersTerm2Label"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:text="TERM 2"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/boardersTerm3Label"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:text="TERM 3"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/school_fee_structure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
