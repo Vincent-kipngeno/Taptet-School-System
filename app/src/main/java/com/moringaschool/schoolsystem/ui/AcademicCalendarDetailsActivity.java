@@ -776,4 +776,8 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             }
         });
     }
+
+    public void calculateStudentsTotalFeeBalance () {
+
+    }
 }
