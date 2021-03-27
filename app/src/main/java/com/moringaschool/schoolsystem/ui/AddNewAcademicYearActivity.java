@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.moringaschool.schoolsystem.R;
 
-public class AddNewAcademicYear extends AppCompatActivity {
+public class AddNewAcademicYearActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
