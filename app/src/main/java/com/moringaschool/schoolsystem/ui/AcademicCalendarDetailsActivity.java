@@ -777,7 +777,23 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         });
     }
 
-    public void calculateStudentsTotalFeeBalance () {
+    public void calculateStudentsTotalFeeBalance (String currentAcademicTerm) {
+        DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Students").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    for (DataSnapshot studentToAddEntry: dataSnapshot.getChildren()){
 
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
