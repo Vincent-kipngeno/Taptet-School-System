@@ -237,7 +237,10 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         }
 
         if (view == mEndTerm2) {
-
+            String currentAcademicTerm = TERM_2;
+            calculateStudentsTotalFeeBalance(currentAcademicTerm);
+            calculateSchoolTotalFeeBalanceByStudents(currentAcademicTerm);
+            moveTermToPreviousYearSectionInDB(currentAcademicTerm);
         }
 
         if (view == mStartTerm3) {
@@ -266,7 +269,10 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         }
 
         if (view == mEndTerm3) {
-
+            String currentAcademicTerm = TERM_3;
+            calculateStudentsTotalFeeBalance(currentAcademicTerm);
+            calculateSchoolTotalFeeBalanceByStudents(currentAcademicTerm);
+            moveTermToPreviousYearSectionInDB(currentAcademicTerm);
         }
 
     }
