@@ -269,10 +269,25 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         }
 
         if (view == mEndTerm3) {
-            String currentAcademicTerm = TERM_3;
-            calculateStudentsTotalFeeBalance(currentAcademicTerm);
-            calculateSchoolTotalFeeBalanceByStudents(currentAcademicTerm);
-            moveTermToPreviousYearSectionInDB(currentAcademicTerm);
+            NewAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()){
+                        String currentAcademicTerm = TERM_3;
+                        calculateStudentsTotalFeeBalance(currentAcademicTerm);
+                        calculateSchoolTotalFeeBalanceByStudents(currentAcademicTerm);
+                        moveTermToPreviousYearSectionInDB(currentAcademicTerm);
+                    }
+                    else {
+                        Toast.makeText(AcademicCalendarDetailsActivity.this, "Kindly add a new year first before trying to end the current academic year", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
 
     }
