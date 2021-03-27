@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.AcademicCalendarDetailsActivity"></activity>
+        <activity android:name=".ui.AddNewAcademicYear"></activity>
+        <activity android:name=".ui.AcademicCalendarDetailsActivity" />
         <activity android:name=".ui.StaffDetailsActivity" />
         <activity android:name=".ui.StaffRegistrationActivity" />
         <activity android:name=".ui.StudentDetailsActivity" />
