@@ -208,6 +208,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
             String currentAcademicTerm = TERM_1;
             calculateStudentsTotalFeeBalance(currentAcademicTerm);
             calculateSchoolTotalFeeBalanceByStudents(currentAcademicTerm);
+            moveTermToPreviousYearSectionInDB(currentAcademicTerm);
         }
 
         if (view == mStartTerm2) {
