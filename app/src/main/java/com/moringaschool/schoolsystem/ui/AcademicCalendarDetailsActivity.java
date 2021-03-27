@@ -807,6 +807,8 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 int termFeeAmount = Integer.parseInt(dataSnapshot.getValue().toString());
                                                 int totalBalance = (termFeeAmount - finalTotalPayments)+arrears;
+
+                                                StudentFeePaymentRef.child(studentToCalculateBalance.getKey()).child(CurrentAcademicYearId).child(currentAcademicTerm).child("Balance").child("TotalBalance").setValue(totalBalance);
                                             }
 
                                             @Override
