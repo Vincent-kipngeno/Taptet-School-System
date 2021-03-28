@@ -97,10 +97,99 @@ tools:context=".ui.AddNewAcademicYearActivity">
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/school_fee_structure"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/boardersPP1Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="PP1"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_boarders_PP1_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_pp1_boarders_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_boarders_PP1_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_pp1_boarders_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_boarders_PP1_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_pp1_boarders_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </HorizontalScrollView>
