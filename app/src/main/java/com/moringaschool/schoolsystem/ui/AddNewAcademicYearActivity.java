@@ -90,6 +90,12 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
     }
 
     public void createYearWithTermDatesAndFeeStructures (){
-
+        String academicYear = editAcademicYear.getText().toString();
+        String term1StartDate = editTerm1StartDate.getText().toString();
+        String term1EndDate = editTerm1EndDate.getText().toString();
+        String term2StartDate = editTerm2StartDate.getText().toString();
+        String term2EndDate = editTerm2EndDate.getText().toString();
+        String term3StartDate = editTerm3StartDate.getText().toString();
+        String term3EndDate = editTerm3EndDate.getText().toString();
     }
 }
