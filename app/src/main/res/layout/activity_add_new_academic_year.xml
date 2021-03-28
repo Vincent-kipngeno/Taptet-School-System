@@ -10,7 +10,9 @@ tools:context=".ui.AddNewAcademicYearActivity">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
     android:orientation="vertical">
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,11 +31,33 @@ tools:context=".ui.AddNewAcademicYearActivity">
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        app:hintTextAppearance="@style/MyHintStyle">
+
+        <EditText
+            android:id="@+id/edit_academic_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_weight="1"
+            android:autofillHints=""
+            android:background="@drawable/form_input_fee"
+            android:padding="15dp"
+            android:ems="10"
+            android:hint="Enter Academic year ..."
+            android:inputType="text"
+            android:tag="amount"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_gravity="center"
         android:gravity="center">
 
@@ -42,7 +66,7 @@ tools:context=".ui.AddNewAcademicYearActivity">
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp">
+            android:layout_margin="5dp">
 
             <TextView
                 android:id="@+id/boardersLabel"
