@@ -8,6 +8,7 @@ import android.widget.EditText;
 import com.moringaschool.schoolsystem.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class AddNewAcademicYearActivity extends AppCompatActivity {
     @BindView(R.id.edit_academic_year) EditText editAcademicYear;
@@ -84,5 +85,11 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_academic_year);
+
+        ButterKnife.bind(this);
+    }
+
+    public void createYearWithTermDatesAndFeeStructures (){
+
     }
 }
