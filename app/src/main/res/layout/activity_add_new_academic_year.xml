@@ -229,6 +229,69 @@ tools:context=".ui.AddNewAcademicYearActivity">
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/editTerm3Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="T3"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_term3_StartDate"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:inputType="date"
+                        android:tag="date" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_term3_EndDate"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:inputType="date"
+                        android:tag="date" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </HorizontalScrollView>
