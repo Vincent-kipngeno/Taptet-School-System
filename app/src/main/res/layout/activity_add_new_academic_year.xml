@@ -925,6 +925,1090 @@ tools:context=".ui.AddNewAcademicYearActivity">
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/boardersClass8Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_boarders_CLASS8_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class8_boarders_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_boarders_CLASS8_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class8_boarders_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_boarders_CLASS8_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class8_boarders_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/DayLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="DAY"
+                android:textColor="#1C99CF"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#1C99CF">
+                <TextView
+                    android:id="@+id/daysClassLabel"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="CLASS"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/daysTerm1Label"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="TERM 1"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/daysTerm2Label"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:text="TERM 2"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/daysTerm3Label"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:text="TERM 3"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysPP1Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="PP1"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_PP1_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_pp1_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_PP1_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_pp1_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_PP1_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_pp1_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysPP2Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="PP2"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_PP2_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_pp2_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_PP2_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_pp2_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_PP2_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_pp2_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysClass1Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS1_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class1_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS1_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class1_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS1_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class1_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysClass2Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS2_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class2_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS2_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class2_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS2_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class2_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysClass3Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS3_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class3_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS3_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class3_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS3_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class3_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysClass4Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="4"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS4_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class4_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS4_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class4_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS4_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class4_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysClass5Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS5_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class5_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS5_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class5_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS5_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class5_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysClass6Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="6"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS6_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class6_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS6_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class6_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS6_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class6_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysClass7Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="7"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS7_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class7_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS7_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class7_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS7_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class7_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
+                <TextView
+                    android:id="@+id/daysClass8Label"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS8_Term1_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class8_days_term1_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term1 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS8_Term2_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class8_days_term2_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term2 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edit_days_CLASS8_Term3_Fee"
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="#1C99CF"
+                    android:textStyle="bold"
+                    app:hintTextAppearance="@style/MyHintStyle">
+
+                    <EditText
+                        android:id="@+id/edit_class8_days_term3_fee"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#1C99CF"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:autofillHints=""
+                        android:backgroundTint="@color/mainColor"
+                        android:ems="10"
+                        android:textColorHint="#1C99CF"
+                        android:hint="Term3 Amount"
+                        android:inputType="number"
+                        android:tag="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </HorizontalScrollView>
