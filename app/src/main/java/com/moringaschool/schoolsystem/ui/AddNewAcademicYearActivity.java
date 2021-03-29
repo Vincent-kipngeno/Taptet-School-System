@@ -198,7 +198,9 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_2+"/"+TERM_1, pp2BoardersTerm1Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_2+"/"+TERM_2, pp2BoardersTerm2Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_2+"/"+TERM_3, pp2BoardersTerm3Fee);
-
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_1+"/"+TERM_1, class1BoardersTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_1+"/"+TERM_2, class1BoardersTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_1+"/"+TERM_3, class1BoardersTerm3Fee);
         }
 
     }
