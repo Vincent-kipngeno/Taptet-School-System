@@ -19,6 +19,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.moringaschool.schoolsystem.Constants.BOARDER;
+import static com.moringaschool.schoolsystem.Constants.PRE_PR1_1;
 import static com.moringaschool.schoolsystem.Constants.TERM_1;
 import static com.moringaschool.schoolsystem.Constants.TERM_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_3;
@@ -181,13 +183,16 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
         }
         else {
             Map<String, Object> academicYearDetails = new HashMap<>();
-            academicYearDetails.put(academicYear+"/TermDates/"+TERM_1+"startDate", term1StartDate);
-            academicYearDetails.put(academicYear+"/TermDates/"+TERM_1+"endDate", term1EndDate);
-            academicYearDetails.put(academicYear+"/TermDates/"+TERM_2+"startDate", term2StartDate);
-            academicYearDetails.put(academicYear+"/TermDates/"+TERM_2+"endDate", term2EndDate);
-            academicYearDetails.put(academicYear+"/TermDates/"+TERM_3+"startDate", term3StartDate);
-            academicYearDetails.put(academicYear+"/TermDates/"+TERM_3+"endDate", term3EndDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_1+"/startDate", term1StartDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_1+"/endDate", term1EndDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_2+"/startDate", term2StartDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_2+"/endDate", term2EndDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_3+"/startDate", term3StartDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_3+"/endDate", term3EndDate);
 
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_1+"/"+TERM_1, pp1BoardersTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_1+"/"+TERM_2, pp1BoardersTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_1+"/"+TERM_3, pp1BoardersTerm3Fee);
         }
 
     }
