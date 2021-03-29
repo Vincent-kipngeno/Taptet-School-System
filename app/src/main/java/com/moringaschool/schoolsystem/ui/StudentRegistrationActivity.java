@@ -21,8 +21,11 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.Student;
 
@@ -63,7 +66,7 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
 
     private FirebaseAuth mAuth1;
     private FirebaseAuth mAuth2;
-    private DatabaseReference StudentsRef, UsersRef, ClassRef;
+    private DatabaseReference StudentsRef, UsersRef, ClassRef, CurrentStudentsRef, ClassCurrentStudentsRef, DatabaseRef, CurrentAcademicYearRef, StudentFeePaymentRef;
     private String adminUid ="";
 
     @Override
@@ -85,10 +88,15 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
 
         mAuth1 = FirebaseAuth.getInstance();
         adminUid = mAuth1.getCurrentUser().getUid();
+        DatabaseRef = FirebaseDatabase.getInstance().getReference();
 
-        StudentsRef = FirebaseDatabase.getInstance().getReference().child("Students");
-        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        ClassRef = FirebaseDatabase.getInstance().getReference().child("Classes");
+        StudentsRef = DatabaseRef.child("Students");
+        UsersRef = DatabaseRef.child("Users");
+        ClassRef = DatabaseRef.child("Classes");
+        CurrentStudentsRef = DatabaseRef.child("CurrentStudents");
+        ClassCurrentStudentsRef = DatabaseRef.child("ClassCurrentStudents");
+        CurrentAcademicYearRef = DatabaseRef.child("CurrentAcademicYear");
+        StudentFeePaymentRef = DatabaseRef.child("StudentFeePayments");
 
         FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
                 .setDatabaseUrl("https://school-system-84c86.firebaseio.com/")
@@ -273,71 +281,153 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
 
             Student student = new Student(name, email, studentAdm, location, sex, category, studentClass, parentName, parentPhone1, parentPhone2, adminUid, type);
 
-            mAuth2.createUserWithEmailAndPassword(email, studentAdm)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+            CurrentAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    if (dataSnapshot.exists())
+                    {
+                        String currentAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+                        String currentAcademicTerm = dataSnapshot.child("Term").getValue().toString();
+
+                        createAndLoginUser(student, currentAcademicYearId, currentAcademicTerm);
+
+                    }
+                    else {
+                        Toast.makeText(StudentRegistrationActivity.this, "Kindly Create and Start academic year First", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
 
-                            if (!task.isSuccessful()) {
-                                String ex = task.getException().toString();
-                                Toast.makeText(StudentRegistrationActivity.this, "Registration Failed"+ex,
-                                        Toast.LENGTH_LONG).show();
-                            }
-                            else
-                            {
-                                Toast.makeText(StudentRegistrationActivity.this, "Registration successful",
-                                        Toast.LENGTH_SHORT).show();
-                                String studentUid = mAuth2.getCurrentUser().getUid();
-
-                                UsersRef.child(studentUid).setValue(student).addOnCompleteListener(new OnCompleteListener() {
-                                    @Override
-                                    public void onComplete(@NonNull Task task)
-                                    {
-                                        if (task.isSuccessful())
-                                        {
-                                            Toast.makeText(StudentRegistrationActivity.this, "Student data Saved Successfully...", Toast.LENGTH_SHORT).show();
-                                        }
-                                        else
-                                        {
-                                            Toast.makeText(StudentRegistrationActivity.this, "Error saving student data.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-
-                                StudentsRef.child(studentUid).setValue(true).addOnCompleteListener(new OnCompleteListener() {
-                                    @Override
-                                    public void onComplete(@NonNull Task task)
-                                    {
-                                        if (task.isSuccessful())
-                                        {
-                                            Toast.makeText(StudentRegistrationActivity.this, "Student added to students list Successfully...", Toast.LENGTH_SHORT).show();
-                                        }
-                                        else
-                                        {
-                                            Toast.makeText(StudentRegistrationActivity.this, "Error saving student to students list.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-
-                                ClassRef.child(studentUid).setValue(true).addOnCompleteListener(new OnCompleteListener() {
-                                    @Override
-                                    public void onComplete(@NonNull Task task)
-                                    {
-                                        if (task.isSuccessful())
-                                        {
-                                            Toast.makeText(StudentRegistrationActivity.this, "Student added to class list Successfully...", Toast.LENGTH_SHORT).show();
-                                        }
-                                        else
-                                        {
-                                            Toast.makeText(StudentRegistrationActivity.this, "Error saving student to class list.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-                                mAuth2.signOut();
-                            }
-                        }
-                    });
         }
+    }
+
+    public void createAndLoginUser (Student student, String currentAcademicYearId, String currentAcademicTerm) {
+
+        mAuth2.createUserWithEmailAndPassword(student.getEmail(), student.getAdmissionNo())
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+
+                        if (!task.isSuccessful()) {
+                            String ex = task.getException().toString();
+                            Toast.makeText(StudentRegistrationActivity.this, "Registration Failed"+ex,
+                                    Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(StudentRegistrationActivity.this, "Registration successful",
+                                    Toast.LENGTH_SHORT).show();
+                            String studentUid = mAuth2.getCurrentUser().getUid();
+
+                            UsersRef.child(studentUid).setValue(student).addOnCompleteListener(new OnCompleteListener() {
+                                @Override
+                                public void onComplete(@NonNull Task task)
+                                {
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Student data Saved Successfully...", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Error saving student data.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                            StudentsRef.child(studentUid).setValue(true).addOnCompleteListener((OnCompleteListener<Void>) task1 -> {
+                                if (task1.isSuccessful())
+                                {
+                                    Toast.makeText(StudentRegistrationActivity.this, "Student added to students list Successfully...", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    Toast.makeText(StudentRegistrationActivity.this, "Error saving student to students list.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            Map<String, Object> currentStudentsMap = new HashMap<>();
+                            currentStudentsMap.put(currentAcademicTerm+"/Students/"+studentUid, true);
+                            currentStudentsMap.put(currentAcademicTerm+"/"+student.getCategory()+"/"+studentUid, true);
+
+                            CurrentStudentsRef.child(currentAcademicYearId).updateChildren(currentStudentsMap).addOnCompleteListener(new OnCompleteListener() {
+                                @Override
+                                public void onComplete(@NonNull Task task)
+                                {
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Student added to class list Successfully...", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Error saving student to class list.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                            Map<String, Object> ClassCurrentStudentsMap = new HashMap<>();
+                            ClassCurrentStudentsMap.put(currentAcademicTerm+"/Students/"+studentUid, true);
+                            ClassCurrentStudentsMap.put(currentAcademicTerm+"/"+student.getCategory()+"/"+studentUid, true);
+
+                            ClassCurrentStudentsRef.child(student.getGrade()).child(currentAcademicYearId).updateChildren(ClassCurrentStudentsMap).addOnCompleteListener(new OnCompleteListener() {
+                                @Override
+                                public void onComplete(@NonNull Task task)
+                                {
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Student added to class list Successfully...", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Error saving student to class list.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                            Map<String, Object> model = new HashMap<>();
+                            model.put(currentAcademicTerm+"/Payments/None", 0);
+                            model.put(currentAcademicTerm+"/Balance/Arrears", 0);
+                            model.put(currentAcademicTerm+"/Balance/TotalBalance", 0);
+
+                            StudentFeePaymentRef.child(studentUid).child(currentAcademicYearId).updateChildren(model).addOnCompleteListener(new OnCompleteListener() {
+                                @Override
+                                public void onComplete(@NonNull Task task)
+                                {
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Student added to class list Successfully...", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Error saving student to class list.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                            ClassRef.child(student.getGrade()).setValue(true).addOnCompleteListener(new OnCompleteListener() {
+                                @Override
+                                public void onComplete(@NonNull Task task)
+                                {
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Student added to class list Successfully...", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(StudentRegistrationActivity.this, "Error saving student to class list.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                            mAuth2.signOut();
+                        }
+                    }
+                });
     }
 }
