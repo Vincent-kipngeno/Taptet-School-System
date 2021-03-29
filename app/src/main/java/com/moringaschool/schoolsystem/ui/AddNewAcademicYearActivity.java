@@ -107,24 +107,34 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
 
         String pp1BoardersTerm1Fee = editPp1BoardersTerm1Fee.getText().toString();
         String pp1BoardersTerm2Fee = editPp1BoardersTerm2Fee.getText().toString();
+        String pp1BoardersTerm3Fee = editPp1BoardersTerm3Fee.getText().toString();
         String pp2BoardersTerm1Fee = editPp2BoardersTerm1Fee.getText().toString();
         String pp2BoardersTerm2Fee = editPp2BoardersTerm2Fee.getText().toString();
+        String pp2BoardersTerm3Fee = editPp2BoardersTerm3Fee.getText().toString();
         String class1BoardersTerm1Fee = editClass1BoardersTerm1Fee.getText().toString();
         String class1BoardersTerm2Fee = editClass1BoardersTerm2Fee.getText().toString();
+        String class1BoardersTerm3Fee = editClass1BoardersTerm3Fee.getText().toString();
         String class2BoardersTerm1Fee = editClass2BoardersTerm1Fee.getText().toString();
         String class2BoardersTerm2Fee = editClass2BoardersTerm2Fee.getText().toString();
+        String class2BoardersTerm3Fee = editClass2BoardersTerm3Fee.getText().toString();
         String class3BoardersTerm1Fee = editClass3BoardersTerm1Fee.getText().toString();
         String class3BoardersTerm2Fee = editClass3BoardersTerm2Fee.getText().toString();
+        String class3BoardersTerm3Fee = editClass3BoardersTerm3Fee.getText().toString();
         String class4BoardersTerm1Fee = editClass4BoardersTerm1Fee.getText().toString();
         String class4BoardersTerm2Fee = editClass4BoardersTerm2Fee.getText().toString();
+        String class4BoardersTerm3Fee = editClass4BoardersTerm3Fee.getText().toString();
         String class5BoardersTerm1Fee = editClass5BoardersTerm1Fee.getText().toString();
         String class5BoardersTerm2Fee = editClass5BoardersTerm2Fee.getText().toString();
+        String class5BoardersTerm3Fee = editClass5BoardersTerm3Fee.getText().toString();
         String class6BoardersTerm1Fee = editClass6BoardersTerm1Fee.getText().toString();
         String class6BoardersTerm2Fee = editClass6BoardersTerm2Fee.getText().toString();
+        String class6BoardersTerm3Fee = editClass6BoardersTerm3Fee.getText().toString();
         String class7BoardersTerm1Fee = editClass7BoardersTerm1Fee.getText().toString();
         String class7BoardersTerm2Fee = editClass7BoardersTerm2Fee.getText().toString();
+        String class7BoardersTerm3Fee = editClass7BoardersTerm3Fee.getText().toString();
         String class8BoardersTerm1Fee = editClass8BoardersTerm1Fee.getText().toString();
         String class8BoardersTerm2Fee = editClass8BoardersTerm2Fee.getText().toString();
+        String class8BoardersTerm3Fee = editClass8BoardersTerm3Fee.getText().toString();
 
         String pp1DaysTerm1Fee = editPp1DaysTerm1Fee.getText().toString();
         String pp1DaysTerm2Fee = editPp1DaysTerm2Fee.getText().toString();
