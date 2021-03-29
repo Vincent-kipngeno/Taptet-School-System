@@ -319,6 +319,126 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             editClass8BoardersTerm3Fee.setError("This field is required");
             return false;
         }
+        else if (pp1DaysTerm1Fee == null || pp1DaysTerm1Fee.trim().isEmpty()){
+            editPp1DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (pp1DaysTerm2Fee == null || pp1DaysTerm2Fee.trim().isEmpty()){
+            editPp1DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (pp1DaysTerm3Fee == null || pp1DaysTerm3Fee.trim().isEmpty()){
+            editPp1DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
+        else if (pp2DaysTerm1Fee == null || pp2DaysTerm1Fee.trim().isEmpty()){
+            editPp2DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (pp2DaysTerm2Fee == null || pp2DaysTerm2Fee.trim().isEmpty()){
+            editPp2DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (pp2DaysTerm3Fee == null || pp2DaysTerm3Fee.trim().isEmpty()){
+            editPp2DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
+        else if (class1DaysTerm1Fee == null || class1DaysTerm1Fee.trim().isEmpty()){
+            editClass1DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (class1DaysTerm2Fee == null || class1DaysTerm2Fee.trim().isEmpty()){
+            editClass1DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (class1DaysTerm3Fee == null || class1DaysTerm3Fee.trim().isEmpty()){
+            editClass1DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
+        else if (class2DaysTerm1Fee == null || class2DaysTerm1Fee.trim().isEmpty()){
+            editClass2DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (class2DaysTerm2Fee == null || class2DaysTerm2Fee.trim().isEmpty()){
+            editClass2DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (class2DaysTerm3Fee == null || class2DaysTerm3Fee.trim().isEmpty()){
+            editClass2DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
+        else if (class3DaysTerm1Fee == null || class3DaysTerm1Fee.trim().isEmpty()){
+            editClass3DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (class3DaysTerm2Fee == null || class3DaysTerm2Fee.trim().isEmpty()){
+            editClass3DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (class3DaysTerm3Fee == null || class3DaysTerm3Fee.trim().isEmpty()){
+            editClass3DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
+        else if (class4DaysTerm1Fee == null || class4DaysTerm1Fee.trim().isEmpty()){
+            editClass4DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (class4DaysTerm2Fee == null || class4DaysTerm2Fee.trim().isEmpty()){
+            editClass2DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (class4DaysTerm3Fee == null || class4DaysTerm3Fee.trim().isEmpty()){
+            editClass4DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
+        else if (class5DaysTerm1Fee == null || class5DaysTerm1Fee.trim().isEmpty()){
+            editClass5DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (class5DaysTerm2Fee == null || class5DaysTerm2Fee.trim().isEmpty()){
+            editClass5DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (class5DaysTerm3Fee == null || class5DaysTerm3Fee.trim().isEmpty()){
+            editClass5DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
+        else if (class6DaysTerm1Fee == null || class6DaysTerm1Fee.trim().isEmpty()){
+            editClass6DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (class6DaysTerm2Fee == null || class6DaysTerm2Fee.trim().isEmpty()){
+            editClass6DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (class6DaysTerm3Fee == null || class6DaysTerm3Fee.trim().isEmpty()){
+            editClass6DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
+        else if (class7DaysTerm1Fee == null || class7DaysTerm1Fee.trim().isEmpty()){
+            editClass7DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (class7DaysTerm2Fee == null || class7DaysTerm2Fee.trim().isEmpty()){
+            editClass7DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (class7DaysTerm3Fee == null || class7DaysTerm3Fee.trim().isEmpty()){
+            editClass7DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
+        else if (class8DaysTerm1Fee == null || class8DaysTerm1Fee.trim().isEmpty()){
+            editClass8DaysTerm1Fee.setError("This field is required");
+            return false;
+        }
+        else if (class8DaysTerm2Fee == null || class8DaysTerm2Fee.trim().isEmpty()){
+            editClass8DaysTerm2Fee.setError("This field is required");
+            return false;
+        }
+        else if (class8DaysTerm3Fee == null || class8DaysTerm3Fee.trim().isEmpty()){
+            editClass8DaysTerm3Fee.setError("This field is required");
+            return false;
+        }
         else
         {
             return true;
