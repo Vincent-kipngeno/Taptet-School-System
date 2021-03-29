@@ -106,7 +106,7 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
         String term3EndDate = editTerm3EndDate.getText().toString();
     }
 
-    public void termDatesPicker (EditText editText) {
+    public String termDatesPicker (EditText editText) {
         final Calendar myCalendar = Calendar.getInstance();
 
         DatePickerDialog.OnDateSetListener date = (view, year, monthOfYear, dayOfMonth) -> {
@@ -127,6 +127,8 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+        return editText.getText().toString();
     }
 
     private void updateLabel(EditText editText, Calendar myCalendar) {
