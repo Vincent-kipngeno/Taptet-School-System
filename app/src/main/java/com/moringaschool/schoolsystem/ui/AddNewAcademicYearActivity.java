@@ -20,7 +20,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.moringaschool.schoolsystem.Constants.BOARDER;
+import static com.moringaschool.schoolsystem.Constants.Class_1;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_1;
+import static com.moringaschool.schoolsystem.Constants.PRE_PR1_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_1;
 import static com.moringaschool.schoolsystem.Constants.TERM_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_3;
@@ -193,6 +195,10 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_1+"/"+TERM_1, pp1BoardersTerm1Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_1+"/"+TERM_2, pp1BoardersTerm2Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_1+"/"+TERM_3, pp1BoardersTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_2+"/"+TERM_1, pp2BoardersTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_2+"/"+TERM_2, pp2BoardersTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+PRE_PR1_2+"/"+TERM_3, pp2BoardersTerm3Fee);
+
         }
 
     }
