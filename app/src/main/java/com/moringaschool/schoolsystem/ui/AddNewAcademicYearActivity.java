@@ -98,12 +98,12 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
 
     public void createYearWithTermDatesAndFeeStructures (){
         String academicYear = editAcademicYear.getText().toString();
-        String term1StartDate = editTerm1StartDate.getText().toString();
-        String term1EndDate = editTerm1EndDate.getText().toString();
-        String term2StartDate = editTerm2StartDate.getText().toString();
-        String term2EndDate = editTerm2EndDate.getText().toString();
-        String term3StartDate = editTerm3StartDate.getText().toString();
-        String term3EndDate = editTerm3EndDate.getText().toString();
+        String term1StartDate = termDatesPicker(editTerm1StartDate);
+        String term1EndDate = termDatesPicker(editTerm1EndDate);
+        String term2StartDate = termDatesPicker(editTerm2StartDate);
+        String term2EndDate = termDatesPicker(editTerm2EndDate);
+        String term3StartDate = termDatesPicker(editTerm3StartDate);
+        String term3EndDate = termDatesPicker(editTerm3EndDate);
     }
 
     public String termDatesPicker (EditText editText) {
