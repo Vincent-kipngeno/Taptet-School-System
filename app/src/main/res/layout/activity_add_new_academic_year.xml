@@ -138,7 +138,11 @@ tools:context=".ui.AddNewAcademicYearActivity">
                         android:ems="10"
                         android:textColorHint="#1C99CF"
                         android:inputType="date"
-                        android:tag="date" />
+                        android:tag="date"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -161,7 +165,11 @@ tools:context=".ui.AddNewAcademicYearActivity">
                         android:ems="10"
                         android:textColorHint="#1C99CF"
                         android:inputType="date"
-                        android:tag="date" />
+                        android:tag="date"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -201,7 +209,11 @@ tools:context=".ui.AddNewAcademicYearActivity">
                         android:ems="10"
                         android:textColorHint="#1C99CF"
                         android:inputType="date"
-                        android:tag="date" />
+                        android:tag="date"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -224,7 +236,11 @@ tools:context=".ui.AddNewAcademicYearActivity">
                         android:ems="10"
                         android:textColorHint="#1C99CF"
                         android:inputType="date"
-                        android:tag="date" />
+                        android:tag="date"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -264,7 +280,11 @@ tools:context=".ui.AddNewAcademicYearActivity">
                         android:ems="10"
                         android:textColorHint="#1C99CF"
                         android:inputType="date"
-                        android:tag="date" />
+                        android:tag="date"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -287,7 +307,11 @@ tools:context=".ui.AddNewAcademicYearActivity">
                         android:ems="10"
                         android:textColorHint="#1C99CF"
                         android:inputType="date"
-                        android:tag="date" />
+                        android:tag="date"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
