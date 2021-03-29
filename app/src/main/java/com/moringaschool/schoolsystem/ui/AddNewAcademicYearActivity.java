@@ -23,6 +23,7 @@ import static com.moringaschool.schoolsystem.Constants.BOARDER;
 import static com.moringaschool.schoolsystem.Constants.Class_1;
 import static com.moringaschool.schoolsystem.Constants.Class_2;
 import static com.moringaschool.schoolsystem.Constants.Class_3;
+import static com.moringaschool.schoolsystem.Constants.Class_4;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_1;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_1;
@@ -209,6 +210,9 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_3+"/"+TERM_1, class3BoardersTerm1Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_3+"/"+TERM_2, class3BoardersTerm2Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_3+"/"+TERM_3, class3BoardersTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_4+"/"+TERM_1, class4BoardersTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_4+"/"+TERM_2, class4BoardersTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_4+"/"+TERM_3, class4BoardersTerm3Fee);
         }
 
     }
