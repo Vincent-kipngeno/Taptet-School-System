@@ -150,6 +150,17 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
 
     }
 
+    public boolean validInputs (String academicYear, String term1StartDate, String term1EndDate, String term2StartDate, String term2EndDate, String term3StartDate, String term3EndDate, String pp1BoardersTerm1Fee, String pp1BoardersTerm2Fee, String pp2BoardersTerm1Fee, String pp2BoardersTerm2Fee, String class1BoardersTerm1Fee, String class1BoardersTerm2Fee, String class2BoardersTerm1Fee, String class2BoardersTerm2Fee, String class3BoardersTerm1Fee, String class3BoardersTerm2Fee, String class4BoardersTerm1Fee, String class4BoardersTerm2Fee, String class5BoardersTerm1Fee, String class5BoardersTerm2Fee, String class6BoardersTerm1Fee, String class6BoardersTerm2Fee, String class7BoardersTerm1Fee, String class7BoardersTerm2Fee, String class8BoardersTerm1Fee, String class8BoardersTerm2Fee, String pp1DaysTerm1Fee, String pp1DaysTerm2Fee, String pp2DaysTerm1Fee, String pp2DaysTerm2Fee, String class1DaysTerm1Fee, String class1DaysTerm2Fee, String class2DaysTerm1Fee, String class2DaysTerm2Fee, String class3DaysTerm1Fee, String class3DaysTerm2Fee, String class4DaysTerm1Fee, String class4DaysTerm2Fee, String class5DaysTerm1Fee, String class5DaysTerm2Fee, String class6DaysTerm1Fee, String class6DaysTerm2Fee, String class7DaysTerm1Fee, String class7DaysTerm2Fee, String class8DaysTerm1Fee, String class8DaysTerm2Fee) {
+        if (academicYear == null || academicYear.trim().isEmpty()) {
+            editAcademicYear.setError("This field is required");
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public String termDatesPicker (EditText editText) {
         final Calendar myCalendar = Calendar.getInstance();
 
