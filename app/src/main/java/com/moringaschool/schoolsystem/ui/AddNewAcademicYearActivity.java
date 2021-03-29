@@ -19,6 +19,10 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.moringaschool.schoolsystem.Constants.TERM_1;
+import static com.moringaschool.schoolsystem.Constants.TERM_2;
+import static com.moringaschool.schoolsystem.Constants.TERM_3;
+
 public class AddNewAcademicYearActivity extends AppCompatActivity {
     @BindView(R.id.edit_academic_year) EditText editAcademicYear;
     @BindView(R.id.edit_term1_StartDate) EditText editTerm1StartDate;
@@ -177,7 +181,12 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
         }
         else {
             Map<String, Object> academicYearDetails = new HashMap<>();
-
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_1+"startDate", term1StartDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_1+"endDate", term1EndDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_2+"startDate", term2StartDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_2+"endDate", term2EndDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_3+"startDate", term3StartDate);
+            academicYearDetails.put(academicYear+"/TermDates/"+TERM_3+"endDate", term3EndDate);
 
         }
 

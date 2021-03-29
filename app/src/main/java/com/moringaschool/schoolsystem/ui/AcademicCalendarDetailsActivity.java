@@ -39,6 +39,7 @@ import butterknife.ButterKnife;
 
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 import static com.moringaschool.schoolsystem.Constants.ALUMNI;
+import static com.moringaschool.schoolsystem.Constants.BOARDER;
 import static com.moringaschool.schoolsystem.Constants.Class_1;
 import static com.moringaschool.schoolsystem.Constants.Class_2;
 import static com.moringaschool.schoolsystem.Constants.Class_3;
@@ -47,6 +48,7 @@ import static com.moringaschool.schoolsystem.Constants.Class_5;
 import static com.moringaschool.schoolsystem.Constants.Class_6;
 import static com.moringaschool.schoolsystem.Constants.Class_7;
 import static com.moringaschool.schoolsystem.Constants.Class_8;
+import static com.moringaschool.schoolsystem.Constants.DAY;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_1;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_1;
@@ -493,12 +495,12 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                                                         public void onComplete(@NonNull Task<Void> task) {
                                                                             if (task.isSuccessful()) {
 
-                                                                                DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Boarders").child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child(BOARDER).child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                                     @Override
                                                                                     public void onComplete(@NonNull Task<Void> task) {
                                                                                         if (task.isSuccessful()) {
 
-                                                                                            DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Day").child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                            DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child(DAY).child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                                                 @Override
                                                                                                 public void onComplete(@NonNull Task<Void> task) {
                                                                                                     if (task.isSuccessful()) {
