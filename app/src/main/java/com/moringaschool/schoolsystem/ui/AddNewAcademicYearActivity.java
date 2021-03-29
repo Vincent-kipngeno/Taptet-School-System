@@ -98,4 +98,8 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
         String term3StartDate = editTerm3StartDate.getText().toString();
         String term3EndDate = editTerm3EndDate.getText().toString();
     }
+
+    public void termDatesPicker (EditText editText) {
+
+    }
 }
