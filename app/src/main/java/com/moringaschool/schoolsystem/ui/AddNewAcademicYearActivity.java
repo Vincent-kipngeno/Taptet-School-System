@@ -28,6 +28,7 @@ import static com.moringaschool.schoolsystem.Constants.Class_5;
 import static com.moringaschool.schoolsystem.Constants.Class_6;
 import static com.moringaschool.schoolsystem.Constants.Class_7;
 import static com.moringaschool.schoolsystem.Constants.Class_8;
+import static com.moringaschool.schoolsystem.Constants.DAY;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_1;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_1;
@@ -229,6 +230,37 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_8+"/"+TERM_1, class8BoardersTerm1Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_8+"/"+TERM_2, class8BoardersTerm2Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_8+"/"+TERM_3, class8BoardersTerm3Fee);
+
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+PRE_PR1_1+"/"+TERM_1, pp1DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+PRE_PR1_1+"/"+TERM_2, pp1DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+PRE_PR1_1+"/"+TERM_3, pp1DaysTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+PRE_PR1_2+"/"+TERM_1, pp2DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+PRE_PR1_2+"/"+TERM_2, pp2DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+PRE_PR1_2+"/"+TERM_3, pp2DaysTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_1+"/"+TERM_1, class1DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_1+"/"+TERM_2, class1DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_1+"/"+TERM_3, class1DaysTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_2+"/"+TERM_1, class2DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_2+"/"+TERM_2, class2DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_2+"/"+TERM_3, class2DaysTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_3+"/"+TERM_1, class3DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_3+"/"+TERM_2, class3DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_3+"/"+TERM_3, class3DaysTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_4+"/"+TERM_1, class4DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_4+"/"+TERM_2, class4DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_4+"/"+TERM_3, class4DaysTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_5+"/"+TERM_1, class5DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_5+"/"+TERM_2, class5DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_5+"/"+TERM_3, class5DaysTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_6+"/"+TERM_1, class6DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_6+"/"+TERM_2, class6DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_6+"/"+TERM_3, class6DaysTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_7+"/"+TERM_1, class7DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_7+"/"+TERM_2, class7DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_7+"/"+TERM_3, class7DaysTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_8+"/"+TERM_1, class8DaysTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_8+"/"+TERM_2, class8DaysTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+DAY+"/"+Class_8+"/"+TERM_3, class8DaysTerm3Fee);
         }
 
     }
