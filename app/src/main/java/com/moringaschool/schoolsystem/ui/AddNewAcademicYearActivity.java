@@ -111,8 +111,12 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
         String pp2BoardersTerm2Fee = editPp2BoardersTerm2Fee.getText().toString();
         String class1BoardersTerm1Fee = editClass1BoardersTerm1Fee.getText().toString();
         String class1BoardersTerm2Fee = editClass1BoardersTerm2Fee.getText().toString();
-        String class2BoardersTerm1Fee = editClass1BoardersTerm1Fee.getText().toString();
-        String class2BoardersTerm2Fee = editClass1BoardersTerm2Fee.getText().toString();
+        String class2BoardersTerm1Fee = editClass2BoardersTerm1Fee.getText().toString();
+        String class2BoardersTerm2Fee = editClass2BoardersTerm2Fee.getText().toString();
+        String class3BoardersTerm1Fee = editClass3BoardersTerm1Fee.getText().toString();
+        String class3BoardersTerm2Fee = editClass3BoardersTerm2Fee.getText().toString();
+        String class4BoardersTerm1Fee = editClass4BoardersTerm1Fee.getText().toString();
+        String class4BoardersTerm2Fee = editClass4BoardersTerm2Fee.getText().toString();
     }
 
     public String termDatesPicker (EditText editText) {
