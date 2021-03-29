@@ -24,6 +24,10 @@ import static com.moringaschool.schoolsystem.Constants.Class_1;
 import static com.moringaschool.schoolsystem.Constants.Class_2;
 import static com.moringaschool.schoolsystem.Constants.Class_3;
 import static com.moringaschool.schoolsystem.Constants.Class_4;
+import static com.moringaschool.schoolsystem.Constants.Class_5;
+import static com.moringaschool.schoolsystem.Constants.Class_6;
+import static com.moringaschool.schoolsystem.Constants.Class_7;
+import static com.moringaschool.schoolsystem.Constants.Class_8;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_1;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_1;
@@ -213,6 +217,18 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_4+"/"+TERM_1, class4BoardersTerm1Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_4+"/"+TERM_2, class4BoardersTerm2Fee);
             academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_4+"/"+TERM_3, class4BoardersTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_5+"/"+TERM_1, class5BoardersTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_5+"/"+TERM_2, class5BoardersTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_5+"/"+TERM_3, class5BoardersTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_6+"/"+TERM_1, class6BoardersTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_6+"/"+TERM_2, class6BoardersTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_6+"/"+TERM_3, class6BoardersTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_7+"/"+TERM_1, class7BoardersTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_7+"/"+TERM_2, class7BoardersTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_7+"/"+TERM_3, class7BoardersTerm3Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_8+"/"+TERM_1, class8BoardersTerm1Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_8+"/"+TERM_2, class8BoardersTerm2Fee);
+            academicYearDetails.put(academicYear+"/FeeStructure/"+BOARDER+"/"+Class_8+"/"+TERM_3, class8BoardersTerm3Fee);
         }
 
     }
