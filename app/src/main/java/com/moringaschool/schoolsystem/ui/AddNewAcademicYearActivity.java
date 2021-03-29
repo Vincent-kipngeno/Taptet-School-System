@@ -125,6 +125,29 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
         String class7BoardersTerm2Fee = editClass7BoardersTerm2Fee.getText().toString();
         String class8BoardersTerm1Fee = editClass8BoardersTerm1Fee.getText().toString();
         String class8BoardersTerm2Fee = editClass8BoardersTerm2Fee.getText().toString();
+
+        String pp1DaysTerm1Fee = editPp1DaysTerm1Fee.getText().toString();
+        String pp1DaysTerm2Fee = editPp1DaysTerm2Fee.getText().toString();
+        String pp2DaysTerm1Fee = editPp2DaysTerm1Fee.getText().toString();
+        String pp2DaysTerm2Fee = editPp2DaysTerm2Fee.getText().toString();
+        String class1DaysTerm1Fee = editClass1DaysTerm1Fee.getText().toString();
+        String class1DaysTerm2Fee = editClass1DaysTerm2Fee.getText().toString();
+        String class2DaysTerm1Fee = editClass2DaysTerm1Fee.getText().toString();
+        String class2DaysTerm2Fee = editClass2DaysTerm2Fee.getText().toString();
+        String class3DaysTerm1Fee = editClass3DaysTerm1Fee.getText().toString();
+        String class3DaysTerm2Fee = editClass3DaysTerm2Fee.getText().toString();
+        String class4DaysTerm1Fee = editClass4DaysTerm1Fee.getText().toString();
+        String class4DaysTerm2Fee = editClass4DaysTerm2Fee.getText().toString();
+        String class5DaysTerm1Fee = editClass5DaysTerm1Fee.getText().toString();
+        String class5DaysTerm2Fee = editClass5DaysTerm2Fee.getText().toString();
+        String class6DaysTerm1Fee = editClass6DaysTerm1Fee.getText().toString();
+        String class6DaysTerm2Fee = editClass6DaysTerm2Fee.getText().toString();
+        String class7DaysTerm1Fee = editClass7DaysTerm1Fee.getText().toString();
+        String class7DaysTerm2Fee = editClass7DaysTerm2Fee.getText().toString();
+        String class8DaysTerm1Fee = editClass8DaysTerm1Fee.getText().toString();
+        String class8DaysTerm2Fee = editClass8DaysTerm2Fee.getText().toString();
+
+
     }
 
     public String termDatesPicker (EditText editText) {
