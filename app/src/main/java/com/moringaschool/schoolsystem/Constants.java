@@ -16,5 +16,6 @@ public class Constants {
     public static final String PRE_PR1_1 = "Pre-Primary 1";
     public static final String PRE_PR1_2 = "Pre-Primary 2";
     public static final String ALUMNI = "Alumni";
-
+    public static final String BOARDER = "Boarder";
+    public static final String DAY = "Day";
 }
