@@ -163,6 +163,22 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             editTerm1EndDate.setError("This field is required");
             return false;
         }
+        else if (term2StartDate == null || term2StartDate.trim().isEmpty()){
+            editTerm2StartDate.setError("This field is required");
+            return false;
+        }
+        else if (term2EndDate == null || term2EndDate.trim().isEmpty()){
+            editTerm2EndDate.setError("This field is required");
+            return false;
+        }
+        else if (term3StartDate == null || term3StartDate.trim().isEmpty()){
+            editTerm3StartDate.setError("This field is required");
+            return false;
+        }
+        else if (term3EndDate == null || term3EndDate.trim().isEmpty()){
+            editTerm3EndDate.setError("This field is required");
+            return false;
+        }
         else
         {
             return true;
