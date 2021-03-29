@@ -10,7 +10,9 @@ import android.widget.EditText;
 
 import com.moringaschool.schoolsystem.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -112,7 +114,7 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            updateLabel();
+            updateLabel(editText, myCalendar);
         };
 
         editText.setOnClickListener(new View.OnClickListener() {
@@ -125,5 +127,12 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+    }
+
+    private void updateLabel(EditText editText, Calendar myCalendar) {
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        editText.setText(sdf.format(myCalendar.getTime()));
     }
 }
