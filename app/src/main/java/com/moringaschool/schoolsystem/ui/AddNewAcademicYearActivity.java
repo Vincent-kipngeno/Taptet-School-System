@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
 
 import java.text.SimpleDateFormat;
@@ -106,12 +108,16 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
     @BindView(R.id.edit_class8_days_term2_fee) EditText editClass8DaysTerm2Fee;
     @BindView(R.id.edit_class8_days_term3_fee) EditText editClass8DaysTerm3Fee;
 
+    private DatabaseReference AcademicYearsRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_academic_year);
 
         ButterKnife.bind(this);
+
+        AcademicYearsRef = FirebaseDatabase.getInstance().getReference().child("Years").child("AcademicYears");
     }
 
     public void createYearWithTermDatesAndFeeStructures (){
@@ -192,6 +198,8 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             validInputs (academicYear, term1StartDate, term1EndDate, term2StartDate, term2EndDate, term3StartDate, term3EndDate, pp1BoardersTerm1Fee, pp1BoardersTerm2Fee, pp1BoardersTerm3Fee, pp2BoardersTerm1Fee, pp2BoardersTerm2Fee, pp2BoardersTerm3Fee, class1BoardersTerm1Fee, class1BoardersTerm2Fee, class1BoardersTerm3Fee, class2BoardersTerm1Fee, class2BoardersTerm2Fee, class2BoardersTerm3Fee, class3BoardersTerm1Fee, class3BoardersTerm2Fee, class3BoardersTerm3Fee, class4BoardersTerm1Fee, class4BoardersTerm2Fee, class4BoardersTerm3Fee, class5BoardersTerm1Fee, class5BoardersTerm2Fee, class5BoardersTerm3Fee, class6BoardersTerm1Fee, class6BoardersTerm2Fee, class6BoardersTerm3Fee, class7BoardersTerm1Fee, class7BoardersTerm2Fee, class7BoardersTerm3Fee, class8BoardersTerm1Fee, class8BoardersTerm2Fee, class8BoardersTerm3Fee, pp1DaysTerm1Fee, pp1DaysTerm2Fee, pp1DaysTerm3Fee, pp2DaysTerm1Fee, pp2DaysTerm2Fee, pp2DaysTerm3Fee, class1DaysTerm1Fee, class1DaysTerm2Fee, class1DaysTerm3Fee, class2DaysTerm1Fee, class2DaysTerm2Fee, class2DaysTerm3Fee, class3DaysTerm1Fee, class3DaysTerm2Fee, class3DaysTerm3Fee, class4DaysTerm1Fee, class4DaysTerm2Fee, class4DaysTerm3Fee, class5DaysTerm1Fee, class5DaysTerm2Fee, class5DaysTerm3Fee, class6DaysTerm1Fee, class6DaysTerm2Fee, class6DaysTerm3Fee, class7DaysTerm1Fee, class7DaysTerm2Fee, class7DaysTerm3Fee, class8DaysTerm1Fee, class8DaysTerm2Fee, class8DaysTerm3Fee);
         }
         else {
+            DatabaseReference academicYearPushId = AcademicYearsRef.push();
+
             Map<String, Object> academicYearDetails = new HashMap<>();
             academicYearDetails.put(academicYear+"/TermDates/"+TERM_1+"/startDate", term1StartDate);
             academicYearDetails.put(academicYear+"/TermDates/"+TERM_1+"/endDate", term1EndDate);
