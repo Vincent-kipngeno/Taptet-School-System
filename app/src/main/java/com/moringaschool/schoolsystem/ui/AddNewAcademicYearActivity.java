@@ -109,7 +109,7 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
     @BindView(R.id.edit_class8_days_term2_fee) EditText editClass8DaysTerm2Fee;
     @BindView(R.id.edit_class8_days_term3_fee) EditText editClass8DaysTerm3Fee;
 
-    private DatabaseReference AcademicYearsRef;
+    private DatabaseReference AcademicYearsRef,NewAcademicYearRef,YearDetailsRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +118,10 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        AcademicYearsRef = FirebaseDatabase.getInstance().getReference().child("Years").child("AcademicYears");
+        YearDetailsRef = FirebaseDatabase.getInstance().getReference().child("Years");
+
+        AcademicYearsRef = YearDetailsRef.child("AcademicYears");
+        NewAcademicYearRef = YearDetailsRef.child("NewAcademicYear");
     }
 
     public void createYearWithTermDatesAndFeeStructures (){
@@ -273,6 +276,8 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             academicYearDetails.put(academicYearPushId+"/FeeStructure/"+DAY+"/"+Class_8+"/"+TERM_1, class8DaysTerm1Fee);
             academicYearDetails.put(academicYearPushId+"/FeeStructure/"+DAY+"/"+Class_8+"/"+TERM_2, class8DaysTerm2Fee);
             academicYearDetails.put(academicYearPushId+"/FeeStructure/"+DAY+"/"+Class_8+"/"+TERM_3, class8DaysTerm3Fee);
+
+
         }
 
     }
