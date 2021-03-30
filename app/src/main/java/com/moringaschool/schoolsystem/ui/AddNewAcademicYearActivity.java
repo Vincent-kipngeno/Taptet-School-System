@@ -277,6 +277,10 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
             academicYearDetails.put(academicYearPushId+"/FeeStructure/"+DAY+"/"+Class_8+"/"+TERM_2, class8DaysTerm2Fee);
             academicYearDetails.put(academicYearPushId+"/FeeStructure/"+DAY+"/"+Class_8+"/"+TERM_3, class8DaysTerm3Fee);
 
+            Map<String, Object> newDates = new HashMap<>();
+
+            newDates.put("AcademicYearId", academicYearPushId);
+            newDates.put("term", TERM_1);
 
         }
 
