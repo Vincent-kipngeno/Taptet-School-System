@@ -1,5 +1,6 @@
 package com.moringaschool.schoolsystem.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
@@ -109,7 +112,7 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
     @BindView(R.id.edit_class8_days_term2_fee) EditText editClass8DaysTerm2Fee;
     @BindView(R.id.edit_class8_days_term3_fee) EditText editClass8DaysTerm3Fee;
 
-    private DatabaseReference AcademicYearsRef,NewAcademicYearRef,YearDetailsRef;
+    private DatabaseReference AcademicYearsRef,NewAcademicYearRef,YearDetailsRef, YearFeeStructureRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +125,7 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
 
         AcademicYearsRef = YearDetailsRef.child("AcademicYears");
         NewAcademicYearRef = YearDetailsRef.child("NewAcademicYear");
+        YearFeeStructureRef = YearDetailsRef.child("YearDetails");
     }
 
     public void createYearWithTermDatesAndFeeStructures (){
@@ -281,6 +285,13 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
 
             newDates.put("AcademicYearId", academicYearPushId);
             newDates.put("term", TERM_1);
+
+            NewAcademicYearRef.updateChildren(newDates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    YearFeeStructureRef.updateChildren(academicYearDetails);
+                }
+            });
 
         }
 
