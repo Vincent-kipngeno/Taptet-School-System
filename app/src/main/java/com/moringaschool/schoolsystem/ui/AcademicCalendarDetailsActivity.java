@@ -336,38 +336,6 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                             mEndTerm3.setVisibility(View.VISIBLE);
                         }
 
-                        //Start Buttons visibility
-                        PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot)
-                            {
-                                if (dataSnapshot.exists())
-                                {
-                                    String termStart = dataSnapshot.child("term").getValue().toString();
-
-                                    if (termStart.equals(TERM_3)) {
-                                        mStartTerm1.setVisibility(View.VISIBLE);
-                                    }
-                                    if (termStart.equals(TERM_1))
-                                    {
-                                        mStartTerm2.setVisibility(View.VISIBLE);
-                                    }
-                                    if (termStart.equals(TERM_2))
-                                    {
-                                        mStartTerm3.setVisibility(View.VISIBLE);
-                                    }
-                                }
-                                else
-                                {
-                                    mStartTerm1.setVisibility(View.VISIBLE);
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
                     }
 
                 }
@@ -384,6 +352,37 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                 if ( yearId.equals(CurrentAcademicYearId)) {
                                     mStartTerm1.setVisibility(View.VISIBLE);
                                 }
+                            }
+                            else
+                            {
+                                //Start Buttons visibility
+                                PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot)
+                                    {
+                                        if (dataSnapshot.exists())
+                                        {
+                                            String termStart = dataSnapshot.child("term").getValue().toString();
+                                            String yearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+
+                                            if (yearId.equals(CurrentAcademicYearId)) {
+                                                if (termStart.equals(TERM_1))
+                                                {
+                                                    mStartTerm2.setVisibility(View.VISIBLE);
+                                                }
+                                                if (termStart.equals(TERM_2))
+                                                {
+                                                    mStartTerm3.setVisibility(View.VISIBLE);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
                             }
                         }
 
