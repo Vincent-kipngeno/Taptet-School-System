@@ -9,11 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.AcademicYear;
 
@@ -290,10 +294,25 @@ public class AddNewAcademicYearActivity extends AppCompatActivity implements Vie
             newDates.put("AcademicYearId", academicYearPushId);
             newDates.put("term", TERM_1);
 
-            NewAcademicYearRef.updateChildren(newDates).addOnCompleteListener(new OnCompleteListener<Void>() {
+            NewAcademicYearRef.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    YearFeeStructureRef.updateChildren(academicYearDetails);
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        Toast.makeText(AddNewAcademicYearActivity.this, "Sorry there is a new year already, You can't create a new one before the current one ends", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        NewAcademicYearRef.updateChildren(newDates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                YearFeeStructureRef.updateChildren(academicYearDetails);
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
                 }
             });
 
