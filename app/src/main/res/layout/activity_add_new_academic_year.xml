@@ -2304,6 +2304,21 @@ tools:context=".ui.AddNewAcademicYearActivity">
 
     </HorizontalScrollView>
 
+    <Button
+        android:id="@+id/submit_createAcademicYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/submit_button"
+        android:padding="10dp"
+        android:text="@string/submit"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
 </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
