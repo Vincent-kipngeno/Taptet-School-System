@@ -128,8 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button_start1"
@@ -143,7 +142,7 @@
                     android:text="Start"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
 
                 <Button
                     android:id="@+id/button_end1"
@@ -157,7 +156,7 @@
                     android:text="End"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
@@ -274,7 +273,7 @@
                     android:text="Start"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
 
                 <Button
                     android:id="@+id/button_end2"
@@ -288,7 +287,7 @@
                     android:text="End"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
             </LinearLayout>
         </LinearLayout>
 
@@ -404,7 +403,7 @@
                     android:text="Start"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
 
                 <Button
                     android:id="@+id/button_end3"
@@ -418,8 +417,18 @@
                     android:text="End"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
             </LinearLayout>
+            <Button
+                android:id="@+id/button_startNewYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/submit_button"
+                android:gravity="center"
+                android:text="Add New Year"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <HorizontalScrollView
