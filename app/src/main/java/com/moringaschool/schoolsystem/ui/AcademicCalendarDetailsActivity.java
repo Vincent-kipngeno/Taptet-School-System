@@ -182,6 +182,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     public void onClick(View view) {
 
         if (view == mStartTerm1) {
+            String currentAcademicTerm = TERM_1;
             PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot)
@@ -190,11 +191,17 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                     {
                         String previousAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
                         String previousAcademicTerm = dataSnapshot.child("Term").getValue().toString();
-                        String currentAcademicTerm = TERM_1;
 
                         updateCurrentYear(currentAcademicTerm);
                         transferCurrentStudentsToNextTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                         transferCurrentStudentsToNextClass(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                    }
+                    else{
+                        String previousAcademicYearId = "none";
+                        String previousAcademicTerm = "none";
+
+                        updateCurrentYear(currentAcademicTerm);
                         createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                     }
                 }
