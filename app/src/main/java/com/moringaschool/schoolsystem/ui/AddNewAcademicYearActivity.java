@@ -128,6 +128,8 @@ public class AddNewAcademicYearActivity extends AppCompatActivity implements Vie
         AcademicYearsRef = YearDetailsRef.child("AcademicYears");
         NewAcademicYearRef = YearDetailsRef.child("NewAcademicYear");
         YearFeeStructureRef = YearDetailsRef.child("YearDetails");
+
+        mEditSubmitButton.setOnClickListener(this);
     }
 
     public void createYearWithTermDatesAndFeeStructures (){
@@ -608,6 +610,8 @@ public class AddNewAcademicYearActivity extends AppCompatActivity implements Vie
 
     @Override
     public void onClick(View v) {
-
+        if (v==mEditSubmitButton) {
+            createYearWithTermDatesAndFeeStructures();
+        }
     }
 }
