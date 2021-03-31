@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -41,7 +42,8 @@ import static com.moringaschool.schoolsystem.Constants.TERM_1;
 import static com.moringaschool.schoolsystem.Constants.TERM_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_3;
 
-public class AddNewAcademicYearActivity extends AppCompatActivity {
+public class AddNewAcademicYearActivity extends AppCompatActivity implements View.OnClickListener {
+    @BindView(R.id.submit_createAcademicYear) Button mEditSubmitButton;
     @BindView(R.id.edit_academic_year) EditText editAcademicYear;
     @BindView(R.id.edit_term1_StartDate) EditText editTerm1StartDate;
     @BindView(R.id.edit_term1_EndDate) EditText editTerm1EndDate;
@@ -602,5 +604,10 @@ public class AddNewAcademicYearActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         editText.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
