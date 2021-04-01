@@ -303,7 +303,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         }
 
         if (view==mStartNewYear) {
-            Intent newYearIntent = new Intent(AcademicCalendarDetailsActivity.this, StudentDetailsActivity.class);
+            Intent newYearIntent = new Intent(AcademicCalendarDetailsActivity.this, AddNewAcademicYearActivity.class);
             startActivity(newYearIntent);
         }
 

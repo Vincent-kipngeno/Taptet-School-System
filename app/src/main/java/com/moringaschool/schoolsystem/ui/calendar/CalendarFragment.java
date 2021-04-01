@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.AcademicYear;
+import com.moringaschool.schoolsystem.ui.*;
 import com.moringaschool.schoolsystem.ui.AcademicCalendarDetailsActivity;
 
 import butterknife.BindView;
@@ -147,7 +148,10 @@ public class CalendarFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
+        if (v==addYear) {
+            Intent newYearIntent = new Intent(getContext(), AddNewAcademicYearActivity.class);
+            startActivity(newYearIntent);
+        }
     }
 
     public static class  YearsViewHolder extends RecyclerView.ViewHolder
