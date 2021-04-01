@@ -56,6 +56,7 @@ import static com.moringaschool.schoolsystem.Constants.TERM_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_3;
 
 public class AcademicCalendarDetailsActivity extends AppCompatActivity implements View.OnClickListener{
+    @BindView(R.id.button_startNewYear) Button mStartNewYear;
     @BindView(R.id.editTerm1_startDate) TextView mStartDate1;
     @BindView(R.id.editTerm1_endDate) TextView mEndDate1;
     @BindView(R.id.editTerm2_startDate) TextView mStartDate2;
@@ -119,6 +120,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         mEndTerm2.setOnClickListener(this);
         mStartTerm3.setOnClickListener(this);
         mEndTerm3.setOnClickListener(this);
+        mStartNewYear.setOnClickListener(this);
     }
 
     public void fillTermDates() {
@@ -288,6 +290,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                         moveTermToPreviousYearSectionInDB(currentAcademicTerm);
                     }
                     else {
+                        mStartNewYear.setVisibility(View.VISIBLE);
                         Toast.makeText(AcademicCalendarDetailsActivity.this, "Kindly add a new year first before trying to end the current academic year", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -297,6 +300,11 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
                 }
             });
+        }
+
+        if (view==mStartNewYear) {
+            Intent newYearIntent = new Intent(AcademicCalendarDetailsActivity.this, StudentDetailsActivity.class);
+            startActivity(newYearIntent);
         }
 
     }
