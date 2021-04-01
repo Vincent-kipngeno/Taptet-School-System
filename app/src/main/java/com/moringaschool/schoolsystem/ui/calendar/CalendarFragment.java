@@ -33,7 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class CalendarFragment extends Fragment {
+public class CalendarFragment extends Fragment implements View.OnClickListener {
 
     private CalendarViewModel calendarViewModel;
 
@@ -57,6 +57,8 @@ public class CalendarFragment extends Fragment {
         AcademicYearsRef = FirebaseDatabase.getInstance().getReference().child("Years").child("AcademicYears");
 
         yearsList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        addYear.setOnClickListener(this);
 
         checkIfYearsExist();
 
@@ -141,6 +143,11 @@ public class CalendarFragment extends Fragment {
 
         yearsList.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     public static class  YearsViewHolder extends RecyclerView.ViewHolder
