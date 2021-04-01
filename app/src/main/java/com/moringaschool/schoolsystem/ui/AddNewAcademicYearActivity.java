@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -304,7 +305,19 @@ public class AddNewAcademicYearActivity extends AppCompatActivity implements Vie
                         NewAcademicYearRef.updateChildren(newDates).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                YearFeeStructureRef.updateChildren(academicYearDetails);
+                                if (task.isSuccessful()) {
+                                    YearFeeStructureRef.updateChildren(academicYearDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Intent endNewYearActivity = new Intent(AddNewAcademicYearActivity.this, MainActivity.class);
+                                                endNewYearActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(endNewYearActivity);
+                                                finish();
+                                            }
+                                        }
+                                    });
+                                }
                             }
                         });
                     }
