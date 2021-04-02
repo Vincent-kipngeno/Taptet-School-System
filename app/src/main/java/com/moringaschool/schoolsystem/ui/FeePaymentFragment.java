@@ -78,4 +78,8 @@ public class FeePaymentFragment extends Fragment {
             return true;
         }
     }
+
+    public void recordFeePayment () {
+
+    }
 }
