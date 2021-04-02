@@ -9,11 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.PaymentDetails;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +37,7 @@ public class FeePaymentFragment extends Fragment {
     private static final String ARG_STUDENT_UID = "param1";
 
     private String mStudentUid;
-    private DatabaseReference StudentFeePaymentRef, Payments, AllPaymentsRef, SchoolPaymentsRef, ClassPaymentsRef, DatabaseRef;
+    private DatabaseReference StudentFeePaymentRef, Payments, AllPaymentsRef, SchoolPaymentsRef, ClassPaymentsRef, DatabaseRef, YearDetailsRef, UsersRef, currentAcademicYearRef;
 
     public FeePaymentFragment() {
         // Required empty public constructor
@@ -67,6 +74,9 @@ public class FeePaymentFragment extends Fragment {
         AllPaymentsRef = Payments.child("AllPayments");
         SchoolPaymentsRef = Payments.child("SchoolPayments");
         ClassPaymentsRef = Payments.child("ClassFeePayments");
+        YearDetailsRef = DatabaseRef.child("Years");
+        UsersRef = DatabaseRef.child("Users");
+        currentAcademicYearRef = YearDetailsRef.child("CurrentAcademicYear");
 
         return view;
     }
@@ -103,5 +113,32 @@ public class FeePaymentFragment extends Fragment {
         String paymentPushId = paymentRef.getKey();
 
         AllPaymentsRef.child(paymentPushId).setValue(paymentDetails);
+
+        currentAcademicYearRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.exists())
+                {
+                    String currentAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+                    String currentAcademicTerm = dataSnapshot.child("Term").getValue().toString();
+
+                    Map<String, Object> model = new HashMap<>();
+                    model.put(currentAcademicTerm+"/Payments/"+paymentPushId, paymentDetails.getAmount());
+
+                    SchoolPaymentsRef.child(currentAcademicYearId).updateChildren(model);
+                    StudentFeePaymentRef.child(currentAcademicYearId).updateChildren(model);
+
+                }
+                else {
+                    Toast.makeText(getContext(), "Kindly Create and Start academic year First", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
