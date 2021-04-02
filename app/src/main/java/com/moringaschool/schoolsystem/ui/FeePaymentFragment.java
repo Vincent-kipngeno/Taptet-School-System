@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.PaymentDetails;
 
@@ -28,6 +30,7 @@ public class FeePaymentFragment extends Fragment {
     private static final String ARG_STUDENT_UID = "param1";
 
     private String mStudentUid;
+    private DatabaseReference StudentFeePaymentRef, Payments, AllPaymentsRef, SchoolPaymentsRef, ClassPaymentsRef, DatabaseRef;
 
     public FeePaymentFragment() {
         // Required empty public constructor
@@ -57,6 +60,13 @@ public class FeePaymentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fee_payment, container, false);
 
         ButterKnife.bind(this, view);
+        DatabaseRef = FirebaseDatabase.getInstance().getReference();
+
+        Payments = DatabaseRef.child("Payments");
+        StudentFeePaymentRef = Payments.child("StudentFeePayments");
+        AllPaymentsRef = Payments.child("AllPayments");
+        SchoolPaymentsRef = Payments.child("SchoolPayments");
+        ClassPaymentsRef = Payments.child("ClassFeePayments");
 
         return view;
     }
