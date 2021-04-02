@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 
 import static java.lang.System.currentTimeMillis;
 
-public class FeePaymentFragment extends Fragment {
+public class FeePaymentFragment extends Fragment implements View.OnClickListener {
 
     @BindView(R.id.edit_amount) EditText mEditAmount;
     @BindView(R.id.edit_paidBy) EditText mEditPayer;
@@ -140,5 +140,10 @@ public class FeePaymentFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
