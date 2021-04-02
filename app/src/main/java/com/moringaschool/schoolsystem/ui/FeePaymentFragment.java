@@ -78,6 +78,8 @@ public class FeePaymentFragment extends Fragment implements View.OnClickListener
         UsersRef = DatabaseRef.child("Users");
         currentAcademicYearRef = YearDetailsRef.child("CurrentAcademicYear");
 
+        mSubmitButton.setOnClickListener(this);
+
         return view;
     }
 
@@ -109,41 +111,50 @@ public class FeePaymentFragment extends Fragment implements View.OnClickListener
 
         PaymentDetails paymentDetails = new PaymentDetails(currentTimeMillis(), amount, "Taptet School", mStudentUid, payer, "Cash", "Fees", paymentSummary);
 
-        DatabaseReference paymentRef = AllPaymentsRef.push();
-        String paymentPushId = paymentRef.getKey();
+        boolean isValidInputs = validateInputs(amount, payer, paymentSummary);
 
-        AllPaymentsRef.child(paymentPushId).setValue(paymentDetails);
+        if (!isValidInputs) {
+            validateInputs(amount, payer, paymentSummary);
+        }
+        else {
+            DatabaseReference paymentRef = AllPaymentsRef.push();
+            String paymentPushId = paymentRef.getKey();
 
-        currentAcademicYearRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.exists())
+            AllPaymentsRef.child(paymentPushId).setValue(paymentDetails);
+
+            currentAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
                 {
-                    String currentAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
-                    String currentAcademicTerm = dataSnapshot.child("Term").getValue().toString();
+                    if (dataSnapshot.exists())
+                    {
+                        String currentAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+                        String currentAcademicTerm = dataSnapshot.child("Term").getValue().toString();
 
-                    Map<String, Object> model = new HashMap<>();
-                    model.put(currentAcademicTerm+"/Payments/"+paymentPushId, paymentDetails.getAmount());
+                        Map<String, Object> model = new HashMap<>();
+                        model.put(currentAcademicTerm+"/Payments/"+paymentPushId, paymentDetails.getAmount());
 
-                    SchoolPaymentsRef.child(currentAcademicYearId).updateChildren(model);
-                    StudentFeePaymentRef.child(currentAcademicYearId).updateChildren(model);
+                        SchoolPaymentsRef.child(currentAcademicYearId).updateChildren(model);
+                        StudentFeePaymentRef.child(currentAcademicYearId).updateChildren(model);
+
+                    }
+                    else {
+                        Toast.makeText(getContext(), "Kindly Create and Start academic year First", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
                 }
-                else {
-                    Toast.makeText(getContext(), "Kindly Create and Start academic year First", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+            });
+        }
     }
 
     @Override
     public void onClick(View v) {
-
+        if (v==mSubmitButton) {
+            recordFeePayment();
+        }
     }
 }
