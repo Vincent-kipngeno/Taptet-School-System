@@ -7,10 +7,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.moringaschool.schoolsystem.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class FeePaymentFragment extends Fragment {
+
+    @BindView(R.id.edit_amount) EditText mEditAmount;
+    @BindView(R.id.edit_paidBy) EditText mEditPayer;
+    @BindView(R.id.edit_summary) EditText mEditPaymentSummary;
+    @BindView(R.id.submit_feePayment) Button mSubmitButton;
 
     private static final String ARG_STUDENT_UID = "param1";
 
@@ -41,6 +51,10 @@ public class FeePaymentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fee_payment, container, false);
+        View view = inflater.inflate(R.layout.fragment_fee_payment, container, false);
+
+        ButterKnife.bind(this, view);
+
+        return view;
     }
 }
