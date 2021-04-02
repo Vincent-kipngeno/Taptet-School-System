@@ -98,5 +98,10 @@ public class FeePaymentFragment extends Fragment {
         String paymentSummary = mEditPaymentSummary.getText().toString();
 
         PaymentDetails paymentDetails = new PaymentDetails(currentTimeMillis(), amount, "Taptet School", mStudentUid, payer, "Cash", "Fees", paymentSummary);
+
+        DatabaseReference paymentRef = AllPaymentsRef.push();
+        String paymentPushId = paymentRef.getKey();
+
+        AllPaymentsRef.child(paymentPushId).setValue(paymentDetails);
     }
 }
