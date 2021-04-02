@@ -11,9 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.models.PaymentDetails;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static java.lang.System.currentTimeMillis;
 
 public class FeePaymentFragment extends Fragment {
 
@@ -80,6 +83,10 @@ public class FeePaymentFragment extends Fragment {
     }
 
     public void recordFeePayment () {
+        String amount = mEditAmount.getText().toString();
+        String payer = mEditPayer.getText().toString();
+        String paymentSummary = mEditPaymentSummary.getText().toString();
 
+        PaymentDetails paymentDetails = new PaymentDetails(currentTimeMillis(), amount, "Taptet School", mStudentUid, payer, "Cash", "Fees", paymentSummary);
     }
 }
