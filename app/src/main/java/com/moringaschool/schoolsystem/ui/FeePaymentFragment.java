@@ -57,4 +57,25 @@ public class FeePaymentFragment extends Fragment {
 
         return view;
     }
+
+    public boolean validateInputs (String amount, String payer, String summary) {
+
+        if (amount==null||amount.trim().isEmpty()) {
+            mEditAmount.setError("This field is required");
+            return false;
+        }
+        else if (payer==null||payer.trim().isEmpty())
+        {
+            mEditPayer.setError("This field is required");
+            return false;
+        }
+        else if (summary==null||summary.trim().isEmpty())
+        {
+            mEditPaymentSummary.setError("This field is required");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }
