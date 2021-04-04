@@ -514,30 +514,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                                                                     public void onComplete(@NonNull Task<Void> task) {
                                                                                         if (task.isSuccessful()) {
 
-                                                                                            DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child(DAY).child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                                                                @Override
-                                                                                                public void onComplete(@NonNull Task<Void> task) {
-                                                                                                    if (task.isSuccessful()) {
-                                                                                                        DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Students").addValueEventListener(new ValueEventListener() {
-                                                                                                            @Override
-                                                                                                            public void onDataChange(DataSnapshot dataSnapshot)
-                                                                                                            {
-                                                                                                                if (dataSnapshot.exists())
-                                                                                                                {
-                                                                                                                    for (DataSnapshot studentToAddEntry: dataSnapshot.getChildren()){
-                                                                                                                        createStudentFeeEntry(studentToAddEntry.getKey(), previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
-                                                                                                                    }
-                                                                                                                }
-                                                                                                            }
-
-                                                                                                            @Override
-                                                                                                            public void onCancelled(DatabaseError databaseError) {
-
-                                                                                                            }
-                                                                                                        });
-                                                                                                    }
-                                                                                                }
-                                                                                            });
+                                                                                            DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child(DAY).child(alumni.getKey()).removeValue();
 
                                                                                         }
                                                                                     }
@@ -546,6 +523,37 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                                                         }
                                                                     });
                                                                 }
+
+                                                                DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Students").addValueEventListener(new ValueEventListener() {
+                                                                    @Override
+                                                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                                                                    {
+                                                                        if (dataSnapshot.exists())
+                                                                        {
+                                                                            for (DataSnapshot studentToAddEntry: dataSnapshot.getChildren()){
+                                                                                createStudentFeeEntry(studentToAddEntry.getKey(), previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                                                                                UsersRef.child(studentToAddEntry.getKey()).addValueEventListener(new ValueEventListener() {
+                                                                                    @Override
+                                                                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                                                        Student student = dataSnapshot.getValue(Student.class);
+                                                                                        student.setGrade(getNextClass(student.getGrade()));
+                                                                                        UsersRef.child(studentToAddEntry.getKey()).setValue(student);
+                                                                                    }
+
+                                                                                    @Override
+                                                                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onCancelled(DatabaseError databaseError) {
+
+                                                                    }
+                                                                });
                                                             }
                                                         }
 
