@@ -14,7 +14,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
+
+import butterknife.ButterKnife;
 
 public class FeesFragment extends Fragment {
 
@@ -28,6 +31,12 @@ public class FeesFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         feesViewModel = ViewModelProviders.of(this).get(FeesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_fees, container, false);
+
+        ButterKnife.bind(this, root);
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUserID = mAuth.getCurrentUser().getUid();
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
         return root;
     }
