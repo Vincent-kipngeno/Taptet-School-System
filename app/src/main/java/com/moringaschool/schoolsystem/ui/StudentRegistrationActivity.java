@@ -155,10 +155,10 @@ public class StudentRegistrationActivity extends AppCompatActivity implements Vi
     public String getStudentType () {
         String type;
         if (mRadioDay.isChecked()) {
-            type = "Day";
+            type = DAY;
         }
         else if (mRadioBoarder.isChecked()) {
-            type =  "Boarder";
+            type =  BOARDER;
         }
         else {
             type = "No";

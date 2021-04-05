@@ -27,13 +27,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.AcademicYear;
+import com.moringaschool.schoolsystem.ui.*;
 import com.moringaschool.schoolsystem.ui.AcademicCalendarDetailsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class CalendarFragment extends Fragment {
+public class CalendarFragment extends Fragment implements View.OnClickListener {
 
     private CalendarViewModel calendarViewModel;
 
@@ -57,6 +58,8 @@ public class CalendarFragment extends Fragment {
         AcademicYearsRef = FirebaseDatabase.getInstance().getReference().child("Years").child("AcademicYears");
 
         yearsList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        addYear.setOnClickListener(this);
 
         checkIfYearsExist();
 
@@ -141,6 +144,14 @@ public class CalendarFragment extends Fragment {
 
         yearsList.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v==addYear) {
+            Intent newYearIntent = new Intent(getContext(), AddNewAcademicYearActivity.class);
+            startActivity(newYearIntent);
+        }
     }
 
     public static class  YearsViewHolder extends RecyclerView.ViewHolder

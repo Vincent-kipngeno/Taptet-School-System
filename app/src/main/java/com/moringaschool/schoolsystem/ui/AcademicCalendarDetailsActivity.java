@@ -39,6 +39,7 @@ import butterknife.ButterKnife;
 
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 import static com.moringaschool.schoolsystem.Constants.ALUMNI;
+import static com.moringaschool.schoolsystem.Constants.BOARDER;
 import static com.moringaschool.schoolsystem.Constants.Class_1;
 import static com.moringaschool.schoolsystem.Constants.Class_2;
 import static com.moringaschool.schoolsystem.Constants.Class_3;
@@ -47,6 +48,7 @@ import static com.moringaschool.schoolsystem.Constants.Class_5;
 import static com.moringaschool.schoolsystem.Constants.Class_6;
 import static com.moringaschool.schoolsystem.Constants.Class_7;
 import static com.moringaschool.schoolsystem.Constants.Class_8;
+import static com.moringaschool.schoolsystem.Constants.DAY;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_1;
 import static com.moringaschool.schoolsystem.Constants.PRE_PR1_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_1;
@@ -54,6 +56,7 @@ import static com.moringaschool.schoolsystem.Constants.TERM_2;
 import static com.moringaschool.schoolsystem.Constants.TERM_3;
 
 public class AcademicCalendarDetailsActivity extends AppCompatActivity implements View.OnClickListener{
+    @BindView(R.id.button_startNewYear) Button mStartNewYear;
     @BindView(R.id.editTerm1_startDate) TextView mStartDate1;
     @BindView(R.id.editTerm1_endDate) TextView mEndDate1;
     @BindView(R.id.editTerm2_startDate) TextView mStartDate2;
@@ -117,6 +120,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
         mEndTerm2.setOnClickListener(this);
         mStartTerm3.setOnClickListener(this);
         mEndTerm3.setOnClickListener(this);
+        mStartNewYear.setOnClickListener(this);
     }
 
     public void fillTermDates() {
@@ -180,6 +184,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
     public void onClick(View view) {
 
         if (view == mStartTerm1) {
+            String currentAcademicTerm = TERM_1;
             PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot)
@@ -188,11 +193,17 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                     {
                         String previousAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
                         String previousAcademicTerm = dataSnapshot.child("Term").getValue().toString();
-                        String currentAcademicTerm = TERM_1;
 
                         updateCurrentYear(currentAcademicTerm);
                         transferCurrentStudentsToNextTerm(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                         transferCurrentStudentsToNextClass(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                        createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
+                    }
+                    else{
+                        String previousAcademicYearId = "none";
+                        String previousAcademicTerm = "none";
+
+                        updateCurrentYear(currentAcademicTerm);
                         createSchoolFeeEntry(previousAcademicYearId, previousAcademicTerm, currentAcademicTerm);
                     }
                 }
@@ -279,6 +290,7 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                         moveTermToPreviousYearSectionInDB(currentAcademicTerm);
                     }
                     else {
+                        mStartNewYear.setVisibility(View.VISIBLE);
                         Toast.makeText(AcademicCalendarDetailsActivity.this, "Kindly add a new year first before trying to end the current academic year", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -288,6 +300,11 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
 
                 }
             });
+        }
+
+        if (view==mStartNewYear) {
+            Intent newYearIntent = new Intent(AcademicCalendarDetailsActivity.this, AddNewAcademicYearActivity.class);
+            startActivity(newYearIntent);
         }
 
     }
@@ -334,38 +351,6 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                             mEndTerm3.setVisibility(View.VISIBLE);
                         }
 
-                        //Start Buttons visibility
-                        PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot)
-                            {
-                                if (dataSnapshot.exists())
-                                {
-                                    String termStart = dataSnapshot.child("term").getValue().toString();
-
-                                    if (termStart.equals(TERM_3)) {
-                                        mStartTerm1.setVisibility(View.VISIBLE);
-                                    }
-                                    if (termStart.equals(TERM_1))
-                                    {
-                                        mStartTerm2.setVisibility(View.VISIBLE);
-                                    }
-                                    if (termStart.equals(TERM_2))
-                                    {
-                                        mStartTerm3.setVisibility(View.VISIBLE);
-                                    }
-                                }
-                                else
-                                {
-                                    mStartTerm1.setVisibility(View.VISIBLE);
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
                     }
 
                 }
@@ -382,6 +367,37 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                 if ( yearId.equals(CurrentAcademicYearId)) {
                                     mStartTerm1.setVisibility(View.VISIBLE);
                                 }
+                            }
+                            else
+                            {
+                                //Start Buttons visibility
+                                PreviousAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot)
+                                    {
+                                        if (dataSnapshot.exists())
+                                        {
+                                            String termStart = dataSnapshot.child("term").getValue().toString();
+                                            String yearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+
+                                            if (yearId.equals(CurrentAcademicYearId)) {
+                                                if (termStart.equals(TERM_1))
+                                                {
+                                                    mStartTerm2.setVisibility(View.VISIBLE);
+                                                }
+                                                if (termStart.equals(TERM_2))
+                                                {
+                                                    mStartTerm3.setVisibility(View.VISIBLE);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
                             }
                         }
 
@@ -493,12 +509,12 @@ public class AcademicCalendarDetailsActivity extends AppCompatActivity implement
                                                                         public void onComplete(@NonNull Task<Void> task) {
                                                                             if (task.isSuccessful()) {
 
-                                                                                DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Boarders").child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child(BOARDER).child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                                     @Override
                                                                                     public void onComplete(@NonNull Task<Void> task) {
                                                                                         if (task.isSuccessful()) {
 
-                                                                                            DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child("Day").child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                            DatabaseRef.child("CurrentStudents").child(CurrentAcademicYearId).child(currentAcademicTerm).child(DAY).child(alumni.getKey()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                                                 @Override
                                                                                                 public void onComplete(@NonNull Task<Void> task) {
                                                                                                     if (task.isSuccessful()) {
