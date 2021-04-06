@@ -120,8 +120,9 @@ public class FeesFragment extends Fragment {
 
             @NonNull
             @Override
-            public FeeStatementViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return null;
+            public FeeStatementViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fees_statement_custom_layout, viewGroup, false);
+                return new FeesFragment.FeeStatementViewHolder(view);
             }
         };
     }
