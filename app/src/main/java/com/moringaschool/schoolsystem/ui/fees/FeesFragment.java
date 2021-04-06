@@ -48,6 +48,10 @@ public class FeesFragment extends Fragment {
         return root;
     }
 
+    public void fillFeeStatementRecyclerView() {
+
+    }
+
     private static class FeeStatementViewHolder extends RecyclerView.ViewHolder
     {
         TextView time, date, transactedBy, transactedTo, paidVia, amountIn, amountOut;
