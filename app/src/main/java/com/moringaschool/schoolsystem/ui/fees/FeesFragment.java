@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
 
 public class FeesFragment extends Fragment {
 
-    @BindView(R.id.school_fee_statement_recyclerview) RecyclerView schoolFeeStatementRecyclerView;
+    @BindView(R.id.school_fee_statement_recyclerview) RecyclerView schoolFeeStatementList;
 
     private FeesViewModel feesViewModel;
 
@@ -41,6 +42,8 @@ public class FeesFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        schoolFeeStatementList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return root;
     }
