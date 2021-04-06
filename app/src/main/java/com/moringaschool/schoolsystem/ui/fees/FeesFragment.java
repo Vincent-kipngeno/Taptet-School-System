@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,7 +40,7 @@ public class FeesFragment extends Fragment {
 
     private FeesViewModel feesViewModel;
 
-    private DatabaseReference UsersRef, SchoolPaymentsRef, Payments, DatabaseRef, AllPaymentsRef;
+    private DatabaseReference UsersRef, SchoolPaymentsRef, Payments, DatabaseRef, AllPaymentsRef, YearDetailsRef, currentAcademicYearRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
 
@@ -58,6 +59,8 @@ public class FeesFragment extends Fragment {
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
         SchoolPaymentsRef = Payments.child("SchoolPayments");
         AllPaymentsRef = Payments.child("AllPayments");
+        YearDetailsRef = DatabaseRef.child("Years");
+        currentAcademicYearRef = YearDetailsRef.child("CurrentAcademicYear");
 
         schoolFeeStatementList.setLayoutManager(new LinearLayoutManager(getContext()));
 
