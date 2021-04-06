@@ -14,11 +14,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.ui.students.StudentsFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,6 +62,19 @@ public class FeesFragment extends Fragment {
                 new FirebaseRecyclerOptions.Builder<Integer>()
                         .setQuery(schoolPaymentsIds, Integer.class)
                         .build();
+
+        FirebaseRecyclerAdapter<Integer, FeesFragment.FeeStatementViewHolder> adapter = new FirebaseRecyclerAdapter<Integer, FeeStatementViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull FeeStatementViewHolder feeStatementViewHolder, int position, @NonNull Integer amount) {
+                final String paymentId = getRef(position).getKey();
+            }
+
+            @NonNull
+            @Override
+            public FeeStatementViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return null;
+            }
+        };
     }
 
     private static class FeeStatementViewHolder extends RecyclerView.ViewHolder
