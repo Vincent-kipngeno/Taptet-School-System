@@ -17,9 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.models.PaymentDetails;
 import com.moringaschool.schoolsystem.ui.students.StudentsFragment;
 
 import butterknife.BindView;
@@ -31,7 +35,7 @@ public class FeesFragment extends Fragment {
 
     private FeesViewModel feesViewModel;
 
-    private DatabaseReference UsersRef, SchoolPaymentsRef, Payments, DatabaseRef;
+    private DatabaseReference UsersRef, SchoolPaymentsRef, Payments, DatabaseRef, AllPaymentsRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
 
@@ -49,6 +53,7 @@ public class FeesFragment extends Fragment {
         Payments = DatabaseRef.child("Payments");
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
         SchoolPaymentsRef = Payments.child("SchoolPayments");
+        AllPaymentsRef = Payments.child("AllPayments");
 
         schoolFeeStatementList.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -65,8 +70,26 @@ public class FeesFragment extends Fragment {
 
         FirebaseRecyclerAdapter<Integer, FeesFragment.FeeStatementViewHolder> adapter = new FirebaseRecyclerAdapter<Integer, FeeStatementViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull FeeStatementViewHolder feeStatementViewHolder, int position, @NonNull Integer amount) {
+            protected void onBindViewHolder(@NonNull FeeStatementViewHolder holder, int position, @NonNull Integer amount) {
                 final String paymentId = getRef(position).getKey();
+
+                AllPaymentsRef.child(paymentId).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            PaymentDetails paymentDetails = dataSnapshot.getValue(PaymentDetails.class);
+
+                            if (paymentDetails.getType().equals("Fees")) {
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @NonNull
