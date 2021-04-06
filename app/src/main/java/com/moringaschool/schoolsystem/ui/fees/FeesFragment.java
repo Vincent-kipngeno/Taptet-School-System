@@ -24,7 +24,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.PaymentDetails;
+import com.moringaschool.schoolsystem.models.Student;
 import com.moringaschool.schoolsystem.ui.students.StudentsFragment;
+
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,6 +85,28 @@ public class FeesFragment extends Fragment {
 
                             if (paymentDetails.getType().equals("Fees")) {
 
+                                UsersRef.child(paymentDetails.getTransactedBy()).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        Student student = dataSnapshot.getValue(Student.class);
+
+                                        String myFormat = "HH/mm/ss"; //In which you need put here
+                                        String dayFormat = "MM/dd/yy";
+                                        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                                        holder.time.setText(sdf.format(paymentDetails.getTime()));
+                                        holder.date.setText(sdf.format(paymentDetails.getTime()));
+                                        holder.transactedBy.setText(student.getName());
+                                        holder.transactedTo.setText(paymentDetails.getTransactedTo());
+                                        holder.paidVia.setText(paymentDetails.getMode());
+                                        holder.amountIn.setText(paymentDetails.getAmount());
+                                        holder.amountOut.setText(R.string.amountOut);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
                             }
                         }
                     }
