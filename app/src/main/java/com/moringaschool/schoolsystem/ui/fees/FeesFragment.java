@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,7 +29,7 @@ public class FeesFragment extends Fragment {
 
     private FeesViewModel feesViewModel;
 
-    private DatabaseReference UsersRef;
+    private DatabaseReference UsersRef, SchoolPaymentsRef, Payments, DatabaseRef;
     private FirebaseAuth mAuth;
     private String currentUserID="";
 
@@ -41,15 +42,23 @@ public class FeesFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
+        DatabaseRef = FirebaseDatabase.getInstance().getReference();
+
+        Payments = DatabaseRef.child("Payments");
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        SchoolPaymentsRef = Payments.child("SchoolPayments");
 
         schoolFeeStatementList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return root;
     }
 
-    public void fillFeeStatementRecyclerView() {
-
+    public void fillFeeStatementRecyclerView(String academicYearId, String academicTerm) {
+        DatabaseReference schoolPaymentsIds = SchoolPaymentsRef.child(academicYearId).child(academicTerm).child("Payments");
+        FirebaseRecyclerOptions<Boolean> options =
+                new FirebaseRecyclerOptions.Builder<Boolean>()
+                        .setQuery(StudentsRef, Boolean.class)
+                        .build();
     }
 
     private static class FeeStatementViewHolder extends RecyclerView.ViewHolder
