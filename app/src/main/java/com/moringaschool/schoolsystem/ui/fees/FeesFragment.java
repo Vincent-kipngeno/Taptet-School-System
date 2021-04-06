@@ -55,9 +55,10 @@ public class FeesFragment extends Fragment {
 
     public void fillFeeStatementRecyclerView(String academicYearId, String academicTerm) {
         DatabaseReference schoolPaymentsIds = SchoolPaymentsRef.child(academicYearId).child(academicTerm).child("Payments");
-        FirebaseRecyclerOptions<Boolean> options =
-                new FirebaseRecyclerOptions.Builder<Boolean>()
-                        .setQuery(StudentsRef, Boolean.class)
+
+        FirebaseRecyclerOptions<Integer> options =
+                new FirebaseRecyclerOptions.Builder<Integer>()
+                        .setQuery(schoolPaymentsIds, Integer.class)
                         .build();
     }
 
