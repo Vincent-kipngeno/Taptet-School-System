@@ -11,15 +11,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.schoolsystem.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FeesFragment extends Fragment {
+
+    @BindView(R.id.school_fee_statement_recyclerview) RecyclerView schoolFeeStatementRecyclerView;
 
     private FeesViewModel feesViewModel;
 
