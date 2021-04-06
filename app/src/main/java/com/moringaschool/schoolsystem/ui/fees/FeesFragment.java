@@ -148,4 +148,30 @@ public class FeesFragment extends Fragment {
             amountOut = itemView.findViewById(R.id.amount_out);
         }
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null)
+        {
+            currentAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String currentAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+                        String currentAcademicTerm = dataSnapshot.child("Term").getValue().toString();
+
+                        fillFeeStatementRecyclerView(currentAcademicYearId, currentAcademicTerm);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+    }
 }
