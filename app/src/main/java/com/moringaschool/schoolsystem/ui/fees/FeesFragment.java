@@ -47,4 +47,23 @@ public class FeesFragment extends Fragment {
 
         return root;
     }
+
+    private static class FeeStatementViewHolder extends RecyclerView.ViewHolder
+    {
+        TextView time, date, transactedBy, transactedTo, paidVia, amountIn, amountOut;
+
+
+        public FeeStatementViewHolder(@NonNull View itemView)
+        {
+            super(itemView);
+
+            time = itemView.findViewById(R.id.time);
+            date = itemView.findViewById(R.id.date);
+            transactedBy = itemView.findViewById(R.id.transacted_By);
+            transactedTo = itemView.findViewById(R.id.transacted_To);
+            paidVia = itemView.findViewById(R.id.paid_Via);
+            amountIn = itemView.findViewById(R.id.amount_in);
+            amountOut = itemView.findViewById(R.id.amount_out);
+        }
+    }
 }
