@@ -24,5 +24,9 @@
             android:id="@+id/nav_calendar"
             android:icon="@drawable/baseline_event_note_24"
             android:title="@string/menu_calendar"/>
+        <item
+            android:id="@+id/nav_exams"
+            android:icon="@drawable/baseline_event_note_24"
+            android:title="@string/menu_exams"/>
     </group>
 </menu>
