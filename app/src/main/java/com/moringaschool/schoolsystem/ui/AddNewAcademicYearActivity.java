@@ -129,6 +129,12 @@ public class AddNewAcademicYearActivity extends AppCompatActivity implements Vie
         ButterKnife.bind(this);
 
         YearDetailsRef = FirebaseDatabase.getInstance().getReference().child("Years");
+        termDatesPicker(editTerm1EndDate);
+        termDatesPicker(editTerm2EndDate);
+        termDatesPicker(editTerm3EndDate);
+        termDatesPicker(editTerm1StartDate);
+        termDatesPicker(editTerm2StartDate);
+        termDatesPicker(editTerm3StartDate);
 
         AcademicYearsRef = YearDetailsRef.child("AcademicYears");
         NewAcademicYearRef = YearDetailsRef.child("NewAcademicYear");

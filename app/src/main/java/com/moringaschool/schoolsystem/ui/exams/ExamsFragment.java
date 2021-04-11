@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +28,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.schoolsystem.R;
 import com.moringaschool.schoolsystem.models.AcademicYear;
-import com.moringaschool.schoolsystem.ui.AcademicCalendarDetailsActivity;
+import com.moringaschool.schoolsystem.ui.*;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,38 +80,24 @@ public class ExamsFragment extends Fragment implements View.OnClickListener {
     }
 
     public void checkIfYearsExist () {
-        AcademicYearsRef.addChildEventListener(new ChildEventListener() {
+        AcademicYearsRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s)
-            {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     fillYearsRecyclerView();
                     noYearsLayout.setVisibility(View.INVISIBLE);
                     addYear.setEnabled(false);
+                    Log.d("CalendarFragment", "Years DataSnapshot exists");
                 }
                 else {
                     noYearsLayout.setVisibility(View.VISIBLE);
                     addYear.setEnabled(true);
+                    Log.d("CalendarFragment", "Years DataSnapshot does not exists");
                 }
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -160,8 +148,8 @@ public class ExamsFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v==addYear) {
-            //Intent newYearIntent = new Intent(getContext(), AddNewAcademicYearActivity.class);
-            //startActivity(newYearIntent);
+            Intent newYearIntent = new Intent(getContext(), AddNewAcademicYearActivity.class);
+            startActivity(newYearIntent);
         }
     }
 
