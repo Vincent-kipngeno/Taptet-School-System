@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -106,6 +107,21 @@ public class ExamsFragment extends Fragment {
 
             }
         });
+    }
+
+    public static class  YearsViewHolder extends RecyclerView.ViewHolder
+    {
+        TextView startDate, yearName, endDate;
+
+
+        public YearsViewHolder(@NonNull View itemView)
+        {
+            super(itemView);
+
+            yearName = itemView.findViewById(R.id.academicYear);
+            startDate = itemView.findViewById(R.id.startDate);
+            endDate = itemView.findViewById(R.id.endDate);
+        }
     }
 
 }
