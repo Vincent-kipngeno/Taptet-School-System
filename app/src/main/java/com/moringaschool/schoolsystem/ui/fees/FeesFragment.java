@@ -128,6 +128,9 @@ public class FeesFragment extends Fragment {
                 return new FeesFragment.FeeStatementViewHolder(view);
             }
         };
+
+        schoolFeeStatementList.setAdapter(adapter);
+        adapter.startListening();
     }
 
     private static class FeeStatementViewHolder extends RecyclerView.ViewHolder
