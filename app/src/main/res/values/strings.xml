@@ -60,6 +60,8 @@
     <string name="taptet_school">Taptet School</string>
     <string name="amountOut">0.00</string>
     <string name="menu_exams">Exams</string>
+    <string name="student_name">Student name</string>
+    <string name="_0">0</string>
 
 
 </resources>
