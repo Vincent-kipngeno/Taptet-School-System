@@ -1,9 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.AddNewExamResults">
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.AddNewExamResults">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_margin="3dp"
+                android:background="@color/mainColor">
+
+                <TextView
+                    android:id="@+id/studentName"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/student_name"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/eng_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/eng"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/comp_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/comp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/eng_tot_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/tot"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/kis_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/kis"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/ins_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/insh"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/kis_tot_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/jum"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/math_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/mat"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/sci_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/sci"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/sst_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/sst"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/cre_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/cre"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/ss_RE_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/tot"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+
+                <TextView
+                    android:id="@+id/total_text"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cell_header_background"
+                    android:gravity="center"
+                    android:text="@string/total"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_margin="3dp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/school_fee_statement_recyclerview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </HorizontalScrollView>
+</androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

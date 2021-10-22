@@ -62,6 +62,18 @@
     <string name="menu_exams">Exams</string>
     <string name="student_name">Student name</string>
     <string name="_0">0</string>
+    <string name="eng">ENG</string>
+    <string name="comp">COMP</string>
+    <string name="tot">TOT</string>
+    <string name="kis">KIS</string>
+    <string name="jum">JUM</string>
+    <string name="insh">INSH</string>
+    <string name="mat">MAT</string>
+    <string name="sci">SCI</string>
+    <string name="sst">SST</string>
+    <string name="cre">CRE</string>
+    <string name="total">TOTAL</string>
+    <string name="save">save</string>
 
 
 </resources>

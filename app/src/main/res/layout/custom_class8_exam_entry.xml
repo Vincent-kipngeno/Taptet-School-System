@@ -180,6 +180,17 @@
             android:layout_margin="3dp"
             android:inputType="number"
             android:autofillHints="-1" />
+
+        <Button
+            android:id="@+id/save_result_button"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/submit_button"
+            android:gravity="center"
+            android:text="@string/save"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_margin="3dp"/>
     </LinearLayout>
 
 </HorizontalScrollView>
