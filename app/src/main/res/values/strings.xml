@@ -77,7 +77,7 @@
     <string name="exam_name">Exam name</string>
     <string name="exam_year">Exam Year</string>
 
-    <string-array name="planets_array">
+    <string-array name="class_array">
         <item>Grade 8</item>
         <item>Grade 7</item>
         <item>Grade 6</item>
