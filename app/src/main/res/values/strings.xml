@@ -74,6 +74,20 @@
     <string name="cre">CRE</string>
     <string name="total">TOTAL</string>
     <string name="save">save</string>
+    <string name="exam_name">Exam name</string>
+    <string name="exam_year">Exam Year</string>
 
+    <string-array name="planets_array">
+        <item>Grade 8</item>
+        <item>Grade 7</item>
+        <item>Grade 6</item>
+        <item>Grade 5</item>
+        <item>Grade 4</item>
+        <item>Grade 3</item>
+        <item>Grade 2</item>
+        <item>Grade 1</item>
+        <item>Pre-Primary 2</item>
+        <item>Pre-Primary 1</item>
+    </string-array>
 
 </resources>
