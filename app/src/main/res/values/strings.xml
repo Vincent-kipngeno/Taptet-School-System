@@ -76,6 +76,8 @@
     <string name="save">save</string>
     <string name="exam_name">Exam name</string>
     <string name="exam_year">Exam Year</string>
+    <string name="edit">EDIT</string>
+    <string name="ShowResults"><![CDATA[SAVE & SHOW RESULTS]]></string>
 
     <string-array name="class_array">
         <item>Grade 8</item>
