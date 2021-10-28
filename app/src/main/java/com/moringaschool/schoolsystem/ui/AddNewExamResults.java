@@ -6,20 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import com.moringaschool.schoolsystem.R;
+import com.moringaschool.schoolsystem.databinding.ActivityAddNewExamResultsBinding;
 
 public class AddNewExamResults extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
-    Spinner spinner;
+    private ActivityAddNewExamResultsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_exam_results);
 
-        spinner = (Spinner) findViewById(R.id.class_spinner);
+        binding = ActivityAddNewExamResultsBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         fillClassSpinner();
 
@@ -29,7 +30,7 @@ public class AddNewExamResults extends AppCompatActivity implements AdapterView.
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.class_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        binding.classSpinner.setAdapter(adapter);
     }
 
     public void onItemSelected(AdapterView<?> parent, View view,
