@@ -1,10 +1,10 @@
 package com.moringaschool.schoolsystem.models;
 
 public class FeeStructure {
-    private String className;
-    private String term1Fee;
-    private String term2Fee;
-    private String term3Fee;
+    public String className;
+    public String term1Fee;
+    public String term2Fee;
+    public String term3Fee;
 
     public FeeStructure() {
 

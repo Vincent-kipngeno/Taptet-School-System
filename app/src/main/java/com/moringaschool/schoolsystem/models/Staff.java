@@ -10,6 +10,10 @@ public class Staff {
     @Exclude
     public String key;
 
+    public Staff( ) {
+
+    }
+
     public Staff(String name, String email, String staffNumber, String location, String sex, String category, String role, String idNumber, String phone, String tscNUmber, String adminUser, String type) {
         this.name = name;
         this.email = email;

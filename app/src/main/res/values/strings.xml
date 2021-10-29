@@ -80,6 +80,7 @@
     <string name="ShowResults"><![CDATA[SAVE & SHOW RESULTS]]></string>
 
     <string-array name="class_array">
+        <item>Select Class</item>
         <item>Grade 8</item>
         <item>Grade 7</item>
         <item>Grade 6</item>

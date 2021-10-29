@@ -10,6 +10,10 @@ public class PaymentDetails {
     @Exclude
     public String key;
 
+    public PaymentDetails( ) {
+
+    }
+
     public PaymentDetails(long time, String amount, String transactedTo, String transactedBy, String payer, String mode, String type, String paymentSummary) {
         this.time = time;
         this.amount = amount;

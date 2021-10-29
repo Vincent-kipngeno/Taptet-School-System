@@ -135,7 +135,7 @@ public class FeePaymentFragment extends Fragment implements View.OnClickListener
                         model.put(currentAcademicTerm+"/Payments/"+paymentPushId, paymentDetails.getAmount());
 
                         SchoolPaymentsRef.child(currentAcademicYearId).updateChildren(model);
-                        StudentFeePaymentRef.child(currentAcademicYearId).updateChildren(model);
+                        StudentFeePaymentRef.child(paymentDetails.getTransactedBy()).child(currentAcademicYearId).updateChildren(model);
 
                     }
                     else {

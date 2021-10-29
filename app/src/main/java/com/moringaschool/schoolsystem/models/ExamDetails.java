@@ -3,9 +3,13 @@ package com.moringaschool.schoolsystem.models;
 import java.util.Objects;
 
 public class ExamDetails {
-    private String examName, examClass, examTypeId;
-    private long dateDone;
-    private int yearPublished;
+    public String examName, examClass, examTypeId;
+    public long dateDone;
+    public int yearPublished;
+
+    public ExamDetails( ) {
+
+    }
 
     public ExamDetails(String examName, String examClass, String examTypeId, long dateDone, int yearPublished) {
         this.examName = examName;

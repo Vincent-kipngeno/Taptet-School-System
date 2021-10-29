@@ -1,10 +1,15 @@
 package com.moringaschool.schoolsystem.models;
 
-public class AcademicYear {
-    private String academicYear;
-    private String startDate;
-    private String endDate;
+import com.google.firebase.database.Exclude;
 
+public class AcademicYear {
+    public String academicYear;
+    public String startDate;
+    public String endDate;
+
+    public AcademicYear() {
+
+    }
 
     public AcademicYear(String academicYear, String startDate, String endDate) {
         this.academicYear = academicYear;

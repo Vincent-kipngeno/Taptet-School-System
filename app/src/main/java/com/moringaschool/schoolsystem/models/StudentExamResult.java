@@ -3,9 +3,13 @@ package com.moringaschool.schoolsystem.models;
 import java.util.Objects;
 
 public class StudentExamResult {
-    private String studentClass, studentId, examId, examTypeId;
-    private long dateDone;
-    private int eng, comp, kis, ins, mat, sci, sst, cre;
+    public String studentClass, studentId, examId, examTypeId;
+    public long dateDone;
+    public int eng, comp, kis, ins, mat, sci, sst, cre;
+
+    public StudentExamResult( ){
+
+    }
 
     public StudentExamResult(String studentClass, String studentId, String examId, String examTypeId, long dateDone, int eng, int comp, int kis, int ins, int mat, int sci, int sst, int cre) {
         this.studentClass = studentClass;
