@@ -33,7 +33,8 @@ public class AddNewExamResults extends AppCompatActivity implements AdapterView.
 
     private ActivityAddNewExamResultsBinding binding;
     private final String defaultSelectedClass = "Select Class";
-    private static String
+    private static String examTypeId, examClass;
+    private static long dateDone;
 
     private DatabaseReference ExamsRef, DatabaseRef, YearDetailsRef, UsersRef, currentAcademicYearRef, OverallExamsRef, StudentsExamsRef, ClassExamsRef;
 
@@ -63,7 +64,10 @@ public class AddNewExamResults extends AppCompatActivity implements AdapterView.
     public void onClick(View v) {
 
         if (v == binding.saveExamButton){
-
+            addNewExamType();
+        }
+        else if (v == binding.editExamButton){
+            editExamType();
         }
 
     }
@@ -90,10 +94,13 @@ public class AddNewExamResults extends AppCompatActivity implements AdapterView.
 
     }
 
+
+
     public void addNewExamType(){
-        String examClass = (String) binding.classSpinner.getSelectedItem();
+        examClass = (String) binding.classSpinner.getSelectedItem();
         String examName = binding.examNameEdit.getText().toString();
         String yearPublished = binding.examYearEdit.getText().toString();
+        dateDone = currentTimeMillis();
 
         boolean isValidInputs = validateInputs(examClass, examName, yearPublished);
 
@@ -121,9 +128,9 @@ public class AddNewExamResults extends AppCompatActivity implements AdapterView.
                                 DatabaseReference ExamsTypeRef = OverallExamsRef.child(currentAcademicYearId).child(currentAcademicTerm).child("ExamTypes");
 
                                 DatabaseReference examTypeRef = ExamsTypeRef.push();
-                                String examTypeId = examTypeRef.getKey();
+                                examTypeId = examTypeRef.getKey();
 
-                                ExamDetails examTypeDetails = new ExamDetails(examName, examClass, examTypeId, currentTimeMillis(), Integer.parseInt(yearPublished));
+                                ExamDetails examTypeDetails = new ExamDetails(examName, examClass, examTypeId, dateDone, Integer.parseInt(yearPublished));
 
                                 ExamsTypeRef.child(examTypeId).setValue(examTypeDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -134,6 +141,8 @@ public class AddNewExamResults extends AppCompatActivity implements AdapterView.
 
                                             binding.classSpinner.setVisibility(View.GONE);
                                             binding.classText.setVisibility(View.VISIBLE);
+                                            binding.saveExamButton.setVisibility(View.GONE);
+                                            binding.editExamButton.setVisibility(View.VISIBLE);
                                             fillExamsRecyclerView();
                                         }
                                         else
@@ -165,6 +174,59 @@ public class AddNewExamResults extends AppCompatActivity implements AdapterView.
 
             AlertDialog dialog = builder.create();
             dialog.show();
+
+        }
+    }
+
+    public void editExamType(){
+        String examName = binding.examNameEdit.getText().toString();
+        String yearPublished = binding.examYearEdit.getText().toString();
+
+        boolean isValidInputs = validateInputs(examClass, examName, yearPublished);
+
+        if (!isValidInputs) {
+            validateInputs(examClass, examName, yearPublished);
+        }
+        else {
+
+            currentAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    if (dataSnapshot.exists())
+                    {
+                        String currentAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+                        String currentAcademicTerm = dataSnapshot.child("Term").getValue().toString();
+
+                        DatabaseReference ExamsTypeRef = OverallExamsRef.child(currentAcademicYearId).child(currentAcademicTerm).child("ExamTypes");
+
+                        ExamDetails examTypeDetails = new ExamDetails(examName, examClass, examTypeId, dateDone, Integer.parseInt(yearPublished));
+
+                        ExamsTypeRef.child(examTypeId).setValue(examTypeDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful())
+                                {
+                                    Toast.makeText(AddNewExamResults.this, "Exam Type details updated Successfully...", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    Toast.makeText(AddNewExamResults.this, "Error updating exam type details. Retry .", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+                    }
+                    else {
+                        Toast.makeText(AddNewExamResults.this, "Kindly Create and Start academic year First", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
         }
     }
