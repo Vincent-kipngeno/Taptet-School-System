@@ -196,15 +196,15 @@ public class FirebaseEditResultsViewHolder extends RecyclerView.ViewHolder imple
 
                                         engEdit.setText(newResult.getEng());
                                         compEdit.setText(newResult.getComp());
-                                        engTotEdit.setText(newResult.pairSubjectsTotal(result.getEng(), result.getComp()));
+                                        engTotEdit.setText(newResult.pairSubjectsTotal(newResult.getEng(), newResult.getComp()));
                                         kisEdit.setText(newResult.getKis());
                                         insEdit.setText(newResult.getIns());
-                                        kisTotEdit.setText(newResult.pairSubjectsTotal(result.getKis(), result.getIns()));
+                                        kisTotEdit.setText(newResult.pairSubjectsTotal(newResult.getKis(), newResult.getIns()));
                                         matEdit.setText(newResult.getMat());
                                         sciEdit.setText(newResult.getSci());
                                         sstEdit.setText(newResult.getSst());
                                         creEdit.setText(newResult.getCre());
-                                        sreTotEdit.setText(newResult.pairSubjectsTotal(result.getSst(), result.getCre()));
+                                        sreTotEdit.setText(newResult.pairSubjectsTotal(newResult.getSst(), newResult.getCre()));
                                         total.setText(newResult.getTotal());
 
                                         save.setVisibility(View.GONE);
@@ -234,7 +234,75 @@ public class FirebaseEditResultsViewHolder extends RecyclerView.ViewHolder imple
 
         }
         else if (v == edit){
+            String eng = engEdit.getText().toString();
+            String comp = compEdit.getText().toString();
+            String kis = kisEdit.getText().toString();
+            String ins = insEdit.getText().toString();
+            String mat = matEdit.getText().toString();
+            String sci = matEdit.getText().toString();
+            String sst = sstEdit.getText().toString();
+            String cre = creEdit.getText().toString();
 
+            boolean isValid = validateInputs(eng, comp, kis, ins, mat, sci, sst, cre);
+
+            if (!isValid){
+                validateInputs(eng, comp, kis, ins, mat, sci, sst, cre);
+            }
+            else{
+                ExamResult editResult = new ExamResult(result.getStudentClass(), result.getStudentId(), result.getExamId(), result.getExamTypeId(), result.getDateDone(), Integer.parseInt(eng),  Integer.parseInt(comp), Integer.parseInt(kis), Integer.parseInt(ins), Integer.parseInt(mat), Integer.parseInt(sci), Integer.parseInt(sst), Integer.parseInt(cre));
+
+                currentAcademicYearRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot)
+                    {
+                        if (dataSnapshot.exists())
+                        {
+                            String currentAcademicYearId = dataSnapshot.child("AcademicYearId").getValue().toString();
+                            String currentAcademicTerm = dataSnapshot.child("Term").getValue().toString();
+
+                            DatabaseReference ExamsRef = OverallExamsRef.child(currentAcademicYearId).child(currentAcademicTerm).child("ExamResults");
+
+
+                            ExamsRef.child(editResult.getExamId()).setValue(editResult).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful())
+                                    {
+
+                                        engEdit.setText(editResult.getEng());
+                                        compEdit.setText(editResult.getComp());
+                                        engTotEdit.setText(editResult.pairSubjectsTotal(editResult.getEng(), editResult.getComp()));
+                                        kisEdit.setText(editResult.getKis());
+                                        insEdit.setText(editResult.getIns());
+                                        kisTotEdit.setText(editResult.pairSubjectsTotal(editResult.getKis(), editResult.getIns()));
+                                        matEdit.setText(editResult.getMat());
+                                        sciEdit.setText(editResult.getSci());
+                                        sstEdit.setText(editResult.getSst());
+                                        creEdit.setText(editResult.getCre());
+                                        sreTotEdit.setText(editResult.pairSubjectsTotal(editResult.getSst(), editResult.getCre()));
+                                        total.setText(editResult.getTotal());
+
+                                        Toast.makeText(mContext, "Exam result updated Successfully...", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(mContext, "Error updating exam result. Check your network and Retry .", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+                        }
+                        else {
+                            Toast.makeText(mContext, "Kindly Create and Start academic year First", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
         }
 
     }
