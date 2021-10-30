@@ -2,16 +2,16 @@ package com.moringaschool.schoolsystem.models;
 
 import java.util.Objects;
 
-public class StudentExamResult {
+public class ExamResult {
     public String studentClass, studentId, examId, examTypeId;
     public long dateDone;
     public int eng, comp, kis, ins, mat, sci, sst, cre, total;
 
-    public StudentExamResult( ){
+    public ExamResult( ){
 
     }
 
-    public StudentExamResult(String studentClass, String studentId, String examId, String examTypeId, long dateDone, int eng, int comp, int kis, int ins, int mat, int sci, int sst, int cre) {
+    public ExamResult(String studentClass, String studentId, String examId, String examTypeId, long dateDone, int eng, int comp, int kis, int ins, int mat, int sci, int sst, int cre) {
         this.studentClass = studentClass;
         this.studentId = studentId;
         this.examId = examId;
@@ -148,8 +148,8 @@ public class StudentExamResult {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof StudentExamResult)) return false;
-        StudentExamResult that = (StudentExamResult) o;
+        if (!(o instanceof ExamResult)) return false;
+        ExamResult that = (ExamResult) o;
         return eng == that.eng &&
                 comp == that.comp &&
                 kis == that.kis &&
@@ -169,3 +169,4 @@ public class StudentExamResult {
         return Objects.hash(studentClass, studentId, examId, examTypeId, eng, comp, kis, ins, mat, sci, sst, cre);
     }
 }
+

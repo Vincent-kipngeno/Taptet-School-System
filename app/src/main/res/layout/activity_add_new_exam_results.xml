@@ -123,7 +123,7 @@ tools:context=".ui.AddNewExamResults">
                 android:background="@color/mainColor">
 
                 <TextView
-                    android:id="@+id/studentName"
+                    android:id="@+id/studentNameHeader"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/cell_header_background"

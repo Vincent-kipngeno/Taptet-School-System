@@ -15,7 +15,7 @@
         android:layout_margin="3dp">
 
         <EditText
-            android:id="@+id/studentName"
+            android:id="@+id/resultStudentName"
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -29,7 +29,7 @@
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/eng"
+            android:id="@+id/eng_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -42,7 +42,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/comp"
+            android:id="@+id/comp_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -55,7 +55,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/eng_tot"
+            android:id="@+id/eng_tot_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -68,7 +68,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/kis"
+            android:id="@+id/kis_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -81,7 +81,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/ins"
+            android:id="@+id/ins_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -93,7 +93,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/kis_tot"
+            android:id="@+id/kis_tot_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -105,7 +105,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/math"
+            android:id="@+id/math_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -117,7 +117,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/sci"
+            android:id="@+id/sci_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -130,7 +130,7 @@
             android:autofillHints="-1" />
 
         <EditText
-            android:id="@+id/sst"
+            android:id="@+id/sst_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -143,7 +143,7 @@
             android:autofillHints="-1" />
 
         <EditText
-            android:id="@+id/cre"
+            android:id="@+id/cre_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -156,7 +156,7 @@
             android:autofillHints="-1" />
 
         <EditText
-            android:id="@+id/ss_RE"
+            android:id="@+id/sreTot_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -169,7 +169,7 @@
             android:autofillHints="-1" />
 
         <EditText
-            android:id="@+id/total"
+            android:id="@+id/total_result_edit"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@drawable/cell_background"
@@ -191,6 +191,18 @@
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:layout_margin="3dp"/>
+
+        <Button
+            android:id="@+id/edit_result_button"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/submit_button"
+            android:gravity="center"
+            android:text="@string/edit"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_margin="3dp"
+            android:visibility="gone"/>
     </LinearLayout>
 
 </HorizontalScrollView>
