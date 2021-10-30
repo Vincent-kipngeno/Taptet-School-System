@@ -58,6 +58,9 @@ public class AddNewExamResults extends AppCompatActivity implements AdapterView.
 
         fillClassSpinner();
 
+        binding.saveExamButton.setOnClickListener(this);
+        binding.editExamButton.setOnClickListener(this);
+
     }
 
     @Override
