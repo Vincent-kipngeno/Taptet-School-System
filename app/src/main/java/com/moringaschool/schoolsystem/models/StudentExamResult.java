@@ -5,7 +5,7 @@ import java.util.Objects;
 public class StudentExamResult {
     public String studentClass, studentId, examId, examTypeId;
     public long dateDone;
-    public int eng, comp, kis, ins, mat, sci, sst, cre;
+    public int eng, comp, kis, ins, mat, sci, sst, cre, total;
 
     public StudentExamResult( ){
 
@@ -25,6 +25,12 @@ public class StudentExamResult {
         this.sci = sci;
         this.sst = sst;
         this.cre = cre;
+        this.total = pairSubjectsTotal(eng, comp) + pairSubjectsTotal(kis, ins) + mat + sci + pairSubjectsTotal(sst, cre);
+    }
+
+    public int pairSubjectsTotal(int gram, int comp){
+        float multiplier = (float)100 / (float)90;
+        return Math.round((gram+comp)*multiplier);
     }
 
     public String getStudentClass() {
@@ -129,6 +135,14 @@ public class StudentExamResult {
 
     public void setCre(int cre) {
         this.cre = cre;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     @Override
