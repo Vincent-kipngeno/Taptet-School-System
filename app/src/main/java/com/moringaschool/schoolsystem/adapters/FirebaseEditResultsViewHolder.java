@@ -22,6 +22,9 @@ import com.moringaschool.schoolsystem.models.ExamDetails;
 import com.moringaschool.schoolsystem.models.ExamResult;
 import com.moringaschool.schoolsystem.models.Student;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class FirebaseEditResultsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -177,14 +180,41 @@ public class FirebaseEditResultsViewHolder extends RecyclerView.ViewHolder imple
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful())
                                     {
-                                        Toast.makeText(mContext, "Exam result added Successfully...", Toast.LENGTH_SHORT).show();
+
+                                        Map<String, Object> classModel = new HashMap<String, Object>();
+                                        classModel.put("dateDone", newResult.getDateDone());
+                                        classModel.put("examTypeId", newResult.getExamTypeId());
+                                        classModel.put("scores/"+newResult.getExamId(), newResult.getStudentId());
+                                        ClassExamsRef.child(currentAcademicYearId).child(currentAcademicTerm).child(newResult.getExamTypeId()).updateChildren(classModel);
+
+                                        Map<String, Object> studentModel = new HashMap<String, Object>();
+                                        studentModel.put("dateDone", newResult.getDateDone());
+                                        studentModel.put("examTypeId", newResult.getExamTypeId());
+                                        studentModel.put("examId", newResult.getExamId());
+                                        StudentsExamsRef.child(newResult.getStudentClass()).child(currentAcademicTerm).child(newResult.getExamTypeId()).updateChildren(studentModel);
+
+
+                                        engEdit.setText(newResult.getEng());
+                                        compEdit.setText(newResult.getComp());
+                                        engTotEdit.setText(newResult.pairSubjectsTotal(result.getEng(), result.getComp()));
+                                        kisEdit.setText(newResult.getKis());
+                                        insEdit.setText(newResult.getIns());
+                                        kisTotEdit.setText(newResult.pairSubjectsTotal(result.getKis(), result.getIns()));
+                                        matEdit.setText(newResult.getMat());
+                                        sciEdit.setText(newResult.getSci());
+                                        sstEdit.setText(newResult.getSst());
+                                        creEdit.setText(newResult.getCre());
+                                        sreTotEdit.setText(newResult.pairSubjectsTotal(result.getSst(), result.getCre()));
+                                        total.setText(newResult.getTotal());
 
                                         save.setVisibility(View.GONE);
                                         edit.setVisibility(View.VISIBLE);
+
+                                        Toast.makeText(mContext, "Exam result added Successfully...", Toast.LENGTH_SHORT).show();
                                     }
                                     else
                                     {
-                                        Toast.makeText(mContext, "Error adding exam result. Retry .", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(mContext, "Error adding exam result. Check your network and Retry .", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
