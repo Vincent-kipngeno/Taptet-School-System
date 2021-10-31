@@ -185,13 +185,13 @@ public class FirebaseEditResultsViewHolder extends RecyclerView.ViewHolder imple
                                         classModel.put("dateDone", newResult.getDateDone());
                                         classModel.put("examTypeId", newResult.getExamTypeId());
                                         classModel.put("scores/"+newResult.getExamId(), newResult.getStudentId());
-                                        ClassExamsRef.child(currentAcademicYearId).child(currentAcademicTerm).child(newResult.getExamTypeId()).updateChildren(classModel);
+                                        ClassExamsRef.child(newResult.getStudentClass()).child(currentAcademicYearId).child(currentAcademicTerm).child(newResult.getExamTypeId()).updateChildren(classModel);
 
                                         Map<String, Object> studentModel = new HashMap<String, Object>();
                                         studentModel.put("dateDone", newResult.getDateDone());
                                         studentModel.put("examTypeId", newResult.getExamTypeId());
                                         studentModel.put("examId", newResult.getExamId());
-                                        StudentsExamsRef.child(newResult.getStudentClass()).child(currentAcademicTerm).child(newResult.getExamTypeId()).updateChildren(studentModel);
+                                        StudentsExamsRef.child(newResult.getStudentId()).child(newResult.getStudentClass()).child(currentAcademicTerm).child(newResult.getExamTypeId()).updateChildren(studentModel);
 
 
                                         engEdit.setText(newResult.getEng());
